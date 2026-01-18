@@ -84,9 +84,10 @@
 </style>
 
   <title>
-    Jicheng's Blog
-    
-  </title>
+  
+    Blockwise Attention · Jicheng's Blog
+  
+</title>
 <meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -339,42 +340,53 @@ mjx-container[display="true"] + br {
         <div class="main-wrapper">
           
     
-      <div class="about syuanpi fadeInRightShort">
-        <h2 class="title"> About </h2>
-        <div class="content">
-          
-            <img src="/about/HK416.jpg" alt="图片描述" width="100%" style="display:block;">
-<h1>分割</h1>
-<div style="display:flex; flex-direction:column; gap:40px; margin-bottom:40px;">
-    <div id="card1" style="display:flex; background:white; border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.08);">
-        <div style="flex:0 0 45%; max-width:45%; overflow:hidden;">
-            <img src="/about/HK416.jpg" alt="雪山风景" style="width:100%; height:100%; object-fit:cover; display:block;">
-        </div>
-        <div style="flex:0 0 55%; max-width:55%; padding:40px; display:flex; flex-direction:column; justify-content:center;">
-            <h2 style="color:#2c3e50; margin-bottom:15px; font-size:1.8rem;">壮丽的山脉风光</h2>
-            <p style="margin-bottom:20px; color:#555; font-size:1.05rem;">雪山巍峨耸立，峰顶覆盖着终年不化的积雪，在阳光的照射下闪耀着银白色的光芒。山间的云雾缭绕，给这片自然景观增添了几分神秘感。</p>
-            <p style="background-color:#f8f9fa; padding:15px; border-left:4px solid #3498db; margin:20px 0; font-style:italic; color:#2c3e50;">
-                山脉不仅是自然界的奇迹，也是许多文化和宗教的象征，代表着永恒、力量和宁静。
-            </p>
-            <p style="margin-bottom:20px; color:#555; font-size:1.05rem;">这里的气候条件独特，形成了多样的生态系统。从山脚的茂密森林到山顶的冰川，每一个海拔高度都有其独特的动植物种类。</p>
-            <ul style="margin:20px 0; padding-left:20px;">
-                <li style="margin-bottom:10px; color:#444;">海拔超过5000米，常年积雪</li>
-                <li style="margin-bottom:10px; color:#444;">拥有独特的山地生态系统</li>
-                <li style="margin-bottom:10px; color:#444;">是多种珍稀动植物的栖息地</li>
-                <li style="margin-bottom:10px; color:#444;">每年吸引大量登山爱好者和自然摄影师</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-          
-        </div>
-      </div>
-      
-      
-
+  <div class="archive syuanpi fadeInRightShort" id="archive">
     
+      
+      
+        
+          </section>
+        
+        <div class="archive-post">
+          <div class="archive-post-content">
+            
+              <h2 id="要点">要点</h2>
+<ul>
+<li><strong>Shared KV</strong>: 统一整合init(fix window)、top-k(sparse)、local(sliding window)，在选择好要关注的block之后统一进行flashattention运算，共享一套KV projection</li>
+<li><strong>Aligned Computation</strong>: 预训练和短文本推理用密集注意力，finetune和长文本推理用稀疏注意力。
+<ul>
+<li>短文本训练与推理时用密集模式避免额外稀疏计算</li>
+<li>长文本finetune时，通过构建尽可能与密集模式相似的稀疏注意力模式，保证模型不会忘掉在短文本训练时学到的知识</li>
+<li>两种注意力模式所需要的参数是完全一致的，稀疏注意力没有额外参数。</li>
+</ul>
+</li>
+<li>GQA与稀疏模式查询组内共享保证sparse attention的运算效率</li>
+<li>简化的稀疏top-k块选择机制</li>
+</ul>
+            
+          </div>
+          <div class="archive-post-info">
+            <time class="archive-post-time">
+              2026-01-18
+            </time>
+            <a  class="archive-post-link" href="/2026/01/18/infllmv2-paper-review/">
+              Infllmv2 Review
+            </a>
+          </div>
+        </div>
+      
+      
+        </section></section>
+      
+  </div>
   
+  <nav class="pagination">
+      <span class="page-number current">1</span>
+  </nav>
+
+
+
+
         </div>
       </main>
       <footer class="footer syuanpi fadeIn" id="footer">

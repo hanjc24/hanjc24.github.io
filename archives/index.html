@@ -12,6 +12,9 @@
 <meta name="msapplication-navbutton-color" content="#666666">
 <meta name= "format-detection" content="telephone=no" />
 
+  <link rel="apple-touch-icon"  sizes="72x72"  href="/favicon.png">
+  <link rel="apple-touch-icon-precomposed"  sizes="72x72"  href="/favicon.png">
+
 
 
   <meta name="description" content="Here is BD1AEH">
@@ -59,6 +62,8 @@
 
 
 
+
+    <link rel="icon" href="/favicon.png">
 
 
 
@@ -226,7 +231,7 @@
   <div class="archive syuanpi fadeInRightShort" id="archive">
     
       <aside class="archive-title">Total</aside>
-      <span class="archive-num">2 Posts In Total</span>
+      <span class="archive-num">4 Posts In Total</span>
     
       
       
@@ -243,6 +248,55 @@
         <div class="archive-post">
           <div class="archive-post-content">
             
+              <p>总之，我在Hexo中用上了Mermaid，在此记录</p>
+<pre class="mermaid">graph TD
+A[hexo-filter-mermaid-diagrams npm插件] -- 识别md mermaid块 --> C
+C[生成class=mermaid的pre块]
+B[swig脚本] --模板引擎展开--> D
+D[生成引入mermaid库的js代码段]
+C-->E
+D-->E
+E[生成的html中成功渲染mermaid]</pre>
+            
+          </div>
+          <div class="archive-post-info">
+            <time class="archive-post-time">
+              2026-01-18
+            </time>
+            <a  class="archive-post-link" href="/2026/01/18/How-to-use-Mermaid-in-Hexo/">
+              How to use Mermaid in Hexo
+            </a>
+          </div>
+        </div>
+      
+        
+          
+          
+          
+        <div class="archive-post">
+          <div class="archive-post-content">
+            
+              <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>Nlvi是我的一位学长在<a target="_blank" rel="noopener" href="https://aajax.top/">他的blog</a>魔改并使用的主题，我也装了Nlvi试了试，效果不错，尤其是Tag的索引做得挺清楚的，整体很简约。</p>
+<p>唯一的美中不足是原本的Nlvi主题配色的底色都是浅色，观感上过于明亮，所以我研究了一下Hexo theme的结构，修改了一些生成css部分的代码。</p>
+            
+          </div>
+          <div class="archive-post-info">
+            <time class="archive-post-time">
+              2026-01-17
+            </time>
+            <a  class="archive-post-link" href="/2026/01/17/HexoNlviBuild/">
+              How to customize Hexo theme Nlvi
+            </a>
+          </div>
+        </div>
+      
+        
+          
+          
+          
+        <div class="archive-post">
+          <div class="archive-post-content">
+            
               <p>施工中</p>
 
             
@@ -251,7 +305,7 @@
             <time class="archive-post-time">
               2026-01-17
             </time>
-            <a  class="archive-post-link" href="/2026/01/17/Test-Post/">
+            <a  class="archive-post-link" href="/2026/01/17/FlashAttention/">
               FlashAttention
             </a>
           </div>
@@ -335,7 +389,11 @@
   <div class="tagcloud-taglist">
   
     <div class="tagcloud-tag">
-      <button>Lecture Review</button>
+      <button>Literature Review</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Hexo</button>
     </div>
   
     <div class="tagcloud-tag">
@@ -345,12 +403,31 @@
   </div>
   
     <div class="tagcloud-postlist active">
-      <h2>Lecture Review</h2>
+      <h2>Literature Review</h2>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/17/Test-Post/">
+          <a href="/2026/01/17/FlashAttention/">
             <time class="tagcloud-posttime">2026 / 01 / 17</time>
             <span>FlashAttention</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Hexo</h2>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/17/HexoNlviBuild/">
+            <time class="tagcloud-posttime">2026 / 01 / 17</time>
+            <span>How to customize Hexo theme Nlvi</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/18/How-to-use-Mermaid-in-Hexo/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>How to use Mermaid in Hexo</span>
           </a>
         </div>
       
@@ -417,6 +494,24 @@
 
 
 
+
+
+  
+<script src="/script/lib/mermaid/mermaid.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      var mermaid_config = {
+        startOnLoad: true,
+        theme: '',
+        flowchart: {
+          useMaxWidth: false,
+          htmlLabels: true
+        }
+      };
+      mermaid.initialize(mermaid_config);
+    });
+  </script>
 
 
 </body>

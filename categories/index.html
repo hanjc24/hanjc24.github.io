@@ -12,6 +12,9 @@
 <meta name="msapplication-navbutton-color" content="#666666">
 <meta name= "format-detection" content="telephone=no" />
 
+  <link rel="apple-touch-icon"  sizes="72x72"  href="/favicon.png">
+  <link rel="apple-touch-icon-precomposed"  sizes="72x72"  href="/favicon.png">
+
 
 
   <meta name="description" content="Here is BD1AEH">
@@ -59,6 +62,8 @@
 
 
 
+
+    <link rel="icon" href="/favicon.png">
 
 
 
@@ -269,7 +274,11 @@
   <div class="tagcloud-taglist">
   
     <div class="tagcloud-tag">
-      <button>Lecture Review</button>
+      <button>Literature Review</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Hexo</button>
     </div>
   
     <div class="tagcloud-tag">
@@ -279,12 +288,31 @@
   </div>
   
     <div class="tagcloud-postlist active">
-      <h2>Lecture Review</h2>
+      <h2>Literature Review</h2>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/17/Test-Post/">
+          <a href="/2026/01/17/FlashAttention/">
             <time class="tagcloud-posttime">2026 / 01 / 17</time>
             <span>FlashAttention</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Hexo</h2>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/17/HexoNlviBuild/">
+            <time class="tagcloud-posttime">2026 / 01 / 17</time>
+            <span>How to customize Hexo theme Nlvi</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/18/How-to-use-Mermaid-in-Hexo/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>How to use Mermaid in Hexo</span>
           </a>
         </div>
       
@@ -351,6 +379,24 @@
 
 
 
+
+
+  
+<script src="/script/lib/mermaid/mermaid.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      var mermaid_config = {
+        startOnLoad: true,
+        theme: '',
+        flowchart: {
+          useMaxWidth: false,
+          htmlLabels: true
+        }
+      };
+      mermaid.initialize(mermaid_config);
+    });
+  </script>
 
 
 </body>

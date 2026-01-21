@@ -84,9 +84,10 @@
 </style>
 
   <title>
-    Jicheng's Blog
-    
-  </title>
+  
+    Tutorial · Jicheng's Blog
+  
+</title>
 <meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -339,10 +340,70 @@ mjx-container[display="true"] + br {
         <div class="main-wrapper">
           
     
-      <p>1234</p>
-
+  <div class="archive syuanpi fadeInRightShort" id="archive">
     
+      
+      
+        
+          </section>
+        
+        <div class="archive-post">
+          <div class="archive-post-content">
+            
+              <p>总之，我在Hexo中用上了Mermaid，在此记录</p>
+<pre class="mermaid">graph TD
+A[hexo-filter-mermaid-diagrams npm插件] -- 识别md mermaid块 --&gt; C
+C[生成class=mermaid的pre块]
+B[swig脚本] --模板引擎展开--&gt; D
+D[生成引入mermaid库的js代码段]
+C--&gt;E
+D--&gt;E
+E[生成的html中成功渲染mermaid]</pre>
+            
+          </div>
+          <div class="archive-post-info">
+            <time class="archive-post-time">
+              2026-01-18
+            </time>
+            <a  class="archive-post-link" href="/2026/01/18/How-to-use-Mermaid-in-Hexo/">
+              How to use Mermaid in Hexo
+            </a>
+          </div>
+        </div>
+      
+        
+          </section>
+        
+        <div class="archive-post">
+          <div class="archive-post-content">
+            
+              <h2 id="缘起">缘起</h2>
+<p>Nlvi是我的一位学长在<a target="_blank" rel="noopener" href="https://aajax.top/">他的blog</a>魔改并使用的主题，我也装了Nlvi试了试，效果不错，尤其是Tag的索引做得挺清楚的，整体很简约。</p>
+<p>唯一的美中不足是原本的Nlvi主题配色的底色都是浅色，观感上过于明亮，所以我研究了一下Hexo theme的结构，修改了一些生成css部分的代码。</p>
+            
+          </div>
+          <div class="archive-post-info">
+            <time class="archive-post-time">
+              2026-01-17
+            </time>
+            <a  class="archive-post-link" href="/2026/01/17/HexoNlviBuild/">
+              How to customize Hexo theme Nlvi
+            </a>
+          </div>
+        </div>
+      
+      
+        </section></section>
+      
+  </div>
   
+  <nav class="pagination">
+      <span class="page-number current">1</span>
+  </nav>
+
+
+
+
         </div>
       </main>
       <footer class="footer syuanpi fadeIn" id="footer">

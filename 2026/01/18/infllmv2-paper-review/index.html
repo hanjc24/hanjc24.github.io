@@ -21,7 +21,7 @@
 
 
 
-  <meta name="keywords" content="Literature Review, Blockwise Attention, nlvi" />
+  <meta name="keywords" content="Literature Review, nlvi" />
 
 
 <link rel="apple-touch-startup-image" media="(device-width: 375px)" href="assets/apple-launch-1125x2436.png">
@@ -377,6 +377,27 @@ mjx-container[display="true"] + br {
 <li>简化的稀疏top-k块选择机制</li>
 </ul>
 <span id="more"></span>
+<h2 id="Sparse-Attention-Review">Sparse Attention Review</h2>
+<p>需要平衡以下三点</p>
+<ul>
+<li>SA机制导致的模型能力损失(相对于DenseAttention)</li>
+<li>SA机制本身额外计算与IO开销(如何高效选取有关context?)</li>
+<li>SA减少的训练推理的计算与IO(该正收益能否抵偿上面两点?)</li>
+</ul>
+<h3 id="Training-free-SA">Training-free SA</h3>
+<p>训练无关的SA，即SA机制中没有可以训练的参数</p>
+<ul>
+<li><strong>Predefined Sparse Patterns</strong>: 预先定义好需要关注哪些上文，与输入序列无关<br>
+例如sliding window(只和local tokens进行attention计算)、initial tokens等</li>
+<li><strong>Dynamic Sparse Patterns</strong>: 预先定义好"如何选取有关上文"，根<br>
+例如利用query向量和经过pooling或compress的key进行计算，挑选有关上文<br>
+选取的粒度早先是token level的，现在主要是blockwise的，为适应FlashAttention计算与GPU加速<br>
+<strong>本文Infllmv2是"training-free block-sparse attention mechanism"</strong></li>
+</ul>
+<h3 id="Trainable-SA">Trainable SA</h3>
+<p>e.g. Deepseek-NSA，稀疏机制中也包含可以训练的参数。<br>
+与Dynamic Sparse Patterns的基本思路一致<br>
+区别在于还要考虑：如何实现稀疏机制参数的梯度下降，如何做到Trainable?</p>
 <h2 id="实现细节">实现细节</h2>
 <h3 id="经典GQA-review">经典GQA review</h3>
 <h4 id="参数定义">参数定义</h4>
@@ -431,8 +452,6 @@ Zhao, W., Zhou, Z., Su, Z., Xiao, C., Li, Y., Li, Y., … &amp; Liu, Z. (2025). 
       
         <a href="/tags/Literature-Review/">Literature Review</a>
       
-        <a href="/tags/Blockwise-Attention/">Blockwise Attention</a>
-      
       </div>
     
     
@@ -464,6 +483,12 @@ Zhao, W., Zhou, Z., Su, Z., Xiao, C., Li, Y., Li, Y., … &amp; Liu, Z. (2025). 
   
     
   <nav class="article-page">
+    
+      <a href="/2026/01/19/DeepSeekNSA/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>DeepSeekNSA
+        </span>
+      </a>
     
     
       <a href="/2026/01/18/How-to-use-Mermaid-in-Hexo/" id="art-right" class="art-right">
@@ -498,7 +523,7 @@ Zhao, W., Zhou, Z., Su, Z., Xiao, C., Li, Y., Li, Y., … &amp; Liu, Z. (2025). 
   <aside class="post-toc">
     <div class="title"><span>Index</span></div>
     <div class="toc-inner">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E7%82%B9"><span class="toc-text">要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="toc-text">实现细节</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8GQA-review"><span class="toc-text">经典GQA review</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="toc-text">参数定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%8F"><span class="toc-text">算法公式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#span-style-color-rgb-49-94-111-Infllmv2-GQA%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%AE%97%E6%B3%95-span"><span class="toc-text">Infllmv2: GQA注意力算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#span-style-color-rgb-49-94-111-Infllmv2-Blockwise%E7%A8%80%E7%96%8F%E7%AD%96%E7%95%A5-span"><span class="toc-text">Infllmv2: Blockwise稀疏策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%8C%AE"><span class="toc-text">文献</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E7%82%B9"><span class="toc-text">要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sparse-Attention-Review"><span class="toc-text">Sparse Attention Review</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Training-free-SA"><span class="toc-text">Training-free SA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Trainable-SA"><span class="toc-text">Trainable SA</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="toc-text">实现细节</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8GQA-review"><span class="toc-text">经典GQA review</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="toc-text">参数定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%8F"><span class="toc-text">算法公式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#span-style-color-rgb-49-94-111-Infllmv2-GQA%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%AE%97%E6%B3%95-span"><span class="toc-text">Infllmv2: GQA注意力算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#span-style-color-rgb-49-94-111-Infllmv2-Blockwise%E7%A8%80%E7%96%8F%E7%AD%96%E7%95%A5-span"><span class="toc-text">Infllmv2: Blockwise稀疏策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%8C%AE"><span class="toc-text">文献</span></a></li></ol>
     </div>
   </aside>
 
@@ -550,44 +575,51 @@ Zhao, W., Zhou, Z., Su, Z., Xiao, C., Li, Y., Li, Y., … &amp; Liu, Z. (2025). 
   <div class="tagcloud-taglist">
   
     <div class="tagcloud-tag">
-      <button>Literature Review</button>
-    </div>
-  
-    <div class="tagcloud-tag">
-      <button>Hexo</button>
-    </div>
-  
-    <div class="tagcloud-tag">
       <button>Daily Log</button>
     </div>
   
     <div class="tagcloud-tag">
-      <button>Blockwise Attention</button>
+      <button>Tutorial</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Literature Review</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Project</button>
     </div>
   
   </div>
   
     <div class="tagcloud-postlist active">
-      <h2>Literature Review</h2>
+      <h2>Daily Log</h2>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/17/FlashAttention/">
-            <time class="tagcloud-posttime">2026 / 01 / 17</time>
-            <span>FlashAttention</span>
+          <a href="/2026/01/16/hello-world/">
+            <time class="tagcloud-posttime">2026 / 01 / 16</time>
+            <span>CQ CQ This is BD1AEH. Standing by.</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/18/infllmv2-paper-review/">
-            <time class="tagcloud-posttime">2026 / 01 / 18</time>
-            <span>Infllmv2 Review</span>
+          <a href="/2026/01/19/CQ-CQ-CQ-This-is-BD1AEH-calling/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>CQ CQ CQ This is BD1AEH calling</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/20/EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
           </a>
         </div>
       
     </div>
   
     <div class="tagcloud-postlist ">
-      <h2>Hexo</h2>
+      <h2>Tutorial</h2>
       
         <div class="tagcloud-post">
           <a href="/2026/01/17/HexoNlviBuild/">
@@ -606,24 +638,38 @@ Zhao, W., Zhou, Z., Su, Z., Xiao, C., Li, Y., Li, Y., … &amp; Liu, Z. (2025). 
     </div>
   
     <div class="tagcloud-postlist ">
-      <h2>Daily Log</h2>
+      <h2>Literature Review</h2>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/16/hello-world/">
-            <time class="tagcloud-posttime">2026 / 01 / 16</time>
-            <span>CQ CQ This is BD1AEH. Standing by.</span>
+          <a href="/2026/01/17/FlashAttention/">
+            <time class="tagcloud-posttime">2026 / 01 / 17</time>
+            <span>FlashAttention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/18/infllmv2-paper-review/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>Infllmv2 Review</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/19/DeepSeekNSA/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>DeepSeekNSA</span>
           </a>
         </div>
       
     </div>
   
     <div class="tagcloud-postlist ">
-      <h2>Blockwise Attention</h2>
+      <h2>Project</h2>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/18/infllmv2-paper-review/">
-            <time class="tagcloud-posttime">2026 / 01 / 18</time>
-            <span>Infllmv2 Review</span>
+          <a href="/2026/01/20/EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
           </a>
         </div>
       

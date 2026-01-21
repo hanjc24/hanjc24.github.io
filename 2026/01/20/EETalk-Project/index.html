@@ -21,6 +21,8 @@
 
 
 
+  <meta name="keywords" content="Daily Log, Project, nlvi" />
+
 
 <link rel="apple-touch-startup-image" media="(device-width: 375px)" href="assets/apple-launch-1125x2436.png">
 <link rel="apple-touch-startup-image" media="(orientation: landscape)" href="assets/apple-touch-startup-image-2048x1496.png">
@@ -83,11 +85,7 @@
 }
 </style>
 
-  <title>
-  
-    Hexo · Jicheng's Blog
-  
-</title>
+  <title> EETalk Project · Jicheng's Blog </title>
 <meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -340,68 +338,166 @@ mjx-container[display="true"] + br {
         <div class="main-wrapper">
           
     
-  <div class="archive syuanpi fadeInRightShort" id="archive">
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInRightShort back-1">
+        <div class="post-time-wrapper">
+          
+          <time>2026-01-20</time>
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInRightShort back-2">
+        
+          EETalk Project
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInRightShort back-3">
+      
+        <p>至大至简的语音转文字小程序。<br>
+献给我的信息学启蒙老师。他因病失明，听力尚好；他的母亲90多岁，听力基本丧失，视觉残存。<br>
+这个工具搭建起他们之间的沟通桥梁，故名眼耳对话(Eye-Ear Talk： EETalk)。</p>
+<span id="more"></span>
+<h2 id="缘起">缘起</h2>
+<p style="text-indent: 2em">
+朱老师的母亲因为年事已高，听力衰退严重，视力也大不如前，苦于无法日常交流已经很久了。我们找遍了市场上现成的产品：有语音转文字的录制器，但屏幕太小，老人家戴着老花镜也无法辨识；有大的写字板，但朱老师却因失明无法使用……一次次的失望让朱老师深感挫败。母子二人终日相对，却似远隔万里。
+</p>
+<p style="text-indent: 2em">
+我十一月份因意外导致右腿骨折，无法行走，卧床休养，深切地体会到了残障人士的不便，逐渐萌生了用自己所学帮助他们的思路——开发一个盲人也可以无障碍使用的微信小程序，重建他们之间沟通的桥梁。
+</p>
+<p style="text-indent: 2em">
+朱老师戏称这个方案为“一个瞎子和一个聋子的对话”，我稍作修改，命名它为“眼耳对话”，英文为EEtalk。它的特点就是至大至简：页面至大、操作至简。
+</p>
+<img src="/2026/01/20/EETalk-Project/image-use2.jpg" class="" title="This is an example image">
+<p style="text-indent: 2em">
+昨天晚上，我到朱老师家中，实地测试了我所做的小程序，现场修改了不少代码，最终达到了理想的效果。我在两个月前也不幸右腿骨折，正在修养，这次是三个残障人士聚在一起解决了问题。
+</p>
+<img src="/2026/01/20/EETalk-Project/image-use.jpg" class="" title="This is an example image">
+<p style="text-indent: 2em">
+老人家的听力日渐衰减，换了很多助听器也无济于事，多年来朱老师一直苦于无法和母亲交流。今天终于有了合适的媒介，朱老师和他的母亲聊得不亦乐乎。
+</p>
+<p style="text-indent: 2em">
+老人家很高兴，拉着我的手和我聊天，滔滔不绝地向我介绍她的过往。原来她居然是云南大学1959级的大学生，系统数学方向。老人家现在依然思维清晰，表达很有条理，却因为听力的缘故，在寂静的世界里孤独了很多年。
+</p>
+<h2 id="些许感悟">些许感悟</h2>
+<p style="text-indent: 2em">
+在世界上，有许许多多的人，因为这样或那样的原因，或是失明、或是听障、或是其他，失去了和社会的连接，失去了和身边人的连接。
+</p>
+<p style="text-indent: 2em">
+这个小程序实现并不复杂，所需的技术在当今也已经成熟。但因为使用场景的特殊，鲜有任何一张市场调研报告会关注这样的需求。但我想，总要有人在这样的地方默默耕耘、帮助这些不太幸运的人们。技术进步的意义，也在此得到丰富。
+</p>
+<p style="text-indent: 2em">
+“无穷的远方、无尽的人们，都与我有关”，现在的我尚未走远，那么就从身边人开始吧。毕竟身边人与我亦是息息相关。
+</p>
+<h2 id="页面设计：至大">页面设计：至大</h2>
+<p>主打一个大：字<strong>大</strong>，不带老花镜也能看到；按钮也<strong>大</strong>，便于点击操作。<br>
+尤其适合在ipad大屏幕上进行操作，完全满足日常交流需要</p>
+<img src="/2026/01/20/EETalk-Project/image.png" class="" title="This is an example image">
+<h2 id="操作逻辑：至简">操作逻辑：至简</h2>
+<h3 id="总体方案">总体方案</h3>
+<p>为适应无障碍使用需求，结合朱老师的实地测试与建议，我最终采用<strong>单一点击逻辑+状态提示音</strong>的方案。</p>
+<ul>
+<li><strong>点击逻辑提供便捷操作</strong>：
+<ul>
+<li>只需熟悉可点击按钮区域，即可使用</li>
+<li>可点击的按钮面积很大</li>
+</ul>
+</li>
+<li><strong>提示音提供清晰状态感知</strong>：
+<ul>
+<li>如果不清楚当前工具处于何种状态，只需要点击一次，根据提示音即可判断。</li>
+<li>提示音标志着“成功点击”本身：凡是未被忽略的、改变了程序状态的点击都会发出提示音</li>
+</ul>
+</li>
+</ul>
+
+      
+    
+    </div>
+    
+      <div class="post-tags syuanpi fadeInRightShort back-3">
+      
+        <a href="/tags/Daily-Log/">Daily Log</a>
+      
+        <a href="/tags/Project/">Project</a>
+      
+      </div>
+    
     
       
+
       
-        
-          </section>
-        
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <p>总之，我在Hexo中用上了Mermaid，在此记录</p>
-<pre class="mermaid">graph TD
-A[hexo-filter-mermaid-diagrams npm插件] -- 识别md mermaid块 --&gt; C
-C[生成class=mermaid的pre块]
-B[swig脚本] --模板引擎展开--&gt; D
-D[生成引入mermaid库的js代码段]
-C--&gt;E
-D--&gt;E
-E[生成的html中成功渲染mermaid]</pre>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-18
-            </time>
-            <a  class="archive-post-link" href="/2026/01/18/How-to-use-Mermaid-in-Hexo/">
-              How to use Mermaid in Hexo
-            </a>
-          </div>
-        </div>
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>Author :</span>
+      <span>hanjc24</span>
+    </div>
+    <div class="copy-url">
+      <span>Url :</span>
+      <a href="http://hanjc24.github.io/2026/01/20/EETalk-Project/">http://hanjc24.github.io/2026/01/20/EETalk-Project/</a>
+    </div>
+    <div class="copy-origin">
+      <span>Origin :</span>
+      <a href="http://hanjc24.github.io">http://hanjc24.github.io</a>
+    </div>
+    <div class="copy-license">
       
-        
-          </section>
-        
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <h2 id="缘起">缘起</h2>
-<p>Nlvi是我的一位学长在<a target="_blank" rel="noopener" href="https://aajax.top/">他的blog</a>魔改并使用的主题，我也装了Nlvi试了试，效果不错，尤其是Tag的索引做得挺清楚的，整体很简约。</p>
-<p>唯一的美中不足是原本的Nlvi主题配色的底色都是浅色，观感上过于明亮，所以我研究了一下Hexo theme的结构，修改了一些生成css部分的代码。</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-17
-            </time>
-            <a  class="archive-post-link" href="/2026/01/17/HexoNlviBuild/">
-              How to customize Hexo theme Nlvi
-            </a>
-          </div>
-        </div>
-      
-      
-        </section></section>
-      
+      All rights reserved. Please contact the author for authorization to reprint.
+    </div>
   </div>
+
+    
+  </article>
   
-  <nav class="pagination">
-      <span class="page-number current">1</span>
+    
+  <nav class="article-page">
+    
+    
+      <a href="/2026/01/19/CQ-CQ-CQ-This-is-BD1AEH-calling/" id="art-right" class="art-right">
+        <span class="prev-title">
+          CQ CQ CQ This is BD1AEH calling<i class="iconfont icon-right"></i>
+        </span>
+      </a>
+    
   </nav>
 
 
+    
+  <i id="com-switch" class="iconfont icon-down jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+
+    
+    
+
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+    
+  
+  <aside class="post-toc">
+    <div class="title"><span>Index</span></div>
+    <div class="toc-inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%98%E8%B5%B7"><span class="toc-text">缘起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%9B%E8%AE%B8%E6%84%9F%E6%82%9F"><span class="toc-text">些许感悟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1%EF%BC%9A%E8%87%B3%E5%A4%A7"><span class="toc-text">页面设计：至大</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E9%80%BB%E8%BE%91%EF%BC%9A%E8%87%B3%E7%AE%80"><span class="toc-text">操作逻辑：至简</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E4%BD%93%E6%96%B9%E6%A1%88"><span class="toc-text">总体方案</span></a></li></ol></li></ol>
+    </div>
+  </aside>
+
+
+
+  
 
 
         </div>
@@ -447,44 +543,51 @@ E[生成的html中成功渲染mermaid]</pre>
   <div class="tagcloud-taglist">
   
     <div class="tagcloud-tag">
-      <button>Literature Review</button>
-    </div>
-  
-    <div class="tagcloud-tag">
-      <button>Hexo</button>
-    </div>
-  
-    <div class="tagcloud-tag">
       <button>Daily Log</button>
     </div>
   
     <div class="tagcloud-tag">
-      <button>Blockwise Attention</button>
+      <button>Tutorial</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Literature Review</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Project</button>
     </div>
   
   </div>
   
     <div class="tagcloud-postlist active">
-      <h2>Literature Review</h2>
+      <h2>Daily Log</h2>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/17/FlashAttention/">
-            <time class="tagcloud-posttime">2026 / 01 / 17</time>
-            <span>FlashAttention</span>
+          <a href="/2026/01/16/hello-world/">
+            <time class="tagcloud-posttime">2026 / 01 / 16</time>
+            <span>CQ CQ This is BD1AEH. Standing by.</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/18/infllmv2-paper-review/">
-            <time class="tagcloud-posttime">2026 / 01 / 18</time>
-            <span>Infllmv2 Review</span>
+          <a href="/2026/01/19/CQ-CQ-CQ-This-is-BD1AEH-calling/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>CQ CQ CQ This is BD1AEH calling</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/20/EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
           </a>
         </div>
       
     </div>
   
     <div class="tagcloud-postlist ">
-      <h2>Hexo</h2>
+      <h2>Tutorial</h2>
       
         <div class="tagcloud-post">
           <a href="/2026/01/17/HexoNlviBuild/">
@@ -503,24 +606,38 @@ E[生成的html中成功渲染mermaid]</pre>
     </div>
   
     <div class="tagcloud-postlist ">
-      <h2>Daily Log</h2>
+      <h2>Literature Review</h2>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/16/hello-world/">
-            <time class="tagcloud-posttime">2026 / 01 / 16</time>
-            <span>CQ CQ This is BD1AEH. Standing by.</span>
+          <a href="/2026/01/17/FlashAttention/">
+            <time class="tagcloud-posttime">2026 / 01 / 17</time>
+            <span>FlashAttention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/18/infllmv2-paper-review/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>Infllmv2 Review</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/19/DeepSeekNSA/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>DeepSeekNSA</span>
           </a>
         </div>
       
     </div>
   
     <div class="tagcloud-postlist ">
-      <h2>Blockwise Attention</h2>
+      <h2>Project</h2>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/18/infllmv2-paper-review/">
-            <time class="tagcloud-posttime">2026 / 01 / 18</time>
-            <span>Infllmv2 Review</span>
+          <a href="/2026/01/20/EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
           </a>
         </div>
       
@@ -584,6 +701,20 @@ E[生成的html中成功渲染mermaid]</pre>
 <script src="/script/bootstarp.js"></script>
 
 
+
+<script>
+if (nlviconfig.theme.toc) {
+  setTimeout(function() {
+    if (nlviconfig.theme.scheme === 'balance') {
+      $("#header").addClass("show_toc");
+    } else if (nlviconfig.theme.scheme === 'banderole') {
+      $(".container-inner").addClass("has_toc");
+      $(".post-toc .title").addClass("show");
+      $(".toc-inner").addClass("show");
+    }
+  }, 1000);
+}
+</script>
 
 
 

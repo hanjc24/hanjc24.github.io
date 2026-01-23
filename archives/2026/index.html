@@ -343,7 +343,7 @@ mjx-container[display="true"] + br {
   <div class="archive syuanpi fadeInRightShort" id="archive">
     
       <aside class="archive-title">Total</aside>
-      <span class="archive-num">8 Posts In Total</span>
+      <span class="archive-num">9 Posts In Total</span>
     
       
       
@@ -355,6 +355,43 @@ mjx-container[display="true"] + br {
             <div class="archive-group">
             <time class="archive-year"> 2026 </time>
             <div class="archive-list">
+          
+          
+        <div class="archive-post">
+          <div class="archive-post-content">
+            
+              <h2 id="框架">框架</h2>
+<p>The basic programming model of Triton</p>
+<h4 id="Kernel">Kernel</h4>
+<p>用<code>@triton.jit</code>装饰的python函数<br>
+描述了program如何处理一个block，实际执行时并行执行多个program实例，并行处理多个block</p>
+<h4 id="并行网格">并行网格</h4>
+<p>Kernel启动时，会启动一个网格（grid）中的多个块（block），每个块包含多个线程（thread），块间共享全局内存(即显存，HBM)，同一块的不同线程间共享，这是CUDA的框架。<br>
+Triton 抽象了这些细节，程序员主要关注于如何组织数据并行执行。层级只有grid和block/program</p>
+<ul>
+<li><strong>Program ID</strong>：每个Kernel实例（即一个线程块）有一个唯一的程序ID，用于标识它处理的数据部分。</li>
+<li><strong>Block</strong>：Triton 中的块类似于 CUDA 中的线程块，但 Triton 的块可以是一维、二维或三维的，用于处理相应维度的数据
+<ul>
+<li>于是Program ID也有axis，譬如三维的情况下一个Program有三个axis上的Program ID标识它</li>
+<li>这便于实现<a target="_blank" rel="noopener" href="https://github.com/XunhaoLai/native-sparse-attention-triton/blob/main/native_sparse_attention/ops/triton/flash_attention.py">FlashAttention</a>等</li>
+</ul>
+</li>
+</ul>
+<p>each block must have a power-of-two number of elements，这是为了便于预编译与性能优化。因此如果要处理不同长度的block，需要自己写padding与mask逻辑</p>
+            
+          </div>
+          <div class="archive-post-info">
+            <time class="archive-post-time">
+              2026-01-22
+            </time>
+            <a  class="archive-post-link" href="/2026/01/22/Learning-Triton/">
+              Learning Triton
+            </a>
+          </div>
+        </div>
+      
+        
+          
           
           
         <div class="archive-post">
@@ -680,6 +717,13 @@ E[生成的html中成功渲染mermaid]</pre>
       <h2>Tutorial</h2>
       
         <div class="tagcloud-post">
+          <a href="/2026/01/18/How-to-use-Mermaid-in-Hexo/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>How to use Mermaid in Hexo</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
           <a href="/2026/01/17/HexoNlviBuild/">
             <time class="tagcloud-posttime">2026 / 01 / 17</time>
             <span>How to customize Hexo theme Nlvi</span>
@@ -687,9 +731,9 @@ E[生成的html中成功渲染mermaid]</pre>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/18/How-to-use-Mermaid-in-Hexo/">
-            <time class="tagcloud-posttime">2026 / 01 / 18</time>
-            <span>How to use Mermaid in Hexo</span>
+          <a href="/2026/01/22/Learning-Triton/">
+            <time class="tagcloud-posttime">2026 / 01 / 22</time>
+            <span>Learning Triton</span>
           </a>
         </div>
       

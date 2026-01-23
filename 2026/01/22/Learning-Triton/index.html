@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="browsermode" content="application">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Jicheng's Blog">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name= "format-detection" content="telephone=no" />
+
+  <link rel="apple-touch-icon"  sizes="72x72"  href="/favicon.png">
+  <link rel="apple-touch-icon-precomposed"  sizes="72x72"  href="/favicon.png">
+
+
+
+  <meta name="description" content="Here is BD1AEH">
+
+
+
+  <meta name="keywords" content="Tutorial, nlvi" />
+
+
+<link rel="apple-touch-startup-image" media="(device-width: 375px)" href="assets/apple-launch-1125x2436.png">
+<link rel="apple-touch-startup-image" media="(orientation: landscape)" href="assets/apple-touch-startup-image-2048x1496.png">
+
+<link rel="stylesheet" href="/style/style.css">
+
+<script>
+  var nlviconfig = {
+    title: "Jicheng's Blog",
+    author: "hanjc24",
+    baseUrl: "/",
+    theme: {
+      scheme: "banderole",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      pjax: false,
+      lazy: false,
+      toc: true
+    }
+  }
+</script>
+
+
+
+
+    
+<link rel="stylesheet" href="/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+
+    
+<link rel="stylesheet" href="/syuanpi/syuanpi.min.css">
+
+
+
+
+
+    <link rel="icon" href="/favicon.png">
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+@font-face {
+  font-family: "Allura";
+  src: url('/font/allura/allura.ttf');
+}
+</style>
+
+  <title> Learning Triton · Jicheng's Blog </title>
+<meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+<body>
+  <div class="container">
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn" style="display:none;">
+    <h1><a href="/">Jicheng's Blog</a></h1>
+    
+  </div>
+</div>
+
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search-btn" aria-label="Search">
+        <i class="iconfont icon-search"></i>
+      </a>
+    </li>
+  
+  
+  
+    
+  
+    <li class="menu-item">
+      <a href="/" id="article">
+        <span class="base-name">
+          
+            ARTICLE
+          
+        </span>
+      </a>
+    </li>
+  
+  
+    
+  
+    <li class="menu-item">
+      <a href="/archives" id="archives">
+        <span class="base-name">
+          
+            ARCHIVES
+          
+        </span>
+      </a>
+    </li>
+  
+  
+    
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">
+          
+            TAGS
+          
+        </span>
+      </a>
+    </li>
+  
+  
+    
+  
+    <li class="menu-item">
+      <a href="/about" id="about">
+        <span class="base-name">
+          
+            ABOUT
+          
+        </span>
+      </a>
+    </li>
+  
+  
+  </ul>
+  
+</nav>
+
+  </div>
+</header>
+<div class="mobile-header" id="mobile-header">
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <div class="header-menu-line"></div>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">Jicheng's Blog</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+  <div class="mobile-header-body">
+    <ul class="mobile-header-list">
+      
+        <li class="mobile-nav-item syuanpi fadeInRightShort back-0">
+          <a href="/" >
+            
+              ARTICLE
+            
+          </a>
+        </li>
+      
+        <li class="mobile-nav-item syuanpi fadeInRightShort back-1">
+          <a href="/archives" >
+            
+              ARCHIVES
+            
+          </a>
+        </li>
+      
+        <li class="mobile-nav-item syuanpi fadeInRightShort back-2">
+          <a href="javascript:;" id="mobile-tags">
+            
+              TAGS
+            
+          </a>
+        </li>
+      
+        <li class="mobile-nav-item syuanpi fadeInRightShort back-3">
+          <a href="/about" >
+            
+              ABOUT
+            
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+    <div class="container-inner" style="display:none;">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInRightShort back-1">
+        <div class="post-time-wrapper">
+          
+          <time>2026-01-22</time>
+          
+            
+              <span class="post-category"><a href="/categories/Triton/">Triton</a></span>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInRightShort back-2">
+        
+          Learning Triton
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInRightShort back-3">
+      
+        <h2 id="框架">框架</h2>
+<p>The basic programming model of Triton</p>
+<h4 id="Kernel">Kernel</h4>
+<p>用<code>@triton.jit</code>装饰的python函数<br>
+描述了program如何处理一个block，实际执行时并行执行多个program实例，并行处理多个block</p>
+<h4 id="并行网格">并行网格</h4>
+<p>Kernel启动时，会启动一个网格（grid）中的多个块（block），每个块包含多个线程（thread），块间共享全局内存(即显存，HBM)，同一块的不同线程间共享，这是CUDA的框架。<br>
+Triton 抽象了这些细节，程序员主要关注于如何组织数据并行执行。层级只有grid和block/program</p>
+<ul>
+<li><strong>Program ID</strong>：每个Kernel实例（即一个线程块）有一个唯一的程序ID，用于标识它处理的数据部分。</li>
+<li><strong>Block</strong>：Triton 中的块类似于 CUDA 中的线程块，但 Triton 的块可以是一维、二维或三维的，用于处理相应维度的数据
+<ul>
+<li>于是Program ID也有axis，譬如三维的情况下一个Program有三个axis上的Program ID标识它</li>
+<li>这便于实现<a target="_blank" rel="noopener" href="https://github.com/XunhaoLai/native-sparse-attention-triton/blob/main/native_sparse_attention/ops/triton/flash_attention.py">FlashAttention</a>等</li>
+</ul>
+</li>
+</ul>
+<p>each block must have a power-of-two number of elements，这是为了便于预编译与性能优化。因此如果要处理不同长度的block，需要自己写padding与mask逻辑</p>
+<span id="more"></span>
+<h2 id="Official-Tutorial">Official Tutorial</h2>
+<h3 id="实例分析-Softmax">实例分析-Softmax</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@triton.jit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">softmax_kernel</span>(<span class="params">output_ptr, input_ptr, input_row_stride, output_row_stride, n_rows, n_cols, BLOCK_SIZE: tl.constexpr,</span></span><br><span class="line"><span class="params">                   num_stages: tl.constexpr</span>):</span><br><span class="line">    <span class="comment"># output_ptr：输出矩阵的指针，torch.tensor类型会被隐式转化，输出矩阵需要预分配。</span></span><br><span class="line">    <span class="comment"># input_ptr：输入矩阵的指针，torch.tensor类型会被隐式转化。</span></span><br><span class="line">    <span class="comment"># input_row_stride：输入矩阵的行步长（即每行有多少个元素）。</span></span><br><span class="line">    <span class="comment"># output_row_stride：输出矩阵的行步长。</span></span><br><span class="line">    <span class="comment"># n_rows：输入矩阵的行数。</span></span><br><span class="line">    <span class="comment"># n_cols：输入矩阵的列数。</span></span><br><span class="line">    <span class="comment"># 需要注意的是，由于存在切片、转置等操作，一个矩阵在存储中可能并非连续</span></span><br><span class="line">    <span class="comment"># 这里n_cols=逻辑行长度(列数) stride(0) = 物理行跨度，二者可能不一致</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># BLOCK_SIZE：一个线程块处理的列数，这里是大于等于n_cols的2的幂次。每个program会按行处理，可能处理多行</span></span><br><span class="line">    <span class="comment"># num_stages：软件流水线的阶段数，用于隐藏显存延迟。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># starting row of the program</span></span><br><span class="line">    row_start = tl.program_id(<span class="number">0</span>)</span><br><span class="line">    row_step = tl.num_programs(<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># 这个程序实例会处理row_start+k*row_step(k=0,1,2...)这些行</span></span><br><span class="line">    <span class="comment"># 这里num_stages是pipeline the loop into this many stages</span></span><br><span class="line">    <span class="keyword">for</span> row_idx <span class="keyword">in</span> tl.<span class="built_in">range</span>(row_start, n_rows, row_step, num_stages=num_stages):</span><br><span class="line">        <span class="comment"># The stride represents how much we need to increase the pointer to advance 1 row 这里是物理stride</span></span><br><span class="line">        row_start_ptr = input_ptr + row_idx * input_row_stride</span><br><span class="line">        <span class="comment"># The block size is the next power of two greater than n_cols, so we can fit each</span></span><br><span class="line">        <span class="comment"># row in a single block</span></span><br><span class="line">        col_offsets = tl.arange(<span class="number">0</span>, BLOCK_SIZE)</span><br><span class="line">        input_ptrs = row_start_ptr + col_offsets <span class="comment"># 指针tensor</span></span><br><span class="line">        <span class="comment"># Load the row into SRAM, using a mask since BLOCK_SIZE may be &gt; than n_cols</span></span><br><span class="line">        mask = col_offsets &lt; n_cols</span><br><span class="line">        <span class="comment"># 加载数据，多出去的部分为-inf，不影响其他部分softmax</span></span><br><span class="line">        row = tl.load(input_ptrs, mask=mask, other=-<span class="built_in">float</span>(<span class="string">'inf'</span>))</span><br><span class="line">        <span class="comment"># row代表这一行元素组成的1维张量，已经被从显存加载到SRAM中了</span></span><br><span class="line">        <span class="comment"># Subtract maximum for numerical stability</span></span><br><span class="line">        row_minus_max = row - tl.<span class="built_in">max</span>(row, axis=<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># Note that exponentiation in Triton is fast but approximate (i.e., think __expf in CUDA)</span></span><br><span class="line">        numerator = tl.exp(row_minus_max)</span><br><span class="line">        denominator = tl.<span class="built_in">sum</span>(numerator, axis=<span class="number">0</span>)</span><br><span class="line">        softmax_output = numerator / denominator</span><br><span class="line">        <span class="comment"># Write back output to DRAM</span></span><br><span class="line">        output_row_start_ptr = output_ptr + row_idx * output_row_stride <span class="comment"># 这里是output_row_stride，输出张量的物理stride</span></span><br><span class="line">        output_ptrs = output_row_start_ptr + col_offsets</span><br><span class="line">        tl.store(output_ptrs, softmax_output, mask=mask)</span><br></pre></td></tr></table></figure>
+<h3 id="实例分析-NSA-FlashAttention-Forward">实例分析-NSA FlashAttention Forward</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/XunhaoLai/native-sparse-attention-triton/blob/main/native_sparse_attention/ops/triton/flash_attention.py">link</a></p>
+<p>三维grid: batch x head x q_block<br>
+每次前传序列总长为n，包含多个(数目=program_id(0)的总数)可变长序列batch(用cu_seqlens_q标识分割)<br>
+每个batch又被按块分割为多个query_block(外层循环，并行在grid上)<br>
+每个线程block处理一个batch内的一个head的一个query_block，需要串行遍历这个batch序列之前的所有kv(内层循环串行)</p>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@triton.jit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">forward_kernel</span>(<span class="params"></span></span><br><span class="line"><span class="params">    q_ptr,  <span class="comment"># Q: n x NUM_Q_HEADS(h) x qk_head_dim(d) 这里n都是整个序列长(所有batch拼成的)</span></span></span><br><span class="line"><span class="params">    k_ptr,  <span class="comment"># K: n x NUM_KV_HEADS(h) x qk_head_dim(d)</span></span></span><br><span class="line"><span class="params">    v_ptr,  <span class="comment"># V: n x NUM_KV_HEADS(h) x v_head_dim(d)</span></span></span><br><span class="line"><span class="params">    o_ptr,  <span class="comment"># O: n x NUM_Q_HEADS(h) x v_head_dim(d)</span></span></span><br><span class="line"><span class="params">    lse_ptr,  <span class="comment"># LSE: NUM_Q_HEADS(h) x n   (log-sum-exp)</span></span></span><br><span class="line"><span class="params">    <span class="comment"># seqlens</span></span></span><br><span class="line"><span class="params">    cu_seqlens_q, <span class="comment"># 累积序列长度，用于处理可变长度序列，描述长度为n的完整序列中每个batch的范围</span></span></span><br><span class="line"><span class="params">    <span class="comment"># 存储：[0, seq_len1, seq_len1+seq_len2, ...] [0,seq_len1)为batch0，[seq_len1,seq_len2)为batch1，...</span></span></span><br><span class="line"><span class="params">    cu_seqlens_k, <span class="comment"># 用于处理cross-attention的情况，但在self attention中与cu_seqlens_q应当一致</span></span></span><br><span class="line"><span class="params">    <span class="comment"># shape</span></span></span><br><span class="line"><span class="params">    NUM_KV_HEADS, <span class="comment"># Key/Value的头数</span></span></span><br><span class="line"><span class="params">    NUM_SHARE_Q_HEADS, <span class="comment"># 共享一个Key/Value头的Query头数，即一个查询组中的查询头数G</span></span></span><br><span class="line"><span class="params">    qk_head_dim, <span class="comment"># query与key向量的维数 d</span></span></span><br><span class="line"><span class="params">    v_head_dim,  <span class="comment"># value与output向量的维数 d 二者一般一样</span></span></span><br><span class="line"><span class="params">    <span class="comment"># sm_scale</span></span></span><br><span class="line"><span class="params">    sm_scale, <span class="comment"># softmax计算前的缩放因子，保证注意力分数分布的标准差大致为1，取1/sqrt(qk_head_dim)</span></span></span><br><span class="line"><span class="params">    <span class="comment"># causal</span></span></span><br><span class="line"><span class="params">    causal, <span class="comment"># 是否使用因果掩码</span></span></span><br><span class="line"><span class="params">    <span class="comment"># gqa</span></span></span><br><span class="line"><span class="params">    gqa_interleave,</span></span><br><span class="line"><span class="params">    <span class="comment"># stride 四个矩阵的物理stride</span></span></span><br><span class="line"><span class="params">    stride_qn,</span></span><br><span class="line"><span class="params">    stride_qh,</span></span><br><span class="line"><span class="params">    stride_qd,</span></span><br><span class="line"><span class="params">    stride_kn,</span></span><br><span class="line"><span class="params">    stride_kh,</span></span><br><span class="line"><span class="params">    stride_kd,</span></span><br><span class="line"><span class="params">    stride_vn,</span></span><br><span class="line"><span class="params">    stride_vh,</span></span><br><span class="line"><span class="params">    stride_vd,</span></span><br><span class="line"><span class="params">    stride_on,</span></span><br><span class="line"><span class="params">    stride_oh,</span></span><br><span class="line"><span class="params">    stride_od,</span></span><br><span class="line"><span class="params">    stride_lh,</span></span><br><span class="line"><span class="params">    stride_ln,</span></span><br><span class="line"><span class="params">    <span class="comment"># META parameters</span></span></span><br><span class="line"><span class="params">    BLOCK_SIZE_Q: tl.constexpr,  <span class="comment"># q block size </span></span></span><br><span class="line"><span class="params">    BLOCK_SIZE_K: tl.constexpr,  <span class="comment"># k block size FlashAttention内层循环的步长/块大小</span></span></span><br><span class="line"><span class="params">    BLOCK_SIZE_KD: tl.constexpr, <span class="comment"># 大于等于qk_head_dim的2的幂，用于加载</span></span></span><br><span class="line"><span class="params">    BLOCK_SIZE_VD: tl.constexpr, <span class="comment"># 大于等于v_head_dim的2的幂，用于加载</span></span></span><br><span class="line"><span class="params"></span>):</span><br><span class="line">    qk_scale = sm_scale * <span class="number">1.44269504</span> <span class="comment"># 输入的sm_scale是按照softmax使用e^x计算，但实际使用的函数是2^x，这里是乘以1/ln2来补偿</span></span><br><span class="line">    <span class="comment"># get batch id and head id</span></span><br><span class="line">    pid_b = tl.program_id(<span class="number">0</span>) <span class="comment"># 批次（batch）的索引(多个batch序列被拼成一个很长的token序列)</span></span><br><span class="line">    pid_h = tl.program_id(<span class="number">1</span>) <span class="comment"># query头（head）的索引</span></span><br><span class="line">    pid_q = tl.program_id(<span class="number">2</span>) <span class="comment"># 这一query头的在其所在的batch序列内的块索引</span></span><br><span class="line">    <span class="keyword">if</span> gqa_interleave:</span><br><span class="line">        pid_kh = pid_h % NUM_KV_HEADS <span class="comment"># kv头的索引 GQA中同查询组query头共用kv头</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        pid_kh = pid_h // NUM_SHARE_Q_HEADS</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># get q k start and len after rmpad 根据pid_b确定batch序列的范围，该线程块只处理这个batch中的一个BLOCK_SIZE_Q大小的块</span></span><br><span class="line">    q_start = tl.load(cu_seqlens_q + pid_b)</span><br><span class="line">    q_len = tl.load(cu_seqlens_q + pid_b + <span class="number">1</span>) - q_start <span class="comment"># 这个batch处理的是[q_start,q_start+q_len)的输入序列</span></span><br><span class="line">    k_start = tl.load(cu_seqlens_k + pid_b)</span><br><span class="line">    k_len = tl.load(cu_seqlens_k + pid_b + <span class="number">1</span>) - k_start</span><br><span class="line">    <span class="keyword">if</span> BLOCK_SIZE_Q * pid_q &gt;= q_len: </span><br><span class="line">        <span class="comment"># 如果当前q_block块索引范围[BLOCK_SIZE_Q * pid_q, BLOCK_SIZE_Q * (pid_q+1))完全超过了当前batch范围，直接返回</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># init qkv pointer</span></span><br><span class="line">    q_ptrs = tl.make_block_ptr(</span><br><span class="line">        base=q_ptr + q_start * stride_qn + pid_h * stride_qh,</span><br><span class="line">        shape=(q_len, qk_head_dim),</span><br><span class="line">        strides=(stride_qn, stride_qd),</span><br><span class="line">        offsets=(pid_q * BLOCK_SIZE_Q, <span class="number">0</span>),</span><br><span class="line">        block_shape=(BLOCK_SIZE_Q, BLOCK_SIZE_KD),</span><br><span class="line">        order=(<span class="number">1</span>, <span class="number">0</span>),</span><br><span class="line">    )</span><br><span class="line">    k_ptrs = tl.make_block_ptr(</span><br><span class="line">        base=k_ptr + k_start * stride_kn + pid_kh * stride_kh,</span><br><span class="line">        shape=(qk_head_dim, k_len),</span><br><span class="line">        strides=(stride_kd, stride_kn),</span><br><span class="line">        offsets=(<span class="number">0</span>, <span class="number">0</span>),</span><br><span class="line">        block_shape=(BLOCK_SIZE_KD, BLOCK_SIZE_K),</span><br><span class="line">        order=(<span class="number">0</span>, <span class="number">1</span>), <span class="comment"># 这里的block ptr在初始化的时候就是转置的</span></span><br><span class="line">    )</span><br><span class="line">    v_ptrs = tl.make_block_ptr(</span><br><span class="line">        base=v_ptr + k_start * stride_vn + pid_kh * stride_vh,</span><br><span class="line">        shape=(k_len, v_head_dim),</span><br><span class="line">        strides=(stride_vn, stride_vd),</span><br><span class="line">        offsets=(<span class="number">0</span>, <span class="number">0</span>),</span><br><span class="line">        block_shape=(BLOCK_SIZE_K, BLOCK_SIZE_VD),</span><br><span class="line">        order=(<span class="number">1</span>, <span class="number">0</span>),</span><br><span class="line">    )</span><br><span class="line">    <span class="comment"># load q 本线程块只需加载一次即可</span></span><br><span class="line">    q = tl.load(q_ptrs, boundary_check=(<span class="number">0</span>, <span class="number">1</span>), padding_option=<span class="string">"zero"</span>)</span><br><span class="line">    <span class="comment"># init statistics</span></span><br><span class="line">    off_q = tl.arange(<span class="number">0</span>, BLOCK_SIZE_Q) + pid_q * BLOCK_SIZE_Q</span><br><span class="line">    off_k = tl.arange(<span class="number">0</span>, BLOCK_SIZE_K)</span><br><span class="line">    m_i = tl.full((BLOCK_SIZE_Q,), <span class="built_in">float</span>(<span class="string">"-inf"</span>), dtype=tl.float32) <span class="comment"># 各行最大的e^qk</span></span><br><span class="line">    lse_i = tl.full((BLOCK_SIZE_Q,), <span class="built_in">float</span>(<span class="string">"-inf"</span>), dtype=tl.float32) <span class="comment"># 各行qk的lse logΣe^qk</span></span><br><span class="line">    acc_o = tl.full((BLOCK_SIZE_Q, BLOCK_SIZE_VD), <span class="number">0</span>, dtype=tl.float32) <span class="comment"># 最终结果O 在循环过程中存放的qk*v再除以exp2(m_i)的中间结果</span></span><br><span class="line">    <span class="comment"># full attention or causal attention</span></span><br><span class="line">    lo = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> causal:</span><br><span class="line">        hi = <span class="built_in">min</span>(k_len, (pid_q + <span class="number">1</span>) * BLOCK_SIZE_Q)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        hi = k_len</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(lo, hi, BLOCK_SIZE_K):</span><br><span class="line">        i = tl.multiple_of(i, BLOCK_SIZE_K)</span><br><span class="line">        <span class="comment"># load k^T</span></span><br><span class="line">        k = tl.load(k_ptrs, boundary_check=(<span class="number">1</span>, <span class="number">0</span>), padding_option=<span class="string">"zero"</span>)</span><br><span class="line">        <span class="comment"># compute qk^T</span></span><br><span class="line">        qk = tl.zeros((BLOCK_SIZE_Q, BLOCK_SIZE_K), dtype=tl.float32)</span><br><span class="line">        <span class="keyword">if</span> causal:</span><br><span class="line">            qk += tl.where(off_q[:, <span class="literal">None</span>] &gt;= (i + off_k)[<span class="literal">None</span>, :], <span class="number">0</span>, <span class="built_in">float</span>(<span class="string">"-inf"</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            qk += tl.where((off_k &lt; k_len - i)[<span class="literal">None</span>, :], <span class="number">0</span>, <span class="built_in">float</span>(<span class="string">"-inf"</span>))</span><br><span class="line">        qk += tl.dot(q, k) * qk_scale</span><br><span class="line">        <span class="comment"># compute m_ij and l_ij</span></span><br><span class="line">        m_ij = tl.maximum(m_i, tl.<span class="built_in">max</span>(qk, axis=<span class="number">1</span>)) <span class="comment"># 大小：BLOCK_SIZE_Q，每行求最大值</span></span><br><span class="line">        p = tl.math.exp2(qk - m_ij[:, <span class="literal">None</span>]) <span class="comment"># 本块放缩后的注意力分数，BLOCK_SIZE_Q * BLOCK_SIZE_K</span></span><br><span class="line">        l_ij = tl.<span class="built_in">sum</span>(p, axis=<span class="number">1</span>) <span class="comment"># 本块放缩后的注意力分数和se，BLOCK_SIZE_Q</span></span><br><span class="line">        <span class="comment"># scale acc_o</span></span><br><span class="line">        acc_o_scale = tl.math.exp2(m_i - m_ij)</span><br><span class="line">        acc_o = acc_o * acc_o_scale[:, <span class="literal">None</span>] <span class="comment"># 将放缩量更新为exp2(m_ij)</span></span><br><span class="line">        <span class="comment"># load v and update acc_o</span></span><br><span class="line">        v = tl.load(v_ptrs, boundary_check=(<span class="number">0</span>, <span class="number">1</span>), padding_option=<span class="string">"zero"</span>) <span class="comment"># BLOCK_K * v_head_dim</span></span><br><span class="line">        p = p.to(v.dtype)</span><br><span class="line">        acc_o += tl.dot(p, v)</span><br><span class="line">        <span class="comment"># update statistics</span></span><br><span class="line">        m_i = m_ij</span><br><span class="line">        lse_i = m_ij + tl.math.log2(tl.math.exp2(lse_i - m_ij) + l_ij)</span><br><span class="line">        <span class="comment"># update ptrs</span></span><br><span class="line">        k_ptrs = tl.advance(k_ptrs, (<span class="number">0</span>, BLOCK_SIZE_K)) <span class="comment"># FlashAttention内层循环移动</span></span><br><span class="line">        v_ptrs = tl.advance(v_ptrs, (BLOCK_SIZE_K, <span class="number">0</span>))</span><br><span class="line">    <span class="comment"># final scale</span></span><br><span class="line">    acc_o = acc_o * tl.math.exp2(m_i - lse_i)[:, <span class="literal">None</span>]</span><br><span class="line">    <span class="comment"># save output</span></span><br><span class="line">    o_ptrs = tl.make_block_ptr(</span><br><span class="line">        base=o_ptr + q_start * stride_on + pid_h * stride_oh,</span><br><span class="line">        shape=(q_len, v_head_dim),</span><br><span class="line">        strides=(stride_on, stride_od),</span><br><span class="line">        offsets=(pid_q * BLOCK_SIZE_Q, <span class="number">0</span>),</span><br><span class="line">        block_shape=(BLOCK_SIZE_Q, BLOCK_SIZE_VD),</span><br><span class="line">        order=(<span class="number">1</span>, <span class="number">0</span>),</span><br><span class="line">    )</span><br><span class="line">    tl.store(o_ptrs, acc_o.to(o_ptr.dtype.element_ty), boundary_check=(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">    <span class="comment"># save lse</span></span><br><span class="line">    l_ptrs = lse_ptr + q_start * stride_ln + pid_h * stride_lh + off_q * stride_ln</span><br><span class="line">    tl.store(l_ptrs, lse_i, mask=off_q &lt; q_len)</span><br></pre></td></tr></table></figure>
+      
+    
+    </div>
+    
+      <div class="post-tags syuanpi fadeInRightShort back-3">
+      
+        <a href="/tags/Tutorial/">Tutorial</a>
+      
+      </div>
+    
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>Author :</span>
+      <span>hanjc24</span>
+    </div>
+    <div class="copy-url">
+      <span>Url :</span>
+      <a href="http://hanjc24.github.io/2026/01/22/Learning-Triton/">http://hanjc24.github.io/2026/01/22/Learning-Triton/</a>
+    </div>
+    <div class="copy-origin">
+      <span>Origin :</span>
+      <a href="http://hanjc24.github.io">http://hanjc24.github.io</a>
+    </div>
+    <div class="copy-license">
+      
+      All rights reserved. Please contact the author for authorization to reprint.
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+    
+      <a href="/2026/01/20/EETalk-Project/" id="art-right" class="art-right">
+        <span class="prev-title">
+          EETalk Project<i class="iconfont icon-right"></i>
+        </span>
+      </a>
+    
+  </nav>
+
+
+    
+  <i id="com-switch" class="iconfont icon-down jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+
+    
+    
+
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+    
+  
+  <aside class="post-toc">
+    <div class="title"><span>Index</span></div>
+    <div class="toc-inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6"><span class="toc-text">框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Kernel"><span class="toc-text">Kernel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E7%BD%91%E6%A0%BC"><span class="toc-text">并行网格</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Official-Tutorial"><span class="toc-text">Official Tutorial</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90-Softmax"><span class="toc-text">实例分析-Softmax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90-NSA-FlashAttention-Forward"><span class="toc-text">实例分析-NSA FlashAttention Forward</span></a></li></ol></li></ol>
+    </div>
+  </aside>
+
+
+
+  
+
+
+        </div>
+      </main>
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+  
+  
+    <a target="_blank" rel="noopener" href="https://github.com/hanjc24" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2026 ~ 2026</span>
+        <span>❤</span>
+        <span>hanjc24</span>
+    </div>
+    <div class="theme">
+        <span>
+            Powered by
+            <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo </a>
+        </span>
+        <span>
+            Theme
+            <a target="_blank" rel="noopener" href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+    <div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-taglist">
+  
+    <div class="tagcloud-tag">
+      <button>Literature Review</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Daily Log</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Tutorial</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Project</button>
+    </div>
+  
+  </div>
+  
+    <div class="tagcloud-postlist active">
+      <h2>Literature Review</h2>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/17/FlashAttention/">
+            <time class="tagcloud-posttime">2026 / 01 / 17</time>
+            <span>FlashAttention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/18/infllmv2-paper-review/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>Infllmv2 Review</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/19/DeepSeekNSA/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>DeepSeekNSA</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Daily Log</h2>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/16/hello-world/">
+            <time class="tagcloud-posttime">2026 / 01 / 16</time>
+            <span>CQ CQ This is BD1AEH. Standing by.</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/19/CQ-CQ-CQ-This-is-BD1AEH-calling/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>CQ CQ CQ This is BD1AEH calling</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/20/EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Tutorial</h2>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/18/How-to-use-Mermaid-in-Hexo/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>How to use Mermaid in Hexo</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/17/HexoNlviBuild/">
+            <time class="tagcloud-posttime">2026 / 01 / 17</time>
+            <span>How to customize Hexo theme Nlvi</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/22/Learning-Triton/">
+            <time class="tagcloud-posttime">2026 / 01 / 22</time>
+            <span>Learning Triton</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Project</h2>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/20/EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+    </div>
+  
+</div>
+
+  </div>
+  <div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+  <div class="search" id="search">
+    <div class="input">
+      <input type="text" id="search-input" placeholder="搜索一下？" autofocus>
+    </div>
+    <div id="search-result"></div>
+  </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+  <script></script>
+  <script src="/script/lib/lightbox/js/lightbox.min.js" async></script>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script>
+    MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+
+
+
+
+
+
+  
+<script src="/script/scheme/banderole.js"></script>
+
+
+
+
+<script src="/script/bootstarp.js"></script>
+
+
+
+<script>
+if (nlviconfig.theme.toc) {
+  setTimeout(function() {
+    if (nlviconfig.theme.scheme === 'balance') {
+      $("#header").addClass("show_toc");
+    } else if (nlviconfig.theme.scheme === 'banderole') {
+      $(".container-inner").addClass("has_toc");
+      $(".post-toc .title").addClass("show");
+      $(".toc-inner").addClass("show");
+    }
+  }, 1000);
+}
+</script>
+
+
+
+  
+<script src="/script/lib/mermaid/mermaid.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      var mermaid_config = {
+        startOnLoad: true,
+        theme: '',
+        flowchart: {
+          useMaxWidth: false,
+          htmlLabels: true
+        }
+      };
+      mermaid.initialize(mermaid_config);
+    });
+  </script>
+
+
+</body>
+</html>

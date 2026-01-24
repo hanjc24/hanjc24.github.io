@@ -363,11 +363,12 @@ mjx-container[display="true"] + br {
     </header>
     <div class="post-content syuanpi fadeInRightShort back-3">
       
-        <h2 id="框架">框架</h2>
+        <h2 id="Triton框架">Triton框架</h2>
 <p>The basic programming model of Triton</p>
 <h4 id="Kernel">Kernel</h4>
 <p>用<code>@triton.jit</code>装饰的python函数<br>
 描述了program如何处理一个block，实际执行时并行执行多个program实例，并行处理多个block</p>
+<span id="more"></span>
 <h4 id="并行网格">并行网格</h4>
 <p>Kernel启动时，会启动一个网格（grid）中的多个块（block），每个块包含多个线程（thread），块间共享全局内存(即显存，HBM)，同一块的不同线程间共享，这是CUDA的框架。<br>
 Triton 抽象了这些细节，程序员主要关注于如何组织数据并行执行。层级只有grid和block/program</p>
@@ -381,7 +382,8 @@ Triton 抽象了这些细节，程序员主要关注于如何组织数据并行�
 </li>
 </ul>
 <p>each block must have a power-of-two number of elements，这是为了便于预编译与性能优化。因此如果要处理不同长度的block，需要自己写padding与mask逻辑</p>
-<span id="more"></span>
+<h2 id="GPU硬件架构">GPU硬件架构</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/YangRui2015/COMP4901Y_Course_HKUST/blob/main/Slides/Lecture%205%20-%20Nvidia%20GPU%20Performance.pdf">参考PPT</a></p>
 <h2 id="Official-Tutorial">Official Tutorial</h2>
 <h3 id="实例分析-Softmax">实例分析-Softmax</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@triton.jit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">softmax_kernel</span>(<span class="params">output_ptr, input_ptr, input_row_stride, output_row_stride, n_rows, n_cols, BLOCK_SIZE: tl.constexpr,</span></span><br><span class="line"><span class="params">                   num_stages: tl.constexpr</span>):</span><br><span class="line">    <span class="comment"># output_ptr：输出矩阵的指针，torch.tensor类型会被隐式转化，输出矩阵需要预分配。</span></span><br><span class="line">    <span class="comment"># input_ptr：输入矩阵的指针，torch.tensor类型会被隐式转化。</span></span><br><span class="line">    <span class="comment"># input_row_stride：输入矩阵的行步长（即每行有多少个元素）。</span></span><br><span class="line">    <span class="comment"># output_row_stride：输出矩阵的行步长。</span></span><br><span class="line">    <span class="comment"># n_rows：输入矩阵的行数。</span></span><br><span class="line">    <span class="comment"># n_cols：输入矩阵的列数。</span></span><br><span class="line">    <span class="comment"># 需要注意的是，由于存在切片、转置等操作，一个矩阵在存储中可能并非连续</span></span><br><span class="line">    <span class="comment"># 这里n_cols=逻辑行长度(列数) stride(0) = 物理行跨度，二者可能不一致</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># BLOCK_SIZE：一个线程块处理的列数，这里是大于等于n_cols的2的幂次。每个program会按行处理，可能处理多行</span></span><br><span class="line">    <span class="comment"># num_stages：软件流水线的阶段数，用于隐藏显存延迟。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># starting row of the program</span></span><br><span class="line">    row_start = tl.program_id(<span class="number">0</span>)</span><br><span class="line">    row_step = tl.num_programs(<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># 这个程序实例会处理row_start+k*row_step(k=0,1,2...)这些行</span></span><br><span class="line">    <span class="comment"># 这里num_stages是pipeline the loop into this many stages</span></span><br><span class="line">    <span class="keyword">for</span> row_idx <span class="keyword">in</span> tl.<span class="built_in">range</span>(row_start, n_rows, row_step, num_stages=num_stages):</span><br><span class="line">        <span class="comment"># The stride represents how much we need to increase the pointer to advance 1 row 这里是物理stride</span></span><br><span class="line">        row_start_ptr = input_ptr + row_idx * input_row_stride</span><br><span class="line">        <span class="comment"># The block size is the next power of two greater than n_cols, so we can fit each</span></span><br><span class="line">        <span class="comment"># row in a single block</span></span><br><span class="line">        col_offsets = tl.arange(<span class="number">0</span>, BLOCK_SIZE)</span><br><span class="line">        input_ptrs = row_start_ptr + col_offsets <span class="comment"># 指针tensor</span></span><br><span class="line">        <span class="comment"># Load the row into SRAM, using a mask since BLOCK_SIZE may be &gt; than n_cols</span></span><br><span class="line">        mask = col_offsets &lt; n_cols</span><br><span class="line">        <span class="comment"># 加载数据，多出去的部分为-inf，不影响其他部分softmax</span></span><br><span class="line">        row = tl.load(input_ptrs, mask=mask, other=-<span class="built_in">float</span>(<span class="string">'inf'</span>))</span><br><span class="line">        <span class="comment"># row代表这一行元素组成的1维张量，已经被从显存加载到SRAM中了</span></span><br><span class="line">        <span class="comment"># Subtract maximum for numerical stability</span></span><br><span class="line">        row_minus_max = row - tl.<span class="built_in">max</span>(row, axis=<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># Note that exponentiation in Triton is fast but approximate (i.e., think __expf in CUDA)</span></span><br><span class="line">        numerator = tl.exp(row_minus_max)</span><br><span class="line">        denominator = tl.<span class="built_in">sum</span>(numerator, axis=<span class="number">0</span>)</span><br><span class="line">        softmax_output = numerator / denominator</span><br><span class="line">        <span class="comment"># Write back output to DRAM</span></span><br><span class="line">        output_row_start_ptr = output_ptr + row_idx * output_row_stride <span class="comment"># 这里是output_row_stride，输出张量的物理stride</span></span><br><span class="line">        output_ptrs = output_row_start_ptr + col_offsets</span><br><span class="line">        tl.store(output_ptrs, softmax_output, mask=mask)</span><br></pre></td></tr></table></figure>
@@ -433,6 +435,12 @@ Triton 抽象了这些细节，程序员主要关注于如何组织数据并行�
     
   <nav class="article-page">
     
+      <a href="/2026/01/24/L4CNN/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>LHY-L4 CNN
+        </span>
+      </a>
+    
     
       <a href="/2026/01/20/EETalk-Project/" id="art-right" class="art-right">
         <span class="prev-title">
@@ -466,7 +474,7 @@ Triton 抽象了这些细节，程序员主要关注于如何组织数据并行�
   <aside class="post-toc">
     <div class="title"><span>Index</span></div>
     <div class="toc-inner">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6"><span class="toc-text">框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Kernel"><span class="toc-text">Kernel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E7%BD%91%E6%A0%BC"><span class="toc-text">并行网格</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Official-Tutorial"><span class="toc-text">Official Tutorial</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90-Softmax"><span class="toc-text">实例分析-Softmax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90-NSA-FlashAttention-Forward"><span class="toc-text">实例分析-NSA FlashAttention Forward</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Triton%E6%A1%86%E6%9E%B6"><span class="toc-text">Triton框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Kernel"><span class="toc-text">Kernel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E7%BD%91%E6%A0%BC"><span class="toc-text">并行网格</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPU%E7%A1%AC%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="toc-text">GPU硬件架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Official-Tutorial"><span class="toc-text">Official Tutorial</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90-Softmax"><span class="toc-text">实例分析-Softmax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90-NSA-FlashAttention-Forward"><span class="toc-text">实例分析-NSA FlashAttention Forward</span></a></li></ol></li></ol>
     </div>
   </aside>
 
@@ -518,11 +526,11 @@ Triton 抽象了这些细节，程序员主要关注于如何组织数据并行�
   <div class="tagcloud-taglist">
   
     <div class="tagcloud-tag">
-      <button>Literature Review</button>
+      <button>Daily Log</button>
     </div>
   
     <div class="tagcloud-tag">
-      <button>Daily Log</button>
+      <button>Literature Review</button>
     </div>
   
     <div class="tagcloud-tag">
@@ -533,9 +541,46 @@ Triton 抽象了这些细节，程序员主要关注于如何组织数据并行�
       <button>Project</button>
     </div>
   
+    <div class="tagcloud-tag">
+      <button>李宏毅ML</button>
+    </div>
+  
   </div>
   
     <div class="tagcloud-postlist active">
+      <h2>Daily Log</h2>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/16/hello-world/">
+            <time class="tagcloud-posttime">2026 / 01 / 16</time>
+            <span>CQ CQ This is BD1AEH. Standing by.</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/19/CQ-CQ-CQ-This-is-BD1AEH-calling/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>CQ CQ CQ This is BD1AEH calling</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/20/EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/THUCS培养体系/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>THU-CS培养方案</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
       <h2>Literature Review</h2>
       
         <div class="tagcloud-post">
@@ -562,45 +607,19 @@ Triton 抽象了这些细节，程序员主要关注于如何组织数据并行�
     </div>
   
     <div class="tagcloud-postlist ">
-      <h2>Daily Log</h2>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/16/hello-world/">
-            <time class="tagcloud-posttime">2026 / 01 / 16</time>
-            <span>CQ CQ This is BD1AEH. Standing by.</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/19/CQ-CQ-CQ-This-is-BD1AEH-calling/">
-            <time class="tagcloud-posttime">2026 / 01 / 19</time>
-            <span>CQ CQ CQ This is BD1AEH calling</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/20/EETalk-Project/">
-            <time class="tagcloud-posttime">2026 / 01 / 20</time>
-            <span>EETalk Project</span>
-          </a>
-        </div>
-      
-    </div>
-  
-    <div class="tagcloud-postlist ">
       <h2>Tutorial</h2>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/18/How-to-use-Mermaid-in-Hexo/">
-            <time class="tagcloud-posttime">2026 / 01 / 18</time>
-            <span>How to use Mermaid in Hexo</span>
-          </a>
-        </div>
       
         <div class="tagcloud-post">
           <a href="/2026/01/17/HexoNlviBuild/">
             <time class="tagcloud-posttime">2026 / 01 / 17</time>
             <span>How to customize Hexo theme Nlvi</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/18/How-to-use-Mermaid-in-Hexo/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>How to use Mermaid in Hexo</span>
           </a>
         </div>
       
@@ -620,6 +639,60 @@ Triton 抽象了这些细节，程序员主要关注于如何组织数据并行�
           <a href="/2026/01/20/EETalk-Project/">
             <time class="tagcloud-posttime">2026 / 01 / 20</time>
             <span>EETalk Project</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>李宏毅ML</h2>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/L1Regression/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L1 Regression</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/L2TrainIssue/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L2 Train Issue</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/L3Classification/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L3 Classification</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/L5SelfAttention/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L5 Self-Attention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/L6Transformer/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L6 Transformer</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/L8self-supervised/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L8 Self-supervised Learning</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/L4CNN/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L4 CNN</span>
           </a>
         </div>
       

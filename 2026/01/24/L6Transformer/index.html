@@ -21,6 +21,8 @@
 
 
 
+  <meta name="keywords" content="李宏毅ML, nlvi" />
+
 
 <link rel="apple-touch-startup-image" media="(device-width: 375px)" href="assets/apple-launch-1125x2436.png">
 <link rel="apple-touch-startup-image" media="(orientation: landscape)" href="assets/apple-touch-startup-image-2048x1496.png">
@@ -83,9 +85,7 @@
 }
 </style>
 
-  <title>
-  
-</title>
+  <title> LHY-L6 Transformer · Jicheng's Blog </title>
 <meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -338,46 +338,161 @@ mjx-container[display="true"] + br {
         <div class="main-wrapper">
           
     
-  <div class="archive syuanpi fadeInRightShort" id="archive">
-    
-      <span class="archive-title"> now in </span>
-      <span class="archive-name"> — Triton</span>
-    
-      
-      
-        
-          </section>
-        
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <h2 id="Triton框架">Triton框架</h2>
-<p>The basic programming model of Triton</p>
-<h4 id="Kernel">Kernel</h4>
-<p>用<code>@triton.jit</code>装饰的python函数<br>
-描述了program如何处理一个block，实际执行时并行执行多个program实例，并行处理多个block</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-22
-            </time>
-            <a  class="archive-post-link" href="/2026/01/22/Learning-Triton/">
-              Learning Triton
-            </a>
-          </div>
-        </div>
-      
-      
-        </section></section>
-      
-  </div>
   
-  <nav class="pagination">
-      <span class="page-number current">1</span>
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInRightShort back-1">
+        <div class="post-time-wrapper">
+          
+          <time>2026-01-24</time>
+          
+            
+              <span class="post-category"><a href="/categories/Online-Course/">Online Course</a></span>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInRightShort back-2">
+        
+          LHY-L6 Transformer
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInRightShort back-3">
+      
+        <p>Encoder-Decoder架构</p>
+<span id="more"></span>
+<h3 id="Encoder">Encoder</h3>
+<p>输入一排向量，输出一排向量</p>
+<p>Block=Residual Connection + layer normalization + fully connected network + layer normalization<br>
+其中Residual Connection是self attention的输出加上对应原有的输入向量<br>
+FC layer=fully connected network=Feed Forward=FF<br>
+layer normalization是将一个输出的向量的每一个数值，减去这个向量的所有值的平均值然后再除以标准差。这样每个向量的方差就都是1，均值为0</p>
+<h3 id="Decoder-Auto-regressive-AT">Decoder: Auto regressive(AT)</h3>
+<p>输入为Encoder输出的一排向量，以及首先输入的special token BOS(Begin token)。它首先会输出一个vector，维数为Vocabulary size，e.g.语言中表意单位的数目(在中文中或许就是常用字)，然后再选择数值最高的那一位对应的onehot vector对应的字作为第一个最终输出。<br>
+然后再把这个输出作为输入，和BOS一起作为Decoder的输入，然后再输出第二个输出，再把这个输出加到输入里。。。以此类推，直到输出为END(有点像RNN)</p>
+<img src="/2026/01/24/L6Transformer/image-6.png" class="" title="This is an example image">
+<h4 id="AT架构">AT架构</h4>
+<ul>
+<li>第一层：Masked Multi-head Self-attention + Add&amp;Norm<br>
+Masked指的是计算注意力矩阵的时候只和它左/前侧的向量计算注意力。这是由AT逐步生成生成输出的方式所决定的。因为它右侧的向量都没有意义。每次循环会新增加一个Decoder的输出作为一个新的输入，然后计算得到一个新的输出，其余的输出都和原来保持不变</li>
+<li>第二层：Multi-head Self-attention + Add&amp;Norm<br>
+这是连接Encoder与Decoder的桥梁,用到了交叉注意力机制<br>
+实际上就是Decoder第一层的输出提供Query，Encoder的输出提供key与value，进行cross attention计算匹配度并对v进行加权求和，抽取有关联的输入资讯作为输出给<br>
+第三层。<br>
+实测来看，Decoder的注意力的峰值也是在从左向右移动的</li>
+<li>第三层：FF + Add&amp;Norm</li>
+</ul>
+<h4 id="补充：NAT架构">补充：NAT架构</h4>
+<p>输入为N个Begin，输出为N个向量，如果其中有END则舍弃其右侧的字符。N可以用另一个神经网络来决定，它的输入为encoder的输出，输出为一个数值N。<br>
+这样做的好处就是可以并行计算，NAT的每个输出可以并行处理<br>
+<strong>NAT高速低延迟但输出的token质量难保证，不能很好地处理输出token之间的逻辑关系</strong></p>
+<p>note: <strong>现在decoder-only的LLM用的都是AT啦</strong></p>
+<h3 id="Training-Transformer">Training Transformer</h3>
+<h4 id="数据处理">数据处理</h4>
+<p>一串输入向量，标注好输出的一串向量。<br>
+e.g.一段声音信号，标注好Label(预期的输出)</p>
+<p>训练的目标就是让Decoder的输出越接近正确答案越好。记得输出的一串向量后面也一定要加上END，这也是预期的输出。<br>
+但是由于Decoder的输入就是它应当输出的正确答案，所以要用一种掩码技术</p>
+<h4 id="Guided-attention">Guided attention</h4>
+<p>要求机器在做attention的时候一定要看过每一个输入，在attention的时候有固定的过程。（用于语音合成、语音识别、翻译等）<br>
+也就是让attention的峰值必须由左向右</p>
+<h4 id="Beam-Search">Beam Search</h4>
+<p>局部最优并非全局最优.可以通过Beam Search找到较优解<br>
+适用的任务：语音辨识、语音合成（有明确正确答案或评分标准，分数直接反映答案的好坏）<br>
+不太适用：需要一些创造力的工作（譬如完成句子，有些随机性有时会更好，分数最高的答案不一定最好；譬如TTS，语音合成，可以在Decoder加noise,测试的时候加noise反而结果更好）</p>
+<h4 id="Scheduled-Sampling">Scheduled Sampling</h4>
+<p>在训练中就可以给Decoder加一点错误的输入，增强其处理输出错误后回正的能力（避免一步错步步错）</p>
+
+      
+    
+    </div>
+    
+      <div class="post-tags syuanpi fadeInRightShort back-3">
+      
+        <a href="/tags/%E6%9D%8E%E5%AE%8F%E6%AF%85ML/">李宏毅ML</a>
+      
+      </div>
+    
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>Author :</span>
+      <span>hanjc24</span>
+    </div>
+    <div class="copy-url">
+      <span>Url :</span>
+      <a href="http://hanjc24.github.io/2026/01/24/L6Transformer/">http://hanjc24.github.io/2026/01/24/L6Transformer/</a>
+    </div>
+    <div class="copy-origin">
+      <span>Origin :</span>
+      <a href="http://hanjc24.github.io">http://hanjc24.github.io</a>
+    </div>
+    <div class="copy-license">
+      
+      All rights reserved. Please contact the author for authorization to reprint.
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/2026/01/24/L5SelfAttention/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>LHY-L5 Self-Attention
+        </span>
+      </a>
+    
+    
+      <a href="/2026/01/24/L8self-supervised/" id="art-right" class="art-right">
+        <span class="prev-title">
+          LHY-L8 Self-supervised Learning<i class="iconfont icon-right"></i>
+        </span>
+      </a>
+    
   </nav>
 
 
+    
+  <i id="com-switch" class="iconfont icon-down jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+
+    
+    
+
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+    
+  
+  <aside class="post-toc">
+    <div class="title"><span>Index</span></div>
+    <div class="toc-inner">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Encoder"><span class="toc-text">Encoder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Decoder-Auto-regressive-AT"><span class="toc-text">Decoder: Auto regressive(AT)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AT%E6%9E%B6%E6%9E%84"><span class="toc-text">AT架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%EF%BC%9ANAT%E6%9E%B6%E6%9E%84"><span class="toc-text">补充：NAT架构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Training-Transformer"><span class="toc-text">Training Transformer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-text">数据处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Guided-attention"><span class="toc-text">Guided attention</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Beam-Search"><span class="toc-text">Beam Search</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Scheduled-Sampling"><span class="toc-text">Scheduled Sampling</span></a></li></ol></li></ol>
+    </div>
+  </aside>
+
+
+
+  
 
 
         </div>
@@ -653,6 +768,20 @@ mjx-container[display="true"] + br {
 <script src="/script/bootstarp.js"></script>
 
 
+
+<script>
+if (nlviconfig.theme.toc) {
+  setTimeout(function() {
+    if (nlviconfig.theme.scheme === 'balance') {
+      $("#header").addClass("show_toc");
+    } else if (nlviconfig.theme.scheme === 'banderole') {
+      $(".container-inner").addClass("has_toc");
+      $(".post-toc .title").addClass("show");
+      $(".toc-inner").addClass("show");
+    }
+  }, 1000);
+}
+</script>
 
 
 

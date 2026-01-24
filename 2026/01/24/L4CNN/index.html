@@ -21,6 +21,8 @@
 
 
 
+  <meta name="keywords" content="李宏毅ML, nlvi" />
+
 
 <link rel="apple-touch-startup-image" media="(device-width: 375px)" href="assets/apple-launch-1125x2436.png">
 <link rel="apple-touch-startup-image" media="(orientation: landscape)" href="assets/apple-touch-startup-image-2048x1496.png">
@@ -83,9 +85,7 @@
 }
 </style>
 
-  <title>
-  
-</title>
+  <title> LHY-L4 CNN · Jicheng's Blog </title>
 <meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -338,46 +338,161 @@ mjx-container[display="true"] + br {
         <div class="main-wrapper">
           
     
-  <div class="archive syuanpi fadeInRightShort" id="archive">
-    
-      <span class="archive-title"> now in </span>
-      <span class="archive-name"> — Triton</span>
-    
-      
-      
-        
-          </section>
-        
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <h2 id="Triton框架">Triton框架</h2>
-<p>The basic programming model of Triton</p>
-<h4 id="Kernel">Kernel</h4>
-<p>用<code>@triton.jit</code>装饰的python函数<br>
-描述了program如何处理一个block，实际执行时并行执行多个program实例，并行处理多个block</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-22
-            </time>
-            <a  class="archive-post-link" href="/2026/01/22/Learning-Triton/">
-              Learning Triton
-            </a>
-          </div>
-        </div>
-      
-      
-        </section></section>
-      
-  </div>
   
-  <nav class="pagination">
-      <span class="page-number current">1</span>
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInRightShort back-1">
+        <div class="post-time-wrapper">
+          
+          <time>2026-01-24</time>
+          
+            
+              <span class="post-category"><a href="/categories/Online-Course/">Online Course</a></span>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInRightShort back-2">
+        
+          LHY-L4 CNN
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInRightShort back-3">
+      
+        <p>Convolutional Neural Network</p>
+<span id="more"></span>
+<h2 id="Image-Classification">Image Classification</h2>
+<ul>
+<li>Model：输入为大小相同的图片(一个三维的tensor，RGBx长x宽，大小为0~255)，输出为一个向量<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.109ex" height="1.464ex" role="img" focusable="false" viewBox="0 -442 490 647"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container>(<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.109ex" height="2.296ex" role="img" focusable="false" viewBox="0 -810 490 1015"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><path data-c="1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(300.6,16) translate(-250 0)"><path data-c="5E" d="M112 560L249 694L257 686Q387 562 387 560L361 531Q359 532 303 581L250 627L195 580Q182 569 169 557T148 538L140 532Q138 530 125 546L112 560Z"></path></g></g></g></g></g></svg></mjx-container>为one-hot vector)</li>
+<li>Loss：Cross entropy</li>
+</ul>
+<p>Fully connected network存在的问题：权重矩阵过大，若图像为100x100，一层的神经元数目为1000，则权重矩阵大小为(3x100x100)x(1000)=<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="3.317ex" height="1.579ex" role="img" focusable="false" viewBox="0 -676 1466 698"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></g><g data-mml-node="mi" transform="translate(500,0)"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path></g><g data-mml-node="mn" transform="translate(966,0)"><path data-c="37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path></g></g></g></svg></mjx-container>。弹性过强，容易overfitting，缺乏迁移能力</p>
+<h3 id="Story">Story</h3>
+<p><strong>Observe1</strong>: 图像的浅层特征占据浅图片中很小的部分，而深层特征是浅层特征的组合</p>
+<ul>
+<li>启发自神经科学中对vision path的研究</li>
+<li>IDEA：将神经网络分层，浅层先看pattern，深层再看pattern的组合<br>
+设计第一层为basic_detector，第二层为advanced_detector。而浅层的<strong>basic_detector只关注图片中很小的一部分</strong></li>
+</ul>
+<p><strong>Simplification1</strong>: 切割图片为很多<strong>Receptive field</strong>(当然也是可以overlap重叠的，也可以完全重叠，每个Receptive field可以有多个神经元)，第一次每个神经元的输入不再是整张图片而是一个Receptive field构成的tensor</p>
+<ul>
+<li>Typical Setting：一般会看全部的channel，Receptive field深度一般都是3，高和宽被叫做Kernel size，譬如3x3。stride是两个相邻Kernel size之间的"重叠"宽度，这是为了避免特征出现在两个Receptive的交界处。padding，在边角处的Receptive field可能会有的空白部分<br>
+The Receptive fields cover the whole picture</li>
+</ul>
+<p><strong>Observation2</strong>: 同样的特征可能出现在图片的不同位置。侦测一个特征可以只需要一个神经元，它同时负责侦测不同位置的特征<br>
+<strong>Simplification2</strong>: <strong>不同</strong>receptive field的神经元可以共享参数(权重矩阵与bias)</p>
+<ul>
+<li>Typical Setting: 每个receptive field有多个神经元(e.g.64个)，不同receptive field对应神经元的参数相同，这些神经元的参数被称作(filter1,filter2,…,filter64)</li>
+<li>filter是渗透的意思，想象筛子扫过整个图片筛出来每个receptive field有没有想要检测的pattern。一个图片经过这一层后，得到一个<strong>新的"image"，有64个(filter数目)个channel</strong>，大小与receptive field的数目一致</li>
+<li>LLM中的multi head与此类似</li>
+</ul>
+<p>这些简化都是在限制这一层模型的弹性，最终得到“<strong>Convolutional Layer</strong>”，使用这种层的神经网络就是卷积神经网络</p>
+<ul>
+<li>Convolutional Layer: Larger model bias, but good for image</li>
+<li>Fully Connected Layer: 弹性非常好，容易过拟合</li>
+</ul>
+<p><strong>Observation3</strong>: 缩小图片(subsample)不会改变object，譬如把坐标是都是偶数的像素都拿出来。这启发了pooling的做法<br>
+<strong>Simplification3 - Pooling</strong>: 没有weight，没有parameter，是一种简化技巧，用于缩小image的大小，主要是为了减少运算量<br>
+可以是每n*n的像素选左下角，也可以随机选，也可以取max-pooling、min-pooling</p>
+<h2 id="CNN卷积神经网络一般架构">CNN卷积神经网络一般架构</h2>
+<img src="/2026/01/24/L4CNN/image-8.png" class="" title="This is an example image">
+<ul>
+<li>多层convolution，其间插入Pooling，也可以不插入</li>
+<li>最后一层把张量拉直Flatten，再来一层FFN + softmax做classification</li>
+</ul>
+<p><strong>warning: CNN无法处理图像放大、缩小、旋转的问题。所以训练集要对这些情况进行增强</strong><br>
+总之，要根据处理对象的特性设计网络、以及其他hyper parameter(譬如receptive field、是否用pooling)</p>
+
+      
+    
+    </div>
+    
+      <div class="post-tags syuanpi fadeInRightShort back-3">
+      
+        <a href="/tags/%E6%9D%8E%E5%AE%8F%E6%AF%85ML/">李宏毅ML</a>
+      
+      </div>
+    
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>Author :</span>
+      <span>hanjc24</span>
+    </div>
+    <div class="copy-url">
+      <span>Url :</span>
+      <a href="http://hanjc24.github.io/2026/01/24/L4CNN/">http://hanjc24.github.io/2026/01/24/L4CNN/</a>
+    </div>
+    <div class="copy-origin">
+      <span>Origin :</span>
+      <a href="http://hanjc24.github.io">http://hanjc24.github.io</a>
+    </div>
+    <div class="copy-license">
+      
+      All rights reserved. Please contact the author for authorization to reprint.
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/2026/01/24/L8self-supervised/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>LHY-L8 Self-supervised Learning
+        </span>
+      </a>
+    
+    
+      <a href="/2026/01/22/Learning-Triton/" id="art-right" class="art-right">
+        <span class="prev-title">
+          Learning Triton<i class="iconfont icon-right"></i>
+        </span>
+      </a>
+    
   </nav>
 
 
+    
+  <i id="com-switch" class="iconfont icon-down jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+
+    
+    
+
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+    
+  
+  <aside class="post-toc">
+    <div class="title"><span>Index</span></div>
+    <div class="toc-inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Image-Classification"><span class="toc-text">Image Classification</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Story"><span class="toc-text">Story</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CNN%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%80%E8%88%AC%E6%9E%B6%E6%9E%84"><span class="toc-text">CNN卷积神经网络一般架构</span></a></li></ol>
+    </div>
+  </aside>
+
+
+
+  
 
 
         </div>
@@ -653,6 +768,20 @@ mjx-container[display="true"] + br {
 <script src="/script/bootstarp.js"></script>
 
 
+
+<script>
+if (nlviconfig.theme.toc) {
+  setTimeout(function() {
+    if (nlviconfig.theme.scheme === 'balance') {
+      $("#header").addClass("show_toc");
+    } else if (nlviconfig.theme.scheme === 'banderole') {
+      $(".container-inner").addClass("has_toc");
+      $(".post-toc .title").addClass("show");
+      $(".toc-inner").addClass("show");
+    }
+  }, 1000);
+}
+</script>
 
 
 

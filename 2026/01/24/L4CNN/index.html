@@ -86,119 +86,7 @@
 </style>
 
   <title> LHY-L4 CNN · Jicheng's Blog </title>
-<meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 <body>
   <div class="container">
     <header class="header" id="header">
@@ -367,10 +255,10 @@ mjx-container[display="true"] + br {
 <span id="more"></span>
 <h2 id="Image-Classification">Image Classification</h2>
 <ul>
-<li>Model：输入为大小相同的图片(一个三维的tensor，RGBx长x宽，大小为0~255)，输出为一个向量<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.109ex" height="1.464ex" role="img" focusable="false" viewBox="0 -442 490 647"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container>(<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.109ex" height="2.296ex" role="img" focusable="false" viewBox="0 -810 490 1015"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><path data-c="1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(300.6,16) translate(-250 0)"><path data-c="5E" d="M112 560L249 694L257 686Q387 562 387 560L361 531Q359 532 303 581L250 627L195 580Q182 569 169 557T148 538L140 532Q138 530 125 546L112 560Z"></path></g></g></g></g></g></svg></mjx-container>为one-hot vector)</li>
+<li>Model：输入为大小相同的图片(一个三维的tensor，RGBx长x宽，大小为0~255)，输出为一个向量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span>为one-hot vector)</li>
 <li>Loss：Cross entropy</li>
 </ul>
-<p>Fully connected network存在的问题：权重矩阵过大，若图像为100x100，一层的神经元数目为1000，则权重矩阵大小为(3x100x100)x(1000)=<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="3.317ex" height="1.579ex" role="img" focusable="false" viewBox="0 -676 1466 698"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></g><g data-mml-node="mi" transform="translate(500,0)"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path></g><g data-mml-node="mn" transform="translate(966,0)"><path data-c="37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path></g></g></g></svg></mjx-container>。弹性过强，容易overfitting，缺乏迁移能力</p>
+<p>Fully connected network存在的问题：权重矩阵过大，若图像为100x100，一层的神经元数目为1000，则权重矩阵大小为(3x100x100)x(1000)=<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>e</mi><mn>7</mn></mrow><annotation encoding="application/x-tex">3e7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mord mathnormal">e</span><span class="mord">7</span></span></span></span>。弹性过强，容易overfitting，缺乏迁移能力</p>
 <h3 id="Story">Story</h3>
 <p><strong>Observe1</strong>: 图像的浅层特征占据浅图片中很小的部分，而深层特征是浅层特征的组合</p>
 <ul>
@@ -380,14 +268,14 @@ mjx-container[display="true"] + br {
 </ul>
 <p><strong>Simplification1</strong>: 切割图片为很多<strong>Receptive field</strong>(当然也是可以overlap重叠的，也可以完全重叠，每个Receptive field可以有多个神经元)，第一次每个神经元的输入不再是整张图片而是一个Receptive field构成的tensor</p>
 <ul>
-<li>Typical Setting：一般会看全部的channel，Receptive field深度一般都是3，高和宽被叫做Kernel size，譬如3x3。stride是两个相邻Kernel size之间的"重叠"宽度，这是为了避免特征出现在两个Receptive的交界处。padding，在边角处的Receptive field可能会有的空白部分<br>
+<li>Typical Setting：一般会看全部的channel，Receptive field深度一般都是3，高和宽被叫做Kernel size，譬如3x3。stride是两个相邻Kernel size之间的&quot;重叠&quot;宽度，这是为了避免特征出现在两个Receptive的交界处。padding，在边角处的Receptive field可能会有的空白部分<br>
 The Receptive fields cover the whole picture</li>
 </ul>
 <p><strong>Observation2</strong>: 同样的特征可能出现在图片的不同位置。侦测一个特征可以只需要一个神经元，它同时负责侦测不同位置的特征<br>
 <strong>Simplification2</strong>: <strong>不同</strong>receptive field的神经元可以共享参数(权重矩阵与bias)</p>
 <ul>
 <li>Typical Setting: 每个receptive field有多个神经元(e.g.64个)，不同receptive field对应神经元的参数相同，这些神经元的参数被称作(filter1,filter2,…,filter64)</li>
-<li>filter是渗透的意思，想象筛子扫过整个图片筛出来每个receptive field有没有想要检测的pattern。一个图片经过这一层后，得到一个<strong>新的"image"，有64个(filter数目)个channel</strong>，大小与receptive field的数目一致</li>
+<li>filter是渗透的意思，想象筛子扫过整个图片筛出来每个receptive field有没有想要检测的pattern。一个图片经过这一层后，得到一个<strong>新的&quot;image&quot;，有64个(filter数目)个channel</strong>，大小与receptive field的数目一致</li>
 <li>LLM中的multi head与此类似</li>
 </ul>
 <p>这些简化都是在限制这一层模型的弹性，最终得到“<strong>Convolutional Layer</strong>”，使用这种层的神经网络就是卷积神经网络</p>
@@ -447,16 +335,16 @@ The Receptive fields cover the whole picture</li>
     
   <nav class="article-page">
     
-      <a href="/2026/01/24/L8self-supervised/" id="art-left" class="art-left">
+      <a href="/2026/01/24/L3Classification/" id="art-left" class="art-left">
         <span class="next-title">
-          <i class="iconfont icon-left"></i>LHY-L8 Self-supervised Learning
+          <i class="iconfont icon-left"></i>LHY-L3 Classification
         </span>
       </a>
     
     
-      <a href="/2026/01/22/Learning-Triton/" id="art-right" class="art-right">
+      <a href="/2026/01/24/L5SelfAttention/" id="art-right" class="art-right">
         <span class="prev-title">
-          Learning Triton<i class="iconfont icon-right"></i>
+          LHY-L5 Self-Attention<i class="iconfont icon-right"></i>
         </span>
       </a>
     
@@ -555,6 +443,10 @@ The Receptive fields cover the whole picture</li>
   
     <div class="tagcloud-tag">
       <button>李宏毅ML</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>CS231n</button>
     </div>
   
   </div>
@@ -660,13 +552,6 @@ The Receptive fields cover the whole picture</li>
       <h2>李宏毅ML</h2>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/L1Regression/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>LHY-L1 Regression</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
           <a href="/2026/01/24/L2TrainIssue/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L2 Train Issue</span>
@@ -674,9 +559,23 @@ The Receptive fields cover the whole picture</li>
         </div>
       
         <div class="tagcloud-post">
+          <a href="/2026/01/24/L1Regression/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L1 Regression</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
           <a href="/2026/01/24/L3Classification/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L3 Classification</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/L4CNN/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L4 CNN</span>
           </a>
         </div>
       
@@ -701,10 +600,15 @@ The Receptive fields cover the whole picture</li>
           </a>
         </div>
       
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>CS231n</h2>
+      
         <div class="tagcloud-post">
-          <a href="/2026/01/24/L4CNN/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>LHY-L4 CNN</span>
+          <a href="/2026/01/25/Backpropagation/">
+            <time class="tagcloud-posttime">2026 / 01 / 25</time>
+            <span>Backpropagation</span>
           </a>
         </div>
       
@@ -742,16 +646,6 @@ The Receptive fields cover the whole picture</li>
 
 
 
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script>
-    MathJax = {
-      tex: {
-        tags: 'ams'
-      }
-    };
-  </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
 
 
@@ -801,6 +695,12 @@ if (nlviconfig.theme.toc) {
       mermaid.initialize(mermaid_config);
     });
   </script>
+
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+/>
 
 
 </body>

@@ -86,119 +86,7 @@
 </style>
 
   <title> THU-CS培养方案 · Jicheng's Blog </title>
-<meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 <body>
   <div class="container">
     <header class="header" id="header">
@@ -385,7 +273,7 @@ mjx-container[display="true"] + br {
 <h2 id="hardware">hardware</h2>
 <p>这一条主线是从下(硬件)而上理解计算机组成</p>
 <pre class="mermaid">graph LR
-    A[数字逻辑电路]--&gt;B[计算机组成原理]</pre>
+    A[数字逻辑电路]-->B[计算机组成原理]</pre>
 <p>我<strong>已经提前完成了培养方案中这一条主线的学习</strong>。</p>
 <p>成果：</p>
 <ul>
@@ -396,14 +284,14 @@ mjx-container[display="true"] + br {
 <h2 id="OS">OS</h2>
 <p>这一条主线是由浅入深了解操作系统</p>
 <pre class="mermaid">graph LR
-    A[计算机系统概论]--&gt;B[计算机系统结构]--&gt;C[操作系统]
-    A--&gt;D[编译原理]</pre>
+    A[计算机系统概论]-->B[计算机系统结构]-->C[操作系统]
+    A-->D[编译原理]</pre>
 <p>这部分连接了机器语言与高级语言（编译原理），连接了软件与硬件（操作系统）</p>
 <p>我<strong>目前对linux系统的使用比较熟悉</strong>，同时也使用过Jetson与树莓派(无人机项目中)</p>
 <h2 id="software">software</h2>
 <p>这一主线是为了掌握软件开发的能力</p>
 <pre class="mermaid">graph LR
-    A[程序设计基础C++]--&gt;B[OOP]--&gt;C[软件工程]</pre>
+    A[程序设计基础C++]-->B[OOP]-->C[软件工程]</pre>
 <p>这条主线更偏向开发工程与应用方面，是传统互联网公司的业务范畴</p>
 <p>我目前已经开发过前后端的几个小项目</p>
 <ul>
@@ -459,10 +347,16 @@ mjx-container[display="true"] + br {
     
   <nav class="article-page">
     
+      <a href="/2026/01/25/Backpropagation/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>Backpropagation
+        </span>
+      </a>
     
-      <a href="/2026/01/24/L1Regression/" id="art-right" class="art-right">
+    
+      <a href="/2026/01/24/L2TrainIssue/" id="art-right" class="art-right">
         <span class="prev-title">
-          LHY-L1 Regression<i class="iconfont icon-right"></i>
+          LHY-L2 Train Issue<i class="iconfont icon-right"></i>
         </span>
       </a>
     
@@ -561,6 +455,10 @@ mjx-container[display="true"] + br {
   
     <div class="tagcloud-tag">
       <button>李宏毅ML</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>CS231n</button>
     </div>
   
   </div>
@@ -666,13 +564,6 @@ mjx-container[display="true"] + br {
       <h2>李宏毅ML</h2>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/L1Regression/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>LHY-L1 Regression</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
           <a href="/2026/01/24/L2TrainIssue/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L2 Train Issue</span>
@@ -680,9 +571,23 @@ mjx-container[display="true"] + br {
         </div>
       
         <div class="tagcloud-post">
+          <a href="/2026/01/24/L1Regression/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L1 Regression</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
           <a href="/2026/01/24/L3Classification/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L3 Classification</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/L4CNN/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L4 CNN</span>
           </a>
         </div>
       
@@ -707,10 +612,15 @@ mjx-container[display="true"] + br {
           </a>
         </div>
       
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>CS231n</h2>
+      
         <div class="tagcloud-post">
-          <a href="/2026/01/24/L4CNN/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>LHY-L4 CNN</span>
+          <a href="/2026/01/25/Backpropagation/">
+            <time class="tagcloud-posttime">2026 / 01 / 25</time>
+            <span>Backpropagation</span>
           </a>
         </div>
       
@@ -748,16 +658,6 @@ mjx-container[display="true"] + br {
 
 
 
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script>
-    MathJax = {
-      tex: {
-        tags: 'ams'
-      }
-    };
-  </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
 
 
@@ -807,6 +707,12 @@ if (nlviconfig.theme.toc) {
       mermaid.initialize(mermaid_config);
     });
   </script>
+
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+/>
 
 
 </body>

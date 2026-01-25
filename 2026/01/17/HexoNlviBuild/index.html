@@ -86,119 +86,7 @@
 </style>
 
   <title> How to customize Hexo theme Nlvi · Jicheng's Blog </title>
-<meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 <body>
   <div class="container">
     <header class="header" id="header">
@@ -380,12 +268,12 @@ mjx-container[display="true"] + br {
 <p>hexo生成<s>预制</s>博客的方式主要是：</p>
 <pre class="mermaid">graph LR
     A[加载配置<br>_config.yml<br>_config.Nlvi.yml] 
-    A --&gt; C[加载源文件<br>\source下的post等];
-    A --&gt; D[加载主题文件<br>\themes\Nlvi];
-    C --&gt; E[渲染源文件];
-    D --&gt; F[模板引擎];
-    F -- 布局 --&gt; G
-    E --嵌入--&gt; G[生成完整html]</pre>
+    A --> C[加载源文件<br>\source下的post等];
+    A --> D[加载主题文件<br>\themes\Nlvi];
+    C --> E[渲染源文件];
+    D --> F[模板引擎];
+    F -- 布局 --> G
+    E --嵌入--> G[生成完整html]</pre>
 <p>加载配置时，首先加载的是<code>_config.yml</code>，然后根据其中<code>theme: Nlvi</code>字段在blog根目录下找到<code>_config.Nlvi.yml</code>进行加载。<br>
 对同一字段的配置有不同时，前者的配置会覆盖后者。</p>
 <h2 id="添加、修改文章">添加、修改文章</h2>
@@ -413,7 +301,7 @@ mjx-container[display="true"] + br {
 <li>
 <p><strong>ejs脚本引用图片</strong><br>
 在markdown中使用如下ejs脚本，这样在生成html的时候会自动将其解析。</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% asset_img test.png This is an example image %}</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img test.png This is an example image %&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p><strong>效果</strong></p>
@@ -424,9 +312,9 @@ mjx-container[display="true"] + br {
 <h2 id="修改主题配色">修改主题配色</h2>
 <h3 id="总体方法">总体方法</h3>
 <pre class="mermaid">graph TD
-    A[在html右键检查<br>想修改的元素] --&gt; B
-    B[找到这个元素对应<br>html的class或id等] --&gt; C
-    C[在Nlvi目录下的<br>\source\style目录<br>检索找到的class名] --&gt; D
+    A[在html右键检查<br>想修改的元素] --> B
+    B[找到这个元素对应<br>html的class或id等] --> C
+    C[在Nlvi目录下的<br>\source\style目录<br>检索找到的class名] --> D
     D[自由发挥修改color字段]</pre>
 <p>除此之外，有必要的话还可以检索生成的style.css(位于<code>/public/style</code>路径)</p>
 <h3 id="实战">实战</h3>
@@ -435,7 +323,7 @@ mjx-container[display="true"] + br {
 <li><strong>首先检查元素</strong><br>
 找到其class为menu-item  <img src="/2026/01/17/HexoNlviBuild/tutorial1.png" class="" title="This is an example image">
 </li>
-<li><strong>检索style.css</strong>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> <span class="selector-class">.main-nav-list</span> <span class="selector-class">.menu-item</span> {</span><br><span class="line"><span class="attribute">display</span>: inline-block;</span><br><span class="line"><span class="attribute">margin-right</span>: <span class="number">16px</span>;</span><br><span class="line">}</span><br><span class="line"><span class="selector-class">.header</span> <span class="selector-class">.main-nav-list</span> <span class="selector-class">.menu-item</span> <span class="selector-tag">a</span> {</span><br><span class="line"><span class="attribute">text-decoration</span>: none;</span><br><span class="line"><span class="attribute">color</span>: inherit;</span><br><span class="line"><span class="attribute">font-size</span>: inherit;</span><br><span class="line"><span class="attribute">text-align</span>: center;</span><br><span class="line"><span class="attribute">letter-spacing</span>: <span class="number">1.2px</span>;</span><br><span class="line"><span class="attribute">transition</span>: all <span class="number">280ms</span> <span class="built_in">cubic-bezier</span>(<span class="number">0.8</span>, <span class="number">0</span>, <span class="number">0.2</span>, <span class="number">1</span>);</span><br><span class="line">-moz-<span class="attribute">transition</span>: all <span class="number">280ms</span> <span class="built_in">cubic-bezier</span>(<span class="number">0.8</span>, <span class="number">0</span>, <span class="number">0.2</span>, <span class="number">1</span>);</span><br><span class="line">-webkit-<span class="attribute">transition</span>: all <span class="number">280ms</span> <span class="built_in">cubic-bezier</span>(<span class="number">0.8</span>, <span class="number">0</span>, <span class="number">0.2</span>, <span class="number">1</span>);</span><br><span class="line">}</span><br><span class="line"><span class="selector-class">.header</span> <span class="selector-class">.main-nav-list</span> <span class="selector-class">.menu-item</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> {</span><br><span class="line"><span class="attribute">text-shadow</span>: <span class="number">1px</span> <span class="number">1px</span> <span class="number">0px</span> <span class="number">#2e2e2e</span>;</span><br><span class="line"><span class="attribute">color</span>: <span class="number">#89cce7</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<li><strong>检索style.css</strong>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> <span class="selector-class">.main-nav-list</span> <span class="selector-class">.menu-item</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: inline-block;</span><br><span class="line"><span class="attribute">margin-right</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.header</span> <span class="selector-class">.main-nav-list</span> <span class="selector-class">.menu-item</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line"><span class="attribute">text-decoration</span>: none;</span><br><span class="line"><span class="attribute">color</span>: inherit;</span><br><span class="line"><span class="attribute">font-size</span>: inherit;</span><br><span class="line"><span class="attribute">text-align</span>: center;</span><br><span class="line"><span class="attribute">letter-spacing</span>: <span class="number">1.2px</span>;</span><br><span class="line"><span class="attribute">transition</span>: all <span class="number">280ms</span> <span class="built_in">cubic-bezier</span>(<span class="number">0.8</span>, <span class="number">0</span>, <span class="number">0.2</span>, <span class="number">1</span>);</span><br><span class="line">-moz-<span class="attribute">transition</span>: all <span class="number">280ms</span> <span class="built_in">cubic-bezier</span>(<span class="number">0.8</span>, <span class="number">0</span>, <span class="number">0.2</span>, <span class="number">1</span>);</span><br><span class="line">-webkit-<span class="attribute">transition</span>: all <span class="number">280ms</span> <span class="built_in">cubic-bezier</span>(<span class="number">0.8</span>, <span class="number">0</span>, <span class="number">0.2</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.header</span> <span class="selector-class">.main-nav-list</span> <span class="selector-class">.menu-item</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line"><span class="attribute">text-shadow</span>: <span class="number">1px</span> <span class="number">1px</span> <span class="number">0px</span> <span class="number">#2e2e2e</span>;</span><br><span class="line"><span class="attribute">color</span>: <span class="number">#89cce7</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 注意到两个color字段，一个是hover时的颜色(#89cce7)，一个是正常颜色(inherit继承自.header)</li>
 <li><strong>检索styl文件</strong><br>
 找到header.styl<br>
@@ -599,6 +487,10 @@ $theme-color-hover实际上是这个脚本语言定义的变量，会被模板�
       <button>李宏毅ML</button>
     </div>
   
+    <div class="tagcloud-tag">
+      <button>CS231n</button>
+    </div>
+  
   </div>
   
     <div class="tagcloud-postlist active">
@@ -702,13 +594,6 @@ $theme-color-hover实际上是这个脚本语言定义的变量，会被模板�
       <h2>李宏毅ML</h2>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/L1Regression/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>LHY-L1 Regression</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
           <a href="/2026/01/24/L2TrainIssue/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L2 Train Issue</span>
@@ -716,9 +601,23 @@ $theme-color-hover实际上是这个脚本语言定义的变量，会被模板�
         </div>
       
         <div class="tagcloud-post">
+          <a href="/2026/01/24/L1Regression/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L1 Regression</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
           <a href="/2026/01/24/L3Classification/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L3 Classification</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/L4CNN/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L4 CNN</span>
           </a>
         </div>
       
@@ -743,10 +642,15 @@ $theme-color-hover实际上是这个脚本语言定义的变量，会被模板�
           </a>
         </div>
       
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>CS231n</h2>
+      
         <div class="tagcloud-post">
-          <a href="/2026/01/24/L4CNN/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>LHY-L4 CNN</span>
+          <a href="/2026/01/25/Backpropagation/">
+            <time class="tagcloud-posttime">2026 / 01 / 25</time>
+            <span>Backpropagation</span>
           </a>
         </div>
       
@@ -784,16 +688,6 @@ $theme-color-hover实际上是这个脚本语言定义的变量，会被模板�
 
 
 
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script>
-    MathJax = {
-      tex: {
-        tags: 'ams'
-      }
-    };
-  </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
 
 
@@ -843,6 +737,12 @@ if (nlviconfig.theme.toc) {
       mermaid.initialize(mermaid_config);
     });
   </script>
+
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+/>
 
 
 </body>

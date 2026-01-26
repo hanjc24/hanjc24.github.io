@@ -21,7 +21,7 @@
 
 
 
-  <meta name="keywords" content="Daily Log, nlvi" />
+  <meta name="keywords" content="李宏毅ML, nlvi" />
 
 
 <link rel="apple-touch-startup-image" media="(device-width: 375px)" href="assets/apple-launch-1125x2436.png">
@@ -85,7 +85,7 @@
 }
 </style>
 
-  <title> CQ CQ This is BD1AEH. Standing by. · Jicheng's Blog </title>
+  <title> LHY-L8 Self-supervised Learning · Jicheng's Blog </title>
 <meta name="generator" content="Hexo 8.1.1"></head>
 <body>
   <div class="container">
@@ -235,25 +235,61 @@
       <div class="post-time syuanpi fadeInRightShort back-1">
         <div class="post-time-wrapper">
           
-          <time>2026-01-16</time>
+          <time>2026-01-24</time>
           
             
-              <span class="post-category"><a href="/categories/Life/">Life</a></span>
+              <span class="post-category"><a href="/categories/Online-Course/">Online Course</a></span>
             
           
         </div>
       </div>
       <h1 class="post-title syuanpi fadeInRightShort back-2">
         
-          CQ CQ This is BD1AEH. Standing by.
+          LHY-L8 Self-supervised Learning
         
       </h1>
     </header>
     <div class="post-content syuanpi fadeInRightShort back-3">
       
-        <p><a target="_blank" rel="noopener" href="https://www.qrz.com/db/BD1AEH">QRZ link</a></p>
-<p>开通了hexo，把blog部署在了<a target="_blank" rel="noopener" href="https://github.com/hanjc24/hanjc24.github.io">git</a>上</p>
-<p>hexo配置参考: <a target="_blank" rel="noopener" href="https://xuxu20040407.github.io/2024/09/15/hexo/hexo/">this</a> and <a target="_blank" rel="noopener" href="https://aajax.top/">this</a></p>
+        <p>哲学：当模型很大的时候，监督学习所要求的数据量过大，难以标注Label；所以需要让模型在训练的时候自己从数据中取Label，或者说，要学习的知识。<br>
+Next Sentence Prediction是一个很完美的学习目标，其label就是下一个Token</p>
+<span id="more"></span>
+<h3 id="Bert">Bert</h3>
+<p>功能类似Transformer中的encoder，输入一排向量（譬如一串token文字），输出一排数量相同的向量</p>
+<h4 id="pre-train-Goals-Methods">pre-train Goals &amp; Methods</h4>
+<ul>
+<li><strong>Masked Input</strong>：随机Mask一些token，譬如改成Masked字符，或者随机替换成其他的字，经过BERT层输出一串向量，再将masked的向量对应的output向量过一个linear再softmax一下得到最终的输出（表示模型认为这个masked的地方原来是什么字的可能性分布），通过训练模型让原有字的onehot vector与最终输出的分布的cross entropy最小</li>
+<li><strong>Next Sentence Prediction</strong>：有很多句子，训练Bert使得它能够判断两个句子是否相接。输入为[[CLS], <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">w_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">w_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, [SEP], <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">w_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">w_4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">w_5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>]有两个随机挑选的句子，取[CLS]对应的输出过一个Linear得到yes or no，训练模型使得两个句子原来相接时模型输出yes，否则输出no(not helpful)</li>
+<li><strong>SOP Sentence order prediction</strong></li>
+</ul>
+<p>Bert在训练(Pre-train)时做的是填空题，但也能完成很多Downstream tasks(实际上真正想要让bert完成的任务)<br>
+需要一点点标注过的数据，就能把BERT训练为能完成特定任务的模型(Fine-tune过程，翻译为微调)</p>
+<h3 id="GLUE-General-Language-Understanding-Evaluation">GLUE(General Language Understanding Evaluation)</h3>
+<p>一种benchmark<br>
+将一个自监督pre-train的模型分别微调为九种任务，取所有任务中表现的平均值<br>
+在GLUE数据集上机器已经超越了人类。于是又有了superGLUE</p>
+<h3 id="How-to-use-BERT">How to use BERT</h3>
+<p><strong>Case1:</strong> input: Sequence; output:class</p>
+<img src="/2026/01/24/course-LHY-2026-01-24-L8self-supervised/image-7.png" class="" title="This is an example image">
+<p>better than randomly initialize BERT</p>
+<p><strong>Case4:</strong> input: 一段文章，一个问题；output: 两个数值，代表这个问题的答案在文章中的位置</p>
+<p>参数：两个向量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>v</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">v_1,v_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，一个bert。输入为[[CLS],问题,[SEP],文章]，将文章部分的输出向量点乘<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">v_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>后再softmax取最大值处作为左侧边界，点乘<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">v_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>后再softmax取最大值处作为右侧边界</p>
+<h4 id="Pre-train-seq2seq-model">Pre-train seq2seq model</h4>
+<p>一个transformer，输入为corrupt的token序列，训练模型输出弄坏前的token序列<br>
+T5模型的论文认为最有效的corrupt方式为Span Corruption，掩掉一个范围内的token。T5使用的数据集为C4</p>
+<h4 id="Why-does-Bert-work">Why does Bert work?</h4>
+<p>Bert吃进去一排token(譬如中文字)，输出一排向量，这个过程是embedding，反映了Bert对这个字意思的理解，这个理解是考虑了上下文的。<br>
+这是由Bert的训练方式决定的，它能做到推断masked的字是什么，是通过上下文进行推断的，<br>
+这叫做contextualized word embedding!</p>
+<h3 id="Decode-only-Models">Decode-only Models</h3>
+<p>当代LLM：Llama、Gemini、GPT、DeepSeek… 都是Decode-only + AutoRegressive架构</p>
+<p>对于构建一个超大规模的、通用的、能够通过对话交互解决各种问题的智能体来说，Decoder-only是当前工程和算法上的最优解<br>
+本质上是LLM发展目标从“为特定任务提供工具”转变为“构建通用任务解决者”的必然结果。 它通过 “一切皆生成” 的范式，用最统一、最简单的方式，最大限度地利用了海量数据和算力</p>
+<ul>
+<li><strong>训练目标：Next Sentence Prediction</strong></li>
+<li><strong>因果掩码</strong></li>
+<li><strong>输入token sequence，输出token sequence</strong></li>
+</ul>
 
       
     
@@ -261,7 +297,7 @@
     
       <div class="post-tags syuanpi fadeInRightShort back-3">
       
-        <a href="/tags/Daily-Log/">Daily Log</a>
+        <a href="/tags/%E6%9D%8E%E5%AE%8F%E6%AF%85ML/">李宏毅ML</a>
       
       </div>
     
@@ -277,7 +313,7 @@
     </div>
     <div class="copy-url">
       <span>Url :</span>
-      <a href="http://hanjc24.github.io/2026/01/16/hello-world/">http://hanjc24.github.io/2026/01/16/hello-world/</a>
+      <a href="http://hanjc24.github.io/2026/01/24/course-LHY-2026-01-24-L8self-supervised/">http://hanjc24.github.io/2026/01/24/course-LHY-2026-01-24-L8self-supervised/</a>
     </div>
     <div class="copy-origin">
       <span>Origin :</span>
@@ -295,12 +331,18 @@
     
   <nav class="article-page">
     
-      <a href="/2026/01/17/literature-2026-01-17-FlashAttention/" id="art-left" class="art-left">
+      <a href="/2026/01/24/course-LHY-2026-01-24-L6Transformer/" id="art-left" class="art-left">
         <span class="next-title">
-          <i class="iconfont icon-left"></i>FlashAttention
+          <i class="iconfont icon-left"></i>LHY-L6 Transformer
         </span>
       </a>
     
+    
+      <a href="/2026/01/22/tutorial-2026-01-22-Learning-Triton/" id="art-right" class="art-right">
+        <span class="prev-title">
+          Learning Triton<i class="iconfont icon-right"></i>
+        </span>
+      </a>
     
   </nav>
 
@@ -328,7 +370,7 @@
   <aside class="post-toc">
     <div class="title"><span>Index</span></div>
     <div class="toc-inner">
-      
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bert"><span class="toc-text">Bert</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pre-train-Goals-Methods"><span class="toc-text">pre-train Goals &amp; Methods</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GLUE-General-Language-Understanding-Evaluation"><span class="toc-text">GLUE(General Language Understanding Evaluation)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-to-use-BERT"><span class="toc-text">How to use BERT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Pre-train-seq2seq-model"><span class="toc-text">Pre-train seq2seq model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Why-does-Bert-work"><span class="toc-text">Why does Bert work?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Decode-only-Models"><span class="toc-text">Decode-only Models</span></a></li></ol>
     </div>
   </aside>
 

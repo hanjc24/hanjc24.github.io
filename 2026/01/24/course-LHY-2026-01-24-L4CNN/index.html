@@ -21,6 +21,8 @@
 
 
 
+  <meta name="keywords" content="李宏毅ML, nlvi" />
+
 
 <link rel="apple-touch-startup-image" media="(device-width: 375px)" href="assets/apple-launch-1125x2436.png">
 <link rel="apple-touch-startup-image" media="(orientation: landscape)" href="assets/apple-touch-startup-image-2048x1496.png">
@@ -83,11 +85,7 @@
 }
 </style>
 
-  <title>
-  
-    Archives · Jicheng's Blog
-  
-</title>
+  <title> LHY-L4 CNN · Jicheng's Blog </title>
 <meta name="generator" content="Hexo 8.1.1"></head>
 <body>
   <div class="container">
@@ -228,254 +226,161 @@
         <div class="main-wrapper">
           
     
-  <div class="archive syuanpi fadeInRightShort" id="archive">
-    
-      <aside class="archive-title">Total</aside>
-      <span class="archive-num">19 Posts In Total</span>
-    
-      
-      
-        
-          
-          
-            
-            
-            <div class="archive-group">
-            <time class="archive-year"> 2026 </time>
-            <div class="archive-list">
-          
-          
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <h2 id="Triton框架">Triton框架</h2>
-<p>The basic programming model of Triton</p>
-<h4 id="Kernel">Kernel</h4>
-<p>用<code>@triton.jit</code>装饰的python函数<br>
-描述了program如何处理一个block，实际执行时并行执行多个program实例，并行处理多个block</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-22
-            </time>
-            <a  class="archive-post-link" href="/2026/01/22/tutorial-2026-01-22-Learning-Triton/">
-              Learning Triton
-            </a>
-          </div>
-        </div>
-      
-        
-          
-          
-          
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <p>至大至简的语音转文字小程序。<br>
-献给我的信息学启蒙老师。他因病失明，听力尚好；他的母亲90多岁，听力基本丧失，视觉残存。<br>
-这个工具搭建起他们之间的沟通桥梁，故名眼耳对话(Eye-Ear Talk： EETalk)。</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-20
-            </time>
-            <a  class="archive-post-link" href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
-              EETalk Project
-            </a>
-          </div>
-        </div>
-      
-        
-          
-          
-          
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <h2 id="MileStone">MileStone</h2>
-<p>记录一下我在业余无线电方面的里程碑</p>
-<h3 id="收听国际空间站SSTV">收听国际空间站SSTV</h3>
-<p>我在半夜从实验室回到宿舍，恰逢国际空间站SSTV广播活动期间，大角度过顶清华大学，欣然拿上设备骑车到紫荆操场进行收听。彼时天朗气清，彩云追月。<br>
-在学校无线电社团群发图炫耀，发现收到的图片质量比学校社团用定向天线的效果还要好，甚是喜悦</p>
-<ul>
-<li>设备：UV-5R+拉杆天线、音频对录线、手机+SSTV encoder软件</li>
-</ul>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-19
-            </time>
-            <a  class="archive-post-link" href="/2026/01/19/daily-2026-01-19-CQ-CQ-CQ-This-is-BD1AEH-calling/">
-              CQ CQ CQ This is BD1AEH calling
-            </a>
-          </div>
-        </div>
-      
-        
-          
-          
-          
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <h2 id="要点">要点</h2>
-<ul>
-<li>三种KV映射方式，一层三次attention计算，<strong>blockwise select与trainable参数</strong>选择模式</li>
-<li>计算时使用<strong>GQA+query group共用相同的selected blocks</strong>，保证计算效率充分利用GPU，slc策略的attention计算中，每次加载一个query group同位置<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span>上的所有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">q_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
-</ul>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-19
-            </time>
-            <a  class="archive-post-link" href="/2026/01/19/literature-2026-01-19-DeepSeekNSA/">
-              DeepSeekNSA
-            </a>
-          </div>
-        </div>
-      
-        
-          
-          
-          
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <h2 id="要点">要点</h2>
-<ul>
-<li><strong>Shared KV</strong>: 统一整合init(fix window)、top-k(sparse)、local(sliding window)，在选择好要关注的block之后统一进行flashattention运算，共享一套KV projection</li>
-<li><strong>Aligned Computation</strong>: 预训练和短文本推理用密集注意力，finetune和长文本推理用稀疏注意力。
-<ul>
-<li>短文本训练与推理时用密集模式避免额外稀疏计算</li>
-<li>长文本finetune时，通过构建尽可能与密集模式相似的稀疏注意力模式，保证模型不会忘掉在短文本训练时学到的知识</li>
-<li>两种注意力模式所需要的参数是完全一致的，稀疏注意力没有额外参数。</li>
-</ul>
-</li>
-<li>GQA与稀疏模式查询组内共享保证sparse attention的运算效率</li>
-<li>简化的稀疏top-k块选择机制，通过mean + max pooling得到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mrow><mi>c</mi><mi>m</mi><mi>p</mi></mrow></msup></mrow><annotation encoding="application/x-tex">k^{cmp}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">m</span><span class="mord mathnormal mtight">p</span></span></span></span></span></span></span></span></span></span></span></span></li>
-<li>但并没能减少KV-cache的量，与标准GQA一样</li>
-</ul>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-18
-            </time>
-            <a  class="archive-post-link" href="/2026/01/18/literature-2026-01-18-infllmv2-paper-review/">
-              Infllmv2 Review
-            </a>
-          </div>
-        </div>
-      
-        
-          
-          
-          
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <p>总之，我在Hexo中用上了Mermaid，在此记录</p>
-<pre class="mermaid">graph TD
-A[hexo-filter-mermaid-diagrams npm插件] -- 识别md mermaid块 --> C
-C[生成class=mermaid的pre块]
-B[swig脚本] --模板引擎展开--> D
-D[生成引入mermaid库的js代码段]
-C-->E
-D-->E
-E[生成的html中成功渲染mermaid]</pre>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-18
-            </time>
-            <a  class="archive-post-link" href="/2026/01/18/tutorial-2026-01-18-How-to-use-Mermaid-in-Hexo/">
-              How to use Mermaid in Hexo
-            </a>
-          </div>
-        </div>
-      
-        
-          
-          
-          
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <h2 id="缘起">缘起</h2>
-<p>Nlvi是我的一位学长在<a target="_blank" rel="noopener" href="https://aajax.top/">他的blog</a>魔改并使用的主题，我也装了Nlvi试了试，效果不错，尤其是Tag的索引做得挺清楚的，整体很简约。</p>
-<p>唯一的美中不足是原本的Nlvi主题配色的底色都是浅色，观感上过于明亮，所以我研究了一下Hexo theme的结构，修改了一些生成css部分的代码。</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-17
-            </time>
-            <a  class="archive-post-link" href="/2026/01/17/tutorial-2026-01-17-HexoNlviBuild/">
-              How to customize Hexo theme Nlvi
-            </a>
-          </div>
-        </div>
-      
-        
-          
-          
-          
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <p>FlashAttention的目的很简单：<br>
-如何高效计算<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>=</mo><mi>A</mi><mi>t</mi><mi>t</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo stretchy="false">(</mo><mi>Q</mi><mo separator="true">,</mo><mi>K</mi><mo separator="true">,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O=Attention(Q,K,V)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">tt</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span><br>
-使用条件：QKV分块、在SA中，一般要做到blockwise的KV稀疏选取，以及query group内共享稀疏pattern</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-17
-            </time>
-            <a  class="archive-post-link" href="/2026/01/17/literature-2026-01-17-FlashAttention/">
-              FlashAttention
-            </a>
-          </div>
-        </div>
-      
-        
-          
-          
-          
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <p><a target="_blank" rel="noopener" href="https://www.qrz.com/db/BD1AEH">QRZ link</a></p>
-<p>开通了hexo，把blog部署在了<a target="_blank" rel="noopener" href="https://github.com/hanjc24/hanjc24.github.io">git</a>上</p>
-<p>hexo配置参考: <a target="_blank" rel="noopener" href="https://xuxu20040407.github.io/2024/09/15/hexo/hexo/">this</a> and <a target="_blank" rel="noopener" href="https://aajax.top/">this</a></p>
-
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-16
-            </time>
-            <a  class="archive-post-link" href="/2026/01/16/hello-world/">
-              CQ CQ This is BD1AEH. Standing by.
-            </a>
-          </div>
-        </div>
-      
-      
-        </section></section>
-      
-  </div>
   
-  <nav class="pagination">
-      <a class="extend prev" rel="prev" href="/archives/"><i class="iconfont icon-doubleleft"></i>Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInRightShort back-1">
+        <div class="post-time-wrapper">
+          
+          <time>2026-01-24</time>
+          
+            
+              <span class="post-category"><a href="/categories/Online-Course/">Online Course</a></span>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInRightShort back-2">
+        
+          LHY-L4 CNN
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInRightShort back-3">
+      
+        <p>Convolutional Neural Network</p>
+<span id="more"></span>
+<h2 id="Image-Classification">Image Classification</h2>
+<ul>
+<li>Model：输入为大小相同的图片(一个三维的tensor，RGBx长x宽，大小为0~255)，输出为一个向量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span>为one-hot vector)</li>
+<li>Loss：Cross entropy</li>
+</ul>
+<p>Fully connected network存在的问题：权重矩阵过大，若图像为100x100，一层的神经元数目为1000，则权重矩阵大小为(3x100x100)x(1000)=<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>e</mi><mn>7</mn></mrow><annotation encoding="application/x-tex">3e7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mord mathnormal">e</span><span class="mord">7</span></span></span></span>。弹性过强，容易overfitting，缺乏迁移能力</p>
+<h3 id="Story">Story</h3>
+<p><strong>Observe1</strong>: 图像的浅层特征占据浅图片中很小的部分，而深层特征是浅层特征的组合</p>
+<ul>
+<li>启发自神经科学中对vision path的研究</li>
+<li>IDEA：将神经网络分层，浅层先看pattern，深层再看pattern的组合<br>
+设计第一层为basic_detector，第二层为advanced_detector。而浅层的<strong>basic_detector只关注图片中很小的一部分</strong></li>
+</ul>
+<p><strong>Simplification1</strong>: 切割图片为很多<strong>Receptive field</strong>(当然也是可以overlap重叠的，也可以完全重叠，每个Receptive field可以有多个神经元)，第一次每个神经元的输入不再是整张图片而是一个Receptive field构成的tensor</p>
+<ul>
+<li>Typical Setting：一般会看全部的channel，Receptive field深度一般都是3，高和宽被叫做Kernel size，譬如3x3。stride是两个相邻Kernel size之间的&quot;重叠&quot;宽度，这是为了避免特征出现在两个Receptive的交界处。padding，在边角处的Receptive field可能会有的空白部分<br>
+The Receptive fields cover the whole picture</li>
+</ul>
+<p><strong>Observation2</strong>: 同样的特征可能出现在图片的不同位置。侦测一个特征可以只需要一个神经元，它同时负责侦测不同位置的特征<br>
+<strong>Simplification2</strong>: <strong>不同</strong>receptive field的神经元可以共享参数(权重矩阵与bias)</p>
+<ul>
+<li>Typical Setting: 每个receptive field有多个神经元(e.g.64个)，不同receptive field对应神经元的参数相同，这些神经元的参数被称作(filter1,filter2,…,filter64)</li>
+<li>filter是渗透的意思，想象筛子扫过整个图片筛出来每个receptive field有没有想要检测的pattern。一个图片经过这一层后，得到一个<strong>新的&quot;image&quot;，有64个(filter数目)个channel</strong>，大小与receptive field的数目一致</li>
+<li>LLM中的multi head与此类似</li>
+</ul>
+<p>这些简化都是在限制这一层模型的弹性，最终得到“<strong>Convolutional Layer</strong>”，使用这种层的神经网络就是卷积神经网络</p>
+<ul>
+<li>Convolutional Layer: Larger model bias, but good for image</li>
+<li>Fully Connected Layer: 弹性非常好，容易过拟合</li>
+</ul>
+<p><strong>Observation3</strong>: 缩小图片(subsample)不会改变object，譬如把坐标是都是偶数的像素都拿出来。这启发了pooling的做法<br>
+<strong>Simplification3 - Pooling</strong>: 没有weight，没有parameter，是一种简化技巧，用于缩小image的大小，主要是为了减少运算量<br>
+可以是每n*n的像素选左下角，也可以随机选，也可以取max-pooling、min-pooling</p>
+<h2 id="CNN卷积神经网络一般架构">CNN卷积神经网络一般架构</h2>
+<img src="/2026/01/24/course-LHY-2026-01-24-L4CNN/image-8.png" class="" title="This is an example image">
+<ul>
+<li>多层convolution，其间插入Pooling，也可以不插入</li>
+<li>最后一层把张量拉直Flatten，再来一层FFN + softmax做classification</li>
+</ul>
+<p><strong>warning: CNN无法处理图像放大、缩小、旋转的问题。所以训练集要对这些情况进行增强</strong><br>
+总之，要根据处理对象的特性设计网络、以及其他hyper parameter(譬如receptive field、是否用pooling)</p>
+
+      
+    
+    </div>
+    
+      <div class="post-tags syuanpi fadeInRightShort back-3">
+      
+        <a href="/tags/%E6%9D%8E%E5%AE%8F%E6%AF%85ML/">李宏毅ML</a>
+      
+      </div>
+    
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>Author :</span>
+      <span>hanjc24</span>
+    </div>
+    <div class="copy-url">
+      <span>Url :</span>
+      <a href="http://hanjc24.github.io/2026/01/24/course-LHY-2026-01-24-L4CNN/">http://hanjc24.github.io/2026/01/24/course-LHY-2026-01-24-L4CNN/</a>
+    </div>
+    <div class="copy-origin">
+      <span>Origin :</span>
+      <a href="http://hanjc24.github.io">http://hanjc24.github.io</a>
+    </div>
+    <div class="copy-license">
+      
+      All rights reserved. Please contact the author for authorization to reprint.
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/2026/01/24/course-LHY-2026-01-24-L3Classification/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>LHY-L3 Classification
+        </span>
+      </a>
+    
+    
+      <a href="/2026/01/24/course-LHY-2026-01-24-L5SelfAttention/" id="art-right" class="art-right">
+        <span class="prev-title">
+          LHY-L5 Self-Attention<i class="iconfont icon-right"></i>
+        </span>
+      </a>
+    
   </nav>
 
 
+    
+  <i id="com-switch" class="iconfont icon-down jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+
+    
+    
+
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+    
+  
+  <aside class="post-toc">
+    <div class="title"><span>Index</span></div>
+    <div class="toc-inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Image-Classification"><span class="toc-text">Image Classification</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Story"><span class="toc-text">Story</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CNN%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%80%E8%88%AC%E6%9E%B6%E6%9E%84"><span class="toc-text">CNN卷积神经网络一般架构</span></a></li></ol>
+    </div>
+  </aside>
+
+
+
+  
 
 
         </div>
@@ -770,6 +675,20 @@ E[生成的html中成功渲染mermaid]</pre>
 <script src="/script/bootstarp.js"></script>
 
 
+
+<script>
+if (nlviconfig.theme.toc) {
+  setTimeout(function() {
+    if (nlviconfig.theme.scheme === 'balance') {
+      $("#header").addClass("show_toc");
+    } else if (nlviconfig.theme.scheme === 'banderole') {
+      $(".container-inner").addClass("has_toc");
+      $(".post-toc .title").addClass("show");
+      $(".toc-inner").addClass("show");
+    }
+  }, 1000);
+}
+</script>
 
 
 

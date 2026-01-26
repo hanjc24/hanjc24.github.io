@@ -21,6 +21,8 @@
 
 
 
+  <meta name="keywords" content="Daily Log, nlvi" />
+
 
 <link rel="apple-touch-startup-image" media="(device-width: 375px)" href="assets/apple-launch-1125x2436.png">
 <link rel="apple-touch-startup-image" media="(orientation: landscape)" href="assets/apple-touch-startup-image-2048x1496.png">
@@ -83,10 +85,7 @@
 }
 </style>
 
-  <title>
-    Jicheng's Blog
-    
-  </title>
+  <title> THU-CS培养方案 · Jicheng's Blog </title>
 <meta name="generator" content="Hexo 8.1.1"></head>
 <body>
   <div class="container">
@@ -227,40 +226,175 @@
         <div class="main-wrapper">
           
     
-      <div class="about syuanpi fadeInRightShort">
-        <h2 class="title"> About </h2>
-        <div class="content">
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInRightShort back-1">
+        <div class="post-time-wrapper">
           
-            <ul>
-<li><a href="http://hanjc24.github.io/2026/01/24/THUCS%E5%9F%B9%E5%85%BB%E4%BD%93%E7%B3%BB/">对THU-CS培养体系的一点思考</a></li>
-<li>让我带您“看”世界：我与我的盲人老师的故事</li>
-<li>我的注意力模式可能是sparse attention</li>
-<li>Re:从零开始手搓CPU</li>
-</ul>
-<h2 id="简历">简历</h2>
-<h2 id="Projects">Projects</h2>
-<ul>
-<li>语音文字转换工具：<a href="http://hanjc24.github.io/2026/01/20/EETalk-Project/">眼耳对话(EETalk)</a></li>
-<li>飞行器创新设计：无人机搜索与投送</li>
-</ul>
-<h2 id="Tutorials">Tutorials</h2>
-<ul>
-<li><a href="http://hanjc24.github.io/categories/Hexo/">Hexo</a></li>
-<li>Triton</li>
-</ul>
-<h2 id="Hobbies">Hobbies</h2>
-<ul>
-<li>业余无线电：<a href="https://hanjc24.github.io/2026/01/19/CQ-CQ-CQ-This-is-BD1AEH-calling/">接收国际空间站SSTV与自制八木天线</a></li>
-</ul>
-
+          <time>2026-01-24</time>
           
         </div>
       </div>
+      <h1 class="post-title syuanpi fadeInRightShort back-2">
+        
+          THU-CS培养方案
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInRightShort back-3">
       
+        <p>记录一些我对<strong>你校贵系</strong>培养方案的学习进度、理解与思考。<br>
+清华大学计算机系的培养方案，强调对学生进行<strong>基本理论、基础知识、基本能力与技能</strong>的培养。这句话要从两方面理解…</p>
+<span id="more"></span>
+<ol>
+<li>从正面看，这套培养方案能够给学生在各个计算机科学的各个方面都打好基础，无论今后是从事网络、前后端开发、运维、数据库、OS开发、超算、集成电路还是计算理论、AI的研究，都能具备相应的基础常识。</li>
+<li>从反面看，这也就意味着单纯按照培养方案学习，既不会得到工程经验，也不会有科研经验——当然这也不是课程本身该做的。为了妥协考评与课程课时容量的限制，所有课程都不会提供现实场景(就算有讲也是泛泛而谈)，而是将现实场景简化为了题目或者实验</li>
+</ol>
+<p>所以要想在本科阶段就能踏上学术道路，不能只拘泥在培养方案，因为培养方案所教的知识仅仅能打个基础，而且这个培养方案更侧重培养的是工程师而非科研工作者。<br>
+因此我目前正在超前完成培养方案，同时也在学习其他科研相关课程</p>
+<h2 id="基础数学">基础数学</h2>
+<p>这部分已经完成，全部满绩4.0</p>
+<ul>
+<li><strong>微积分</strong>（以及<strong>复变函数</strong>）</li>
+<li><strong>线性代数</strong>与<strong>高等代数</strong></li>
+<li><strong>概率论与数理统计</strong>、数值分析</li>
+<li><strong>离散数学</strong>（数理逻辑、集合论、图论、代数结构）</li>
+</ul>
+<h2 id="计算机基础数学">计算机基础数学</h2>
+<p>这部分已经完成，等待出成绩</p>
+<ul>
+<li><strong>形式语言与自动机</strong></li>
+<li><strong>数据结构</strong></li>
+</ul>
+<h2 id="hardware">hardware</h2>
+<p>这一条主线是从下(硬件)而上理解计算机组成</p>
+<pre class="mermaid">graph LR
+    A[数字逻辑电路]-->B[计算机组成原理]</pre>
+<p>我<strong>已经提前完成了培养方案中这一条主线的学习</strong>。</p>
+<p>成果：</p>
+<ul>
+<li>大一带同学手搓TD4-CPU</li>
+<li>大二上计组造机大作业 “奋战三星期，造台计算机”</li>
+<li>学习了RISC-V和x86指令集</li>
+</ul>
+<h2 id="OS">OS</h2>
+<p>这一条主线是由浅入深了解操作系统</p>
+<pre class="mermaid">graph LR
+    A[计算机系统概论]-->B[计算机系统结构]-->C[操作系统]
+    A-->D[编译原理]</pre>
+<p>这部分连接了机器语言与高级语言（编译原理），连接了软件与硬件（操作系统）</p>
+<p>我<strong>目前对linux系统的使用比较熟悉</strong>，同时也使用过Jetson与树莓派(无人机项目中)</p>
+<h2 id="software">software</h2>
+<p>这一主线是为了掌握软件开发的能力</p>
+<pre class="mermaid">graph LR
+    A[程序设计基础C++]-->B[OOP]-->C[软件工程]</pre>
+<p>这条主线更偏向开发工程与应用方面，是传统互联网公司的业务范畴</p>
+<p>我目前已经开发过前后端的几个小项目</p>
+<ul>
+<li>前端：了解基础的html、CSS、javascript，自己魔改Hexo博客主题</li>
+<li>后端：我用Rust的网络框架写过一个简单的OJ系统</li>
+<li>开发微信小程序：<a href="https://hanjc24.github.io/2026/01/20/EETalk-Project/">EETalk Project</a></li>
+</ul>
+<h2 id="InterNet">InterNet</h2>
+<p>主线：网络原理</p>
+<p>我之前在学习与项目过程中学习过基础的网络知识，如TCP/IP协议等，系统的学习会在下学期的网原课程中进行。</p>
+<h2 id="AI">AI</h2>
+<p>主线：高性能计算、人工智能导论、机器学习概论<br>
+培养方案上这部分并非很重点<br>
+所以我自学了<strong>李宏毅机器学习</strong>、<strong>HKUST-COMP4901Y-2025spring</strong>等课程，正在学习<strong>CS231</strong></p>
+
+      
+    
+    </div>
+    
+      <div class="post-tags syuanpi fadeInRightShort back-3">
+      
+        <a href="/tags/Daily-Log/">Daily Log</a>
+      
+      </div>
+    
+    
       
 
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>Author :</span>
+      <span>hanjc24</span>
+    </div>
+    <div class="copy-url">
+      <span>Url :</span>
+      <a href="http://hanjc24.github.io/2026/01/24/daily-2026-01-24-THUCS%E5%9F%B9%E5%85%BB%E4%BD%93%E7%B3%BB/">http://hanjc24.github.io/2026/01/24/daily-2026-01-24-THUCS%E5%9F%B9%E5%85%BB%E4%BD%93%E7%B3%BB/</a>
+    </div>
+    <div class="copy-origin">
+      <span>Origin :</span>
+      <a href="http://hanjc24.github.io">http://hanjc24.github.io</a>
+    </div>
+    <div class="copy-license">
+      
+      All rights reserved. Please contact the author for authorization to reprint.
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/2026/01/25/course-CS231n-2026-01-25-Backpropagation/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>Backpropagation
+        </span>
+      </a>
+    
+    
+      <a href="/2026/01/24/course-LHY-2026-01-24-L1Regression/" id="art-right" class="art-right">
+        <span class="prev-title">
+          LHY-L1 Regression<i class="iconfont icon-right"></i>
+        </span>
+      </a>
+    
+  </nav>
+
+
+    
+  <i id="com-switch" class="iconfont icon-down jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+
+    
+    
+
+    
+
+    
+
+  </div>
+
+
+
+  
+  
     
   
+  <aside class="post-toc">
+    <div class="title"><span>Index</span></div>
+    <div class="toc-inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6"><span class="toc-text">基础数学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6"><span class="toc-text">计算机基础数学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hardware"><span class="toc-text">hardware</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OS"><span class="toc-text">OS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#software"><span class="toc-text">software</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InterNet"><span class="toc-text">InterNet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AI"><span class="toc-text">AI</span></a></li></ol>
+    </div>
+  </aside>
+
+
+
+  
+
+
         </div>
       </main>
       <footer class="footer syuanpi fadeIn" id="footer">
@@ -553,6 +687,20 @@
 <script src="/script/bootstarp.js"></script>
 
 
+
+<script>
+if (nlviconfig.theme.toc) {
+  setTimeout(function() {
+    if (nlviconfig.theme.scheme === 'balance') {
+      $("#header").addClass("show_toc");
+    } else if (nlviconfig.theme.scheme === 'banderole') {
+      $(".container-inner").addClass("has_toc");
+      $(".post-toc .title").addClass("show");
+      $(".toc-inner").addClass("show");
+    }
+  }, 1000);
+}
+</script>
 
 
 

@@ -231,7 +231,7 @@
   <div class="archive syuanpi fadeInRightShort" id="archive">
     
       <aside class="archive-title">Total</aside>
-      <span class="archive-num">24 Posts In Total</span>
+      <span class="archive-num">25 Posts In Total</span>
     
       
       
@@ -389,17 +389,16 @@ Optimize: minimize <span class="katex"><span class="katex-mathml"><math xmlns="h
         <div class="archive-post">
           <div class="archive-post-content">
             
-              <p>大一暑假(2025.7)时学习了台湾大学李宏毅老师的机器学习课程，今天重温了一下课程内容，顺便把当时记的笔记更新上来。</p>
-<h2 id="Regression">Regression</h2>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>a</mi><mi>c</mi><mi>h</mi><mi>i</mi><mi>n</mi><mi>e</mi><mtext> </mtext><mi>l</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>n</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>≈</mo><mi>f</mi><mi>i</mi><mi>n</mi><mi>d</mi><mtext> </mtext><mi>a</mi><mtext> </mtext><mi>f</mi><mi>u</mi><mi>n</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi mathvariant="normal">/</mi><mi>m</mi><mi>a</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">machine\ learning \approx find\ a\ function/map</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ma</span><span class="mord mathnormal">c</span><span class="mord mathnormal">hin</span><span class="mord mathnormal">e</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">nin</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">in</span><span class="mord mathnormal">d</span><span class="mspace"> </span><span class="mord mathnormal">a</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">c</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord">/</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">p</span></span></span></span></p>
+              <p>哲学：当模型很大的时候，监督学习所要求的数据量过大，难以标注Label；所以需要让模型在训练的时候自己从数据中取Label，或者说，要学习的知识。<br>
+Next Sentence Prediction是一个很完美的学习目标，其label就是下一个Token</p>
             
           </div>
           <div class="archive-post-info">
             <time class="archive-post-time">
               2026-01-24
             </time>
-            <a  class="archive-post-link" href="/2026/01/24/course-LHY-2026-01-24-L1Regression/">
-              LHY-L1 Regression
+            <a  class="archive-post-link" href="/2026/01/24/course-LHY-2026-01-24-L8self-supervised/">
+              LHY-L8 Self-supervised Learning
             </a>
           </div>
         </div>
@@ -411,12 +410,30 @@ Optimize: minimize <span class="katex"><span class="katex-mathml"><math xmlns="h
         <div class="archive-post">
           <div class="archive-post-content">
             
-              <h2 id="如何解决类神经网络训练问题">如何解决类神经网络训练问题</h2>
-<p>Training:</p>
+              <p>Encoder-Decoder架构</p>
+            
+          </div>
+          <div class="archive-post-info">
+            <time class="archive-post-time">
+              2026-01-24
+            </time>
+            <a  class="archive-post-link" href="/2026/01/24/course-LHY-2026-01-24-L6Transformer/">
+              LHY-L6 Transformer
+            </a>
+          </div>
+        </div>
+      
+        
+          
+          
+          
+        <div class="archive-post">
+          <div class="archive-post-content">
+            
+              <p>想要解决的问题：</p>
 <ul>
-<li>Select a Model: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><msub><mi>f</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y=f_{\theta}(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></li>
-<li>Compute Loss: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L(\theta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span></span></span></span></li>
-<li><strong>Optimize</strong> Args: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>θ</mi><mo>∗</mo></msup><mo>=</mo><mi>a</mi><mi>r</mi><mi>g</mi><mtext> </mtext><mi>m</mi><mi>i</mi><msub><mi>n</mi><mi>θ</mi></msub><mi>L</mi></mrow><annotation encoding="application/x-tex">\theta^*=arg\ min_{\theta}L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace"> </span><span class="mord mathnormal">mi</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">L</span></span></span></span></li>
+<li>原有模型：输入一个向量，输出一个向量(可以表示数值scalar、类别class)</li>
+<li>新的要求：输入 a set of vectors(may change length)，输出scalars or classes</li>
 </ul>
             
           </div>
@@ -424,29 +441,8 @@ Optimize: minimize <span class="katex"><span class="katex-mathml"><math xmlns="h
             <time class="archive-post-time">
               2026-01-24
             </time>
-            <a  class="archive-post-link" href="/2026/01/24/course-LHY-2026-01-24-L2TrainIssue/">
-              LHY-L2 Train Issue
-            </a>
-          </div>
-        </div>
-      
-        
-          
-          
-          
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <p>任务：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>→</mo><mi>F</mi><mi>u</mi><mi>n</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>→</mo><mi>C</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>s</mi><mtext> </mtext><mi>n</mi></mrow><annotation encoding="application/x-tex">x\to Function \to Class\ n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">c</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">Cl</span><span class="mord mathnormal">a</span><span class="mord mathnormal">ss</span><span class="mspace"> </span><span class="mord mathnormal">n</span></span></span></span><br>
-e.g.人脸识别、手写字体识别、诊断</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-24
-            </time>
-            <a  class="archive-post-link" href="/2026/01/24/course-LHY-2026-01-24-L3Classification/">
-              LHY-L3 Classification
+            <a  class="archive-post-link" href="/2026/01/24/course-LHY-2026-01-24-L5SelfAttention/">
+              LHY-L5 Self-Attention
             </a>
           </div>
         </div>
@@ -526,6 +522,10 @@ e.g.人脸识别、手写字体识别、诊断</p>
   <div class="tagcloud-taglist">
   
     <div class="tagcloud-tag">
+      <button>CS231n</button>
+    </div>
+  
+    <div class="tagcloud-tag">
       <button>李宏毅ML</button>
     </div>
   
@@ -534,15 +534,11 @@ e.g.人脸识别、手写字体识别、诊断</p>
     </div>
   
     <div class="tagcloud-tag">
-      <button>CS231n</button>
+      <button>Project</button>
     </div>
   
     <div class="tagcloud-tag">
       <button>Literature Review</button>
-    </div>
-  
-    <div class="tagcloud-tag">
-      <button>Project</button>
     </div>
   
     <div class="tagcloud-tag">
@@ -552,41 +548,40 @@ e.g.人脸识别、手写字体识别、诊断</p>
   </div>
   
     <div class="tagcloud-postlist active">
+      <h2>CS231n</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a href="/2026/02/02/course-CS231n-2026-02-02-CNN/">
+            <time class="tagcloud-posttime">2026 / 02 / 02</time>
+            <span>CNN Architecture and Training CNNs</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/25/course-CS231n-2026-01-25-Backpropagation/">
+            <time class="tagcloud-posttime">2026 / 01 / 25</time>
+            <span>Backpropagation</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
       <h2>李宏毅ML</h2>
       
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L1Regression/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>LHY-L1 Regression</span>
+          <a href="/2026/02/06/course-LHY-2026-02-06-L9meta-learning/">
+            <time class="tagcloud-posttime">2026 / 02 / 06</time>
+            <span>LHY-L9 Meta Learning</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L2TrainIssue/">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L8self-supervised/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>LHY-L2 Train Issue</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L3Classification/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>LHY-L3 Classification</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L4CNN/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>LHY-L4 CNN</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L5SelfAttention/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>LHY-L5 Self-Attention</span>
+            <span>LHY-L8 Self-supervised Learning</span>
           </a>
         </div>
       
@@ -598,9 +593,37 @@ e.g.人脸识别、手写字体识别、诊断</p>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L8self-supervised/">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L5SelfAttention/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>LHY-L8 Self-supervised Learning</span>
+            <span>LHY-L5 Self-Attention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L4CNN/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L4 CNN</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L3Classification/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L3 Classification</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L2TrainIssue/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L2 Train Issue</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L1Regression/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L1 Regression</span>
           </a>
         </div>
       
@@ -662,20 +685,20 @@ e.g.人脸识别、手写字体识别、诊断</p>
     </div>
   
     <div class="tagcloud-postlist ">
-      <h2>CS231n</h2>
+      <h2>Project</h2>
       
       
         <div class="tagcloud-post">
-          <a href="/2026/02/02/course-CS231n-2026-02-02-CNN/">
-            <time class="tagcloud-posttime">2026 / 02 / 02</time>
-            <span>CNN Architecture and Training CNNs</span>
+          <a href="/2026/01/28/projects-2026-01-28-CUADC2025summary/">
+            <time class="tagcloud-posttime">2026 / 01 / 28</time>
+            <span>CUADC2025 Summary</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/25/course-CS231n-2026-01-25-Backpropagation/">
-            <time class="tagcloud-posttime">2026 / 01 / 25</time>
-            <span>Backpropagation</span>
+          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
           </a>
         </div>
       
@@ -710,26 +733,6 @@ e.g.人脸识别、手写字体识别、诊断</p>
           <a href="/2026/01/17/literature-2026-01-17-FlashAttention/">
             <time class="tagcloud-posttime">2026 / 01 / 17</time>
             <span>FlashAttention</span>
-          </a>
-        </div>
-      
-    </div>
-  
-    <div class="tagcloud-postlist ">
-      <h2>Project</h2>
-      
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/28/projects-2026-01-28-CUADC2025summary/">
-            <time class="tagcloud-posttime">2026 / 01 / 28</time>
-            <span>CUADC2025 Summary</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
-            <time class="tagcloud-posttime">2026 / 01 / 20</time>
-            <span>EETalk Project</span>
           </a>
         </div>
       

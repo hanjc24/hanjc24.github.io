@@ -239,6 +239,29 @@
         <div class="archive-post">
           <div class="archive-post-content">
             
+              <p>Recap: Layers that CNN is comprosed of</p>
+<h3 id="Convolutional-Layer">Convolutional Layer:</h3>
+<p>input size: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo separator="true">,</mo><mi>n</mi><mo separator="true">,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n,n,d)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n\times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>为图像尺寸，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>为channel数(如RGB)<br>
+filters size: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>d</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo separator="true">,</mo><mi>d</mi><mo separator="true">,</mo><mi>m</mi><mo separator="true">,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(d&#x27;,d,m,m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span> 可以理解为有d’个filter, 每个filter会把尺寸<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m\times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>、channel数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>的输入图像映射为一个标量(affine map: linear projection + bias)。filters在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n\times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>的图像上滑动，在每个位置输出一个属于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="double-struck">R</mi><msup><mi>d</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></msup></mrow><annotation encoding="application/x-tex">\mathbb{R}^{d&#x27;}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9425em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9425em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8278em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>的向量<br>
+output size: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo separator="true">,</mo><msup><mi>n</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo separator="true">,</mo><msup><mi>d</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n&#x27;,n&#x27;,d&#x27;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，一般会再过一个ReLu或者其他非线性激活函数</p>
+            
+          </div>
+          <div class="archive-post-info">
+            <time class="archive-post-time">
+              2026-02-02
+            </time>
+            <a  class="archive-post-link" href="/2026/02/02/course-CS231n-2026-02-02-CNN/">
+              CNN Architecture and Training CNNs
+            </a>
+          </div>
+        </div>
+      
+        
+          </section>
+        
+        <div class="archive-post">
+          <div class="archive-post-content">
+            
               <p><a target="_blank" rel="noopener" href="https://cs231n.stanford.edu/">CS231n link</a><br>
 记录一下关于反向传播数学推导的笔记</p>
 <h2 id="单层Model">单层Model</h2>
@@ -460,11 +483,11 @@ Next Sentence Prediction是一个很完美的学习目标，其label就是下一
   <div class="tagcloud-taglist">
   
     <div class="tagcloud-tag">
-      <button>Daily Log</button>
+      <button>李宏毅ML</button>
     </div>
   
     <div class="tagcloud-tag">
-      <button>李宏毅ML</button>
+      <button>Daily Log</button>
     </div>
   
     <div class="tagcloud-tag">
@@ -486,54 +509,6 @@ Next Sentence Prediction是一个很完美的学习目标，其label就是下一
   </div>
   
     <div class="tagcloud-postlist active">
-      <h2>Daily Log</h2>
-      
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/31/daily-2026-01-31-Sparse-Attention/">
-            <time class="tagcloud-posttime">2026 / 01 / 31</time>
-            <span>Sparse Attention</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/27/daily-2026-01-27-Handmade-CPU/">
-            <time class="tagcloud-posttime">2026 / 01 / 27</time>
-            <span>How to Make a CPU by Hand——From TD4 to Verilog</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/24/daily-2026-01-24-THUCS培养体系/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>THU-CS培养方案</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
-            <time class="tagcloud-posttime">2026 / 01 / 20</time>
-            <span>EETalk Project</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/19/daily-2026-01-19-CQ-CQ-CQ-This-is-BD1AEH-calling/">
-            <time class="tagcloud-posttime">2026 / 01 / 19</time>
-            <span>CQ CQ CQ This is BD1AEH calling</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/16/hello-world/">
-            <time class="tagcloud-posttime">2026 / 01 / 16</time>
-            <span>CQ CQ This is BD1AEH. Standing by.</span>
-          </a>
-        </div>
-      
-    </div>
-  
-    <div class="tagcloud-postlist ">
       <h2>李宏毅ML</h2>
       
       
@@ -589,8 +564,70 @@ Next Sentence Prediction是一个很完美的学习目标，其label就是下一
     </div>
   
     <div class="tagcloud-postlist ">
+      <h2>Daily Log</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a href="/2026/02/05/daily-2026-02-05-Teacher-Zhu/">
+            <time class="tagcloud-posttime">2026 / 02 / 05</time>
+            <span>The Story of Teacher Zhu</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/31/daily-2026-01-31-Sparse-Attention/">
+            <time class="tagcloud-posttime">2026 / 01 / 31</time>
+            <span>Sparse Attention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/27/daily-2026-01-27-Handmade-CPU/">
+            <time class="tagcloud-posttime">2026 / 01 / 27</time>
+            <span>How to Make a CPU by Hand——From TD4 to Verilog</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/daily-2026-01-24-THUCS培养体系/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>THU-CS培养方案</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/19/daily-2026-01-19-CQ-CQ-CQ-This-is-BD1AEH-calling/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>CQ CQ CQ This is BD1AEH calling</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/16/hello-world/">
+            <time class="tagcloud-posttime">2026 / 01 / 16</time>
+            <span>CQ CQ This is BD1AEH. Standing by.</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
       <h2>CS231n</h2>
       
+      
+        <div class="tagcloud-post">
+          <a href="/2026/02/02/course-CS231n-2026-02-02-CNN/">
+            <time class="tagcloud-posttime">2026 / 02 / 02</time>
+            <span>CNN Architecture and Training CNNs</span>
+          </a>
+        </div>
       
         <div class="tagcloud-post">
           <a href="/2026/01/25/course-CS231n-2026-01-25-Backpropagation/">

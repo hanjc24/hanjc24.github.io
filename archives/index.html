@@ -231,7 +231,7 @@
   <div class="archive syuanpi fadeInRightShort" id="archive">
     
       <aside class="archive-title">Total</aside>
-      <span class="archive-num">22 Posts In Total</span>
+      <span class="archive-num">24 Posts In Total</span>
     
       
       
@@ -248,9 +248,56 @@
         <div class="archive-post">
           <div class="archive-post-content">
             
-              <p>近日LLM方面有一些研究认为，当输入序列长度很长时，Full Attention计算出的注意力分数趋于平均；但是Sparse Attention则天然没有这个问题，因为对于每个input token，它都只会选择有限个先前的token与其做注意力计算。<br>
-心理学上也有一些很著名的实验和结论，譬如说<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1G54y1272j">传球实验</a>，当人的注意力集中在计数传球数量的时候，根本注意不到一个大猩猩曾经来招摇过。这充分表明人的注意力资源是有限的。<br>
-那么人类自己是怎么组织这有限的注意力资源呢？我想可能每个人有不同的方式，大致应该也可以分为稠密注意力(可能会退化为fix window)或者稀疏注意力(表现为思维的跳跃性?)两种方式。我自己应当是稀疏注意力方式的。</p>
+              <h2 id="初见：我的信息学启蒙老师是盲人">初见：我的信息学启蒙老师是盲人</h2>
+<p style="text-indent: 2em">
+第一堂课前，妈妈告诉小学五年级的我：这位老师眼睛不太好使。等到上课时，我见朱老师行动自如，讲课娓娓道来，当时我甚至没有意识到朱老师是一位盲人，只觉得朱老师家的北冰洋汽水十分好喝，只是讲课方式比较特别，纯口述不动手。
+</p>
+            
+          </div>
+          <div class="archive-post-info">
+            <time class="archive-post-time">
+              2026-02-05
+            </time>
+            <a  class="archive-post-link" href="/2026/02/05/daily-2026-02-05-Teacher-Zhu/">
+              The Story of Teacher Zhu
+            </a>
+          </div>
+        </div>
+      
+        
+          
+          
+          
+        <div class="archive-post">
+          <div class="archive-post-content">
+            
+              <p>Recap: Layers that CNN is comprosed of</p>
+<h3 id="Convolutional-Layer">Convolutional Layer:</h3>
+<p>input size: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo separator="true">,</mo><mi>n</mi><mo separator="true">,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n,n,d)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n\times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>为图像尺寸，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>为channel数(如RGB)<br>
+filters size: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>d</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo separator="true">,</mo><mi>d</mi><mo separator="true">,</mo><mi>m</mi><mo separator="true">,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(d&#x27;,d,m,m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span> 可以理解为有d’个filter, 每个filter会把尺寸<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m\times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>、channel数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>的输入图像映射为一个标量(affine map: linear projection + bias)。filters在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n\times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>的图像上滑动，在每个位置输出一个属于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="double-struck">R</mi><msup><mi>d</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></msup></mrow><annotation encoding="application/x-tex">\mathbb{R}^{d&#x27;}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9425em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9425em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8278em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>的向量<br>
+output size: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo separator="true">,</mo><msup><mi>n</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo separator="true">,</mo><msup><mi>d</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n&#x27;,n&#x27;,d&#x27;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，一般会再过一个ReLu或者其他非线性激活函数</p>
+            
+          </div>
+          <div class="archive-post-info">
+            <time class="archive-post-time">
+              2026-02-02
+            </time>
+            <a  class="archive-post-link" href="/2026/02/02/course-CS231n-2026-02-02-CNN/">
+              CNN Architecture and Training CNNs
+            </a>
+          </div>
+        </div>
+      
+        
+          
+          
+          
+        <div class="archive-post">
+          <div class="archive-post-content">
+            
+              <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 心理学领域有一个著名的实验——<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1G54y1272j">传球实验</a>。当人的注意力集中在计数传球数量的时候，根本注意不到一个大猩猩招摇路过。这充分表明人的注意力资源是有限的。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 那么人类自己是怎么组织这有限的注意力资源呢？</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 我想可能每个人有不同的方式，大致应该也可以分为<strong>稠密注意力</strong>或者<strong>稀疏注意力</strong>两种方式。</p>
             
           </div>
           <div class="archive-post-info">
@@ -430,47 +477,6 @@ Optimize: minimize <span class="katex"><span class="katex-mathml"><math xmlns="h
           </div>
         </div>
       
-        
-          
-          
-          
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <p>任务：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>→</mo><mi>F</mi><mi>u</mi><mi>n</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>→</mo><mi>C</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>s</mi><mtext> </mtext><mi>n</mi></mrow><annotation encoding="application/x-tex">x\to Function \to Class\ n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">c</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">Cl</span><span class="mord mathnormal">a</span><span class="mord mathnormal">ss</span><span class="mspace"> </span><span class="mord mathnormal">n</span></span></span></span><br>
-e.g.人脸识别、手写字体识别、诊断</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-24
-            </time>
-            <a  class="archive-post-link" href="/2026/01/24/course-LHY-2026-01-24-L3Classification/">
-              LHY-L3 Classification
-            </a>
-          </div>
-        </div>
-      
-        
-          
-          
-          
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <p>Convolutional Neural Network</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-24
-            </time>
-            <a  class="archive-post-link" href="/2026/01/24/course-LHY-2026-01-24-L4CNN/">
-              LHY-L4 CNN
-            </a>
-          </div>
-        </div>
-      
       
         </section></section>
       
@@ -526,11 +532,11 @@ e.g.人脸识别、手写字体识别、诊断</p>
   <div class="tagcloud-taglist">
   
     <div class="tagcloud-tag">
-      <button>Daily Log</button>
+      <button>李宏毅ML</button>
     </div>
   
     <div class="tagcloud-tag">
-      <button>李宏毅ML</button>
+      <button>Daily Log</button>
     </div>
   
     <div class="tagcloud-tag">
@@ -552,54 +558,6 @@ e.g.人脸识别、手写字体识别、诊断</p>
   </div>
   
     <div class="tagcloud-postlist active">
-      <h2>Daily Log</h2>
-      
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/31/daily-2026-01-31-Sparse-Attention/">
-            <time class="tagcloud-posttime">2026 / 01 / 31</time>
-            <span>Sparse Attention</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/27/daily-2026-01-27-Handmade-CPU/">
-            <time class="tagcloud-posttime">2026 / 01 / 27</time>
-            <span>How to Make a CPU by Hand——From TD4 to Verilog</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/24/daily-2026-01-24-THUCS培养体系/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>THU-CS培养方案</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
-            <time class="tagcloud-posttime">2026 / 01 / 20</time>
-            <span>EETalk Project</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/19/daily-2026-01-19-CQ-CQ-CQ-This-is-BD1AEH-calling/">
-            <time class="tagcloud-posttime">2026 / 01 / 19</time>
-            <span>CQ CQ CQ This is BD1AEH calling</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/16/hello-world/">
-            <time class="tagcloud-posttime">2026 / 01 / 16</time>
-            <span>CQ CQ This is BD1AEH. Standing by.</span>
-          </a>
-        </div>
-      
-    </div>
-  
-    <div class="tagcloud-postlist ">
       <h2>李宏毅ML</h2>
       
       
@@ -655,8 +613,70 @@ e.g.人脸识别、手写字体识别、诊断</p>
     </div>
   
     <div class="tagcloud-postlist ">
+      <h2>Daily Log</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a href="/2026/02/05/daily-2026-02-05-Teacher-Zhu/">
+            <time class="tagcloud-posttime">2026 / 02 / 05</time>
+            <span>The Story of Teacher Zhu</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/31/daily-2026-01-31-Sparse-Attention/">
+            <time class="tagcloud-posttime">2026 / 01 / 31</time>
+            <span>Sparse Attention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/27/daily-2026-01-27-Handmade-CPU/">
+            <time class="tagcloud-posttime">2026 / 01 / 27</time>
+            <span>How to Make a CPU by Hand——From TD4 to Verilog</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/daily-2026-01-24-THUCS培养体系/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>THU-CS培养方案</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/19/daily-2026-01-19-CQ-CQ-CQ-This-is-BD1AEH-calling/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>CQ CQ CQ This is BD1AEH calling</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/16/hello-world/">
+            <time class="tagcloud-posttime">2026 / 01 / 16</time>
+            <span>CQ CQ This is BD1AEH. Standing by.</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
       <h2>CS231n</h2>
       
+      
+        <div class="tagcloud-post">
+          <a href="/2026/02/02/course-CS231n-2026-02-02-CNN/">
+            <time class="tagcloud-posttime">2026 / 02 / 02</time>
+            <span>CNN Architecture and Training CNNs</span>
+          </a>
+        </div>
       
         <div class="tagcloud-post">
           <a href="/2026/01/25/course-CS231n-2026-01-25-Backpropagation/">

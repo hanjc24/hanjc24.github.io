@@ -21,6 +21,8 @@
 
 
 
+  <meta name="keywords" content="Daily Log, nlvi" />
+
 
 <link rel="apple-touch-startup-image" media="(device-width: 375px)" href="assets/apple-launch-1125x2436.png">
 <link rel="apple-touch-startup-image" media="(orientation: landscape)" href="assets/apple-touch-startup-image-2048x1496.png">
@@ -83,11 +85,7 @@
 }
 </style>
 
-  <title>
-  
-    Tutorial · Jicheng's Blog
-  
-</title>
+  <title> The Story of Teacher Zhu · Jicheng's Blog </title>
 <meta name="generator" content="Hexo 8.1.1"></head>
 <body>
   <div class="container">
@@ -228,91 +226,172 @@
         <div class="main-wrapper">
           
     
-  <div class="archive syuanpi fadeInRightShort" id="archive">
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInRightShort back-1">
+        <div class="post-time-wrapper">
+          
+          <time>2026-02-05</time>
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInRightShort back-2">
+        
+          The Story of Teacher Zhu
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInRightShort back-3">
+      
+        <h2 id="初见：我的信息学启蒙老师是盲人">初见：我的信息学启蒙老师是盲人</h2>
+<p style="text-indent: 2em">
+第一堂课前，妈妈告诉小学五年级的我：这位老师眼睛不太好使。等到上课时，我见朱老师行动自如，讲课娓娓道来，当时我甚至没有意识到朱老师是一位盲人，只觉得朱老师家的北冰洋汽水十分好喝，只是讲课方式比较特别，纯口述不动手。
+</p>
+<span id="more"></span>
+<p style="text-indent: 2em">
+从此，我开始跟随朱老师学习信息学竞赛。朱老师那时就已经因眼部病变双目失明，但他仍然能克服诸多困难，为我传授编程与算法知识、靠思维调试代码，甚至靠电脑上的朗读器自己编写整理编程教学材料与示例代码。
+</p>
+<p style="text-indent: 2em">
+这样自强不息的精神带给彼时的我莫大的震撼——一个盲人竟然都能自己做到这些事情，那我还有什么理由做不到？朱老师的自立自强激励我努力学习，无论是信息学还是文化课。
+</p>
+<h2 id="第一次飞跃：无障碍功能">第一次飞跃：无障碍功能</h2>
+<p style="text-indent: 2em">
+我有了自己的手机后，发现手机上有一些语音播报之类的无障碍功能。在一次上课时，我向朱老师提及此事，从此朱老师开始钻研智能触屏手机使用。在无数次的尝试中，朱老师逐渐记忆、掌握手机的界面布局和各种软件的操作逻辑，逐渐学会使用微信收发消息、接打电话甚至建群和发朋友圈。
+</p>
+<p style="text-indent: 2em">
+朱老师很高兴，这样就可以自己随时和远在美国的弟弟和女儿联系。
+</p>
+<p style="text-indent: 2em">
+随着技术的发展，朱老师在家中也安装了一台天猫精灵智能音箱，能和它聊天、听新闻播报、搜索网上信息甚至冲浪。
+</p>
+<h2 id="第二次飞跃：NLP与LLM">第二次飞跃：NLP与LLM</h2>
+<p style="text-indent: 2em">
+生活的挑战从未停止，朱老师一边克服失明带来的种种困难，一边还要照顾年迈的母亲。朱老师的母亲已经九十余岁，听力衰退严重，视力也大不如前。母子二人日常几乎无法交流。朱老师和他的家人找遍了市场上现成的产品：有语音转文字的录制器，但屏幕太小，老人家戴着老花镜叠着放大镜也难以辨识；有大的写字板，但是操作复杂，朱老师因失明无法使用……一次次的失望让朱老师深感挫败：难道真的与年迈的母亲再也无法交流了吗？
+</p>
+<p style="text-indent: 2em">
+我去年十一月份因为摔伤居家卧床休养，听我父母聊天，知道了朱老师眼下的困境。我也因受伤无法行走，深切地体会到了残障人士的不便，逐渐萌生了用自己所学帮助他们的思路——开发一个盲人也可以无障碍使用的工具。
+</p>
+<p style="text-indent: 2em">
+我一开始设计了一套很宏伟的方案：先部署一个服务器，上面插一个GPU卡来运行语音识别模型(例如我尝试部署了OpenAI Whisper)，再把服务器连到网络上，做一个调用语音识别功能的网页。之后我还计划再做一个安卓app来简化操作。但是，当我在家里搭好了服务器，也做好了网页，却发现这套方案不适合朱老师用。因为服务器太吵，还费电，维护起来也麻烦，平时没有我的话，没人能帮朱老师维护；而且服务器连网也很麻烦，没有申请公网ip的话只能在局域网连，不能随时用。
+</p>
+<p style="text-indent: 2em">
+于是我转换思路，打算做一个微信小程序，从云端调用商用语音识别API。功能就是把朱老师所说的话转换为文字显示在屏幕上，用足够大的字，让朱老师的母亲不用老花镜都能看清楚。这样不需要很麻烦的部署，不需要很贵的服务器与GPU卡，开发起来也更加方便。
+</p>
+<p style="text-indent: 2em">
+朱老师戏称这个方案为“一个瞎子和一个聋子的对话”。我稍作修改，命名它为“眼耳对话”，英文为Eye-Ear Talk (EEtalk)。它的特点就是至大至简：页面至大、操作至简。
+</p>
+<p style="text-indent: 2em">
+做好第一版后，我到朱老师家中，实地测试了我所做的小程序，现场修改了不少问题，最终达到了理想的效果。朱老师和他的母亲几乎立刻实现了流畅的沟通。现在这个小程序已经在微信上线正式版了，开放给所有人使用。
+</p>
+<p><a href="http://hanjc24.github.io/2026/01/20/projects-2026-01-20-EETalk-Project/">EEtalk project link</a></p>
+<h2 id="第三次飞跃：一点展望">第三次飞跃：一点展望</h2>
+<p style="text-indent: 2em">
+朱老师说：“现在我可以在家中行动自如，还能自己走到楼下单元门口。如果有一个产品，可以告诉我附近都有什么，我应该怎么走，那我就能自己在小区里散步了。”
+</p>
+<p style="text-indent: 2em">
+这个功能的实现可能涉及到计算机视觉、视频理解、三维重建、路径规划和多模态等诸多领域的技术。希望我学成归来后，能够实现这个产品，完成朱老师的心愿。
+</p>
+<h2 id="结语">结语</h2>
+<h3 id="关于技术">关于技术</h3>
+<p style="text-indent: 2em">
+在世界上，有许许多多的人，因为这样或那样的原因，或是失明、或是听障、或是其他，失去了和社会的连接，失去了和身边人的连接。
+</p>
+<p style="text-indent: 2em">
+技术的发展，让人类有能力重建这样的桥梁。第一次飞跃，通过手机的无障碍功能、通过智能音箱，朱老师与好友、与家族、与社会的连接得以重建。第二次飞跃，通过我开发的小程序，借助LLM与NLP技术的革命，朱老师与他的母亲的连接得以重建。未来借助CV等技术，希望能帮助朱老师从失明的困境中得到进一步解放。
+</p>
+<h3 id="关于精神">关于精神</h3>
+<p style="text-indent: 2em">
+朱老师的精神也无时无刻不在鼓舞着我。朱老师说：“尽管我没了眼睛，但我还有耳朵，还有手，还能说话。”在我不幸右脚摔伤，只得卧床休养时，我想着 “尽管我腿折了，但我手和脑子都是好的，还可以照常学习、复习甚至干大作业和科研项目。” 在我受伤的这个学期，我坚持完成作业与考试，达到了全课程4.0满绩的成绩，其中包括两门提前修读的专业课程。
+</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mstyle mathcolor="red"><mtext>地势坤，君子以厚德载物</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\text{地势坤，君子以厚德载物}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text" style="color:red;"><span class="mord cjk_fallback" style="color:red;">地势坤，君子以厚德载物</span></span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mstyle mathcolor="red"><mtext>天行健，君子以自强不息</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\text{天行健，君子以自强不息}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text" style="color:red;"><span class="mord cjk_fallback" style="color:red;">天行健，君子以自强不息</span></span></span></span></span></span></p>
+
+      
+    
+    </div>
+    
+      <div class="post-tags syuanpi fadeInRightShort back-3">
+      
+        <a href="/tags/Daily-Log/">Daily Log</a>
+      
+      </div>
+    
     
       
+
       
-        
-          </section>
-        
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <h2 id="Triton框架">Triton框架</h2>
-<p>The basic programming model of Triton</p>
-<h4 id="Kernel">Kernel</h4>
-<p>用<code>@triton.jit</code>装饰的python函数<br>
-描述了program如何处理一个block，实际执行时并行执行多个program实例，并行处理多个block</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-22
-            </time>
-            <a  class="archive-post-link" href="/2026/01/22/tutorial-2026-01-22-Learning-Triton/">
-              Learning Triton
-            </a>
-          </div>
-        </div>
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>Author :</span>
+      <span>hanjc24</span>
+    </div>
+    <div class="copy-url">
+      <span>Url :</span>
+      <a href="http://hanjc24.github.io/2026/02/05/daily-2026-02-05-Teacher-Zhu/">http://hanjc24.github.io/2026/02/05/daily-2026-02-05-Teacher-Zhu/</a>
+    </div>
+    <div class="copy-origin">
+      <span>Origin :</span>
+      <a href="http://hanjc24.github.io">http://hanjc24.github.io</a>
+    </div>
+    <div class="copy-license">
       
-        
-          </section>
-        
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <p>总之，我在Hexo中用上了Mermaid，在此记录</p>
-<pre class="mermaid">graph TD
-A[hexo-filter-mermaid-diagrams npm插件] -- 识别md mermaid块 --> C
-C[生成class=mermaid的pre块]
-B[swig脚本] --模板引擎展开--> D
-D[生成引入mermaid库的js代码段]
-C-->E
-D-->E
-E[生成的html中成功渲染mermaid]</pre>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-18
-            </time>
-            <a  class="archive-post-link" href="/2026/01/18/tutorial-2026-01-18-How-to-use-Mermaid-in-Hexo/">
-              How to use Mermaid in Hexo
-            </a>
-          </div>
-        </div>
-      
-        
-          </section>
-        
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <h2 id="缘起">缘起</h2>
-<p>Nlvi是我的一位学长在<a target="_blank" rel="noopener" href="https://aajax.top/">他的blog</a>魔改并使用的主题，我也装了Nlvi试了试，效果不错，尤其是Tag的索引做得挺清楚的，整体很简约。</p>
-<p>唯一的美中不足是原本的Nlvi主题配色的底色都是浅色，观感上过于明亮，所以我研究了一下Hexo theme的结构，修改了一些生成css部分的代码。</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-17
-            </time>
-            <a  class="archive-post-link" href="/2026/01/17/tutorial-2026-01-17-HexoNlviBuild/">
-              How to customize Hexo theme Nlvi
-            </a>
-          </div>
-        </div>
-      
-      
-        </section></section>
-      
+      All rights reserved. Please contact the author for authorization to reprint.
+    </div>
   </div>
+
+    
+  </article>
   
-  <nav class="pagination">
-      <span class="page-number current">1</span>
+    
+  <nav class="article-page">
+    
+    
+      <a href="/2026/02/02/course-CS231n-2026-02-02-CNN/" id="art-right" class="art-right">
+        <span class="prev-title">
+          CNN Architecture and Training CNNs<i class="iconfont icon-right"></i>
+        </span>
+      </a>
+    
   </nav>
 
 
+    
+  <i id="com-switch" class="iconfont icon-down jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+
+    
+    
+
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+    
+  
+  <aside class="post-toc">
+    <div class="title"><span>Index</span></div>
+    <div class="toc-inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E8%A7%81%EF%BC%9A%E6%88%91%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%90%AF%E8%92%99%E8%80%81%E5%B8%88%E6%98%AF%E7%9B%B2%E4%BA%BA"><span class="toc-text">初见：我的信息学启蒙老师是盲人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%A3%9E%E8%B7%83%EF%BC%9A%E6%97%A0%E9%9A%9C%E7%A2%8D%E5%8A%9F%E8%83%BD"><span class="toc-text">第一次飞跃：无障碍功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%A3%9E%E8%B7%83%EF%BC%9ANLP%E4%B8%8ELLM"><span class="toc-text">第二次飞跃：NLP与LLM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E9%A3%9E%E8%B7%83%EF%BC%9A%E4%B8%80%E7%82%B9%E5%B1%95%E6%9C%9B"><span class="toc-text">第三次飞跃：一点展望</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text">结语</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%8A%80%E6%9C%AF"><span class="toc-text">关于技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%B2%BE%E7%A5%9E"><span class="toc-text">关于精神</span></a></li></ol></li></ol>
+    </div>
+  </aside>
+
+
+
+  
 
 
         </div>
@@ -642,6 +721,20 @@ E[生成的html中成功渲染mermaid]</pre>
 <script src="/script/bootstarp.js"></script>
 
 
+
+<script>
+if (nlviconfig.theme.toc) {
+  setTimeout(function() {
+    if (nlviconfig.theme.scheme === 'balance') {
+      $("#header").addClass("show_toc");
+    } else if (nlviconfig.theme.scheme === 'banderole') {
+      $(".container-inner").addClass("has_toc");
+      $(".post-toc .title").addClass("show");
+      $(".toc-inner").addClass("show");
+    }
+  }, 1000);
+}
+</script>
 
 
 

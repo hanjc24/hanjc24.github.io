@@ -85,7 +85,7 @@
 
   <title>
   
-    Tutorial · Jicheng's Blog
+    Archives · Jicheng's Blog
   
 </title>
 <meta name="generator" content="Hexo 8.1.1"></head>
@@ -230,75 +230,60 @@
     
   <div class="archive syuanpi fadeInRightShort" id="archive">
     
+      <aside class="archive-title">Total</aside>
+      <span class="archive-num">24 Posts In Total</span>
+    
       
       
         
-          </section>
-        
+          
+          
+            
+            
+            <div class="archive-group">
+            <time class="archive-year"> 2026 </time>
+            <div class="archive-list">
+          
+          
         <div class="archive-post">
           <div class="archive-post-content">
             
-              <h2 id="Triton框架">Triton框架</h2>
-<p>The basic programming model of Triton</p>
-<h4 id="Kernel">Kernel</h4>
-<p>用<code>@triton.jit</code>装饰的python函数<br>
-描述了program如何处理一个block，实际执行时并行执行多个program实例，并行处理多个block</p>
+              <h2 id="初见：我的信息学启蒙老师是盲人">初见：我的信息学启蒙老师是盲人</h2>
+<p style="text-indent: 2em">
+第一堂课前，妈妈告诉小学五年级的我：这位老师眼睛不太好使。等到上课时，我见朱老师行动自如，讲课娓娓道来，当时我甚至没有意识到朱老师是一位盲人，只觉得朱老师家的北冰洋汽水十分好喝，只是讲课方式比较特别，纯口述不动手。
+</p>
             
           </div>
           <div class="archive-post-info">
             <time class="archive-post-time">
-              2026-01-22
+              2026-02-05
             </time>
-            <a  class="archive-post-link" href="/2026/01/22/tutorial-2026-01-22-Learning-Triton/">
-              Learning Triton
+            <a  class="archive-post-link" href="/2026/02/05/daily-2026-02-05-Teacher-Zhu/">
+              The Story of Teacher Zhu
             </a>
           </div>
         </div>
       
         
-          </section>
-        
+          
+          
+          
         <div class="archive-post">
           <div class="archive-post-content">
             
-              <p>总之，我在Hexo中用上了Mermaid，在此记录</p>
-<pre class="mermaid">graph TD
-A[hexo-filter-mermaid-diagrams npm插件] -- 识别md mermaid块 --> C
-C[生成class=mermaid的pre块]
-B[swig脚本] --模板引擎展开--> D
-D[生成引入mermaid库的js代码段]
-C-->E
-D-->E
-E[生成的html中成功渲染mermaid]</pre>
+              <p>Recap: Layers that CNN is comprosed of</p>
+<h3 id="Convolutional-Layer">Convolutional Layer:</h3>
+<p>input size: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo separator="true">,</mo><mi>n</mi><mo separator="true">,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n,n,d)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n\times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>为图像尺寸，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>为channel数(如RGB)<br>
+filters size: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>d</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo separator="true">,</mo><mi>d</mi><mo separator="true">,</mo><mi>m</mi><mo separator="true">,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(d&#x27;,d,m,m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span> 可以理解为有d’个filter, 每个filter会把尺寸<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m\times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>、channel数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>的输入图像映射为一个标量(affine map: linear projection + bias)。filters在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n\times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>的图像上滑动，在每个位置输出一个属于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="double-struck">R</mi><msup><mi>d</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></msup></mrow><annotation encoding="application/x-tex">\mathbb{R}^{d&#x27;}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9425em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9425em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8278em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>的向量<br>
+output size: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo separator="true">,</mo><msup><mi>n</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo separator="true">,</mo><msup><mi>d</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n&#x27;,n&#x27;,d&#x27;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，一般会再过一个ReLu或者其他非线性激活函数</p>
             
           </div>
           <div class="archive-post-info">
             <time class="archive-post-time">
-              2026-01-18
+              2026-02-02
             </time>
-            <a  class="archive-post-link" href="/2026/01/18/tutorial-2026-01-18-How-to-use-Mermaid-in-Hexo/">
-              How to use Mermaid in Hexo
-            </a>
-          </div>
-        </div>
-      
-        
-          </section>
-        
-        <div class="archive-post">
-          <div class="archive-post-content">
-            
-              <h2 id="缘起">缘起</h2>
-<p>Nlvi是我的一位学长在<a target="_blank" rel="noopener" href="https://aajax.top/">他的blog</a>魔改并使用的主题，我也装了Nlvi试了试，效果不错，尤其是Tag的索引做得挺清楚的，整体很简约。</p>
-<p>唯一的美中不足是原本的Nlvi主题配色的底色都是浅色，观感上过于明亮，所以我研究了一下Hexo theme的结构，修改了一些生成css部分的代码。</p>
-            
-          </div>
-          <div class="archive-post-info">
-            <time class="archive-post-time">
-              2026-01-17
-            </time>
-            <a  class="archive-post-link" href="/2026/01/17/tutorial-2026-01-17-HexoNlviBuild/">
-              How to customize Hexo theme Nlvi
+            <a  class="archive-post-link" href="/2026/02/02/course-CS231n-2026-02-02-CNN/">
+              CNN Architecture and Training CNNs
             </a>
           </div>
         </div>

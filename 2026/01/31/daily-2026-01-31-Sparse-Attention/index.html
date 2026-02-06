@@ -247,21 +247,40 @@
     </header>
     <div class="post-content syuanpi fadeInRightShort back-3">
       
-        <p>近日LLM方面有一些研究认为，当输入序列长度很长时，Full Attention计算出的注意力分数趋于平均；但是Sparse Attention则天然没有这个问题，因为对于每个input token，它都只会选择有限个先前的token与其做注意力计算。<br>
-心理学上也有一些很著名的实验和结论，譬如说<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1G54y1272j">传球实验</a>，当人的注意力集中在计数传球数量的时候，根本注意不到一个大猩猩曾经来招摇过。这充分表明人的注意力资源是有限的。<br>
-那么人类自己是怎么组织这有限的注意力资源呢？我想可能每个人有不同的方式，大致应该也可以分为稠密注意力(可能会退化为fix window)或者稀疏注意力(表现为思维的跳跃性?)两种方式。我自己应当是稀疏注意力方式的。</p>
+        <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 心理学领域有一个著名的实验——<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1G54y1272j">传球实验</a>。当人的注意力集中在计数传球数量的时候，根本注意不到一个大猩猩招摇路过。这充分表明人的注意力资源是有限的。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 那么人类自己是怎么组织这有限的注意力资源呢？</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 我想可能每个人有不同的方式，大致应该也可以分为<strong>稠密注意力</strong>或者<strong>稀疏注意力</strong>两种方式。</p>
 <span id="more"></span>
+<ul>
+<li>稠密注意力：在注意力计算时，稠密注意力会关注上文中的每一个token
+<ul>
+<li>在短上下文和短逻辑链条中，稠密注意力通常更加准确</li>
+<li>长上下文情境时，消耗计算力资源大。因此可能会退化为fix window注意力机制，譬如只关注最开始的或者最靠近的tokens.<br>
+而且当上下文很长时，稠密注意力计算出的注意力分数趋于平均</li>
+</ul>
+</li>
+<li>稀疏注意力：在注意力计算时，稀疏注意力会关注上文中通过一些方式筛选的某些token
+<ul>
+<li>在短上下文和短逻辑链条中，稀疏注意力的准确性可能会不如稠密注意力</li>
+<li>长上下文情境时，消耗计算力资源小，且能有效提取关键信息。</li>
+</ul>
+</li>
+</ul>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 我自己应当是用<strong>稀疏注意力方式</strong>来分配我的注意力资源的。</p>
 <h2 id="应试">应试</h2>
-<p>从小学、初中到高中乃至大学的早些时候，考试都是学习生活中的重要环节。但我发现无论我准备得有多么充分，我总是在一些“愚蠢的、不应该犯错的地方”犯错。为此我整理了很多错题笔记来提醒自己，以及几页纸，上面写着“题目给的条件一定要抄对”、“自己算出来的答案一定要抄到答题卡上！不要抄错！！不要抄串题号！！！”、“看横纵坐标看清楚单位以及是否有‘<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span>’的小字”、“填空题注意要填的答案要求的单位”等诸如此类的<s>废话</s>提醒（太痛了，每一句话背后至少是2分</p>
-<p>从小到大每一次考试，尤其是高考前的时间，我都在和“低级错误”搏斗。这些小失误的概率分布是很稳定的，因此我的分数波动和题目难度无关，但排名和题目难度强相关。无论题目难易，我都有无法避免的小失误，所以分数总是相对稳定。当题目难一些，别的同学的分数就会变低，我的排名就能异军突起；当题目容易了，别的同学就能拿高分，我的排名就不好看。譬如在高考二模，难度达到顶峰，我是人大附中年级第一、海淀第一；到了高考，题目比二模简单多了，我的成绩虽然上清华没问题，但排名就不提也罢。</p>
-<p>在这段漫长的应试教育的时光中，我很苦恼于这些低级错误。每次考试，总共六科，少则十分、多则二十余分都因为这些低级错误白白失去。家长老师总把问题归咎于我“态度不端正、审题不仔细、心态飘了”之类。我觉得很无奈，我自认为我学习态度很端正，虽然应试教育有这样那样弊病，但它作为选拔机制存在，是上清华的必经之路，我很严肃认真地对待它；我审题也很仔细，挖的坑我都看得出来，但就是会以不为0的概率抄错数/漏写单位/etc.</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 回望过去，我自认学习不错，但我其实一直不太善于应试。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 从小学、初中到高中乃至大学的早些时候，考试都是学习生活中的重要环节。但我发现无论我准备得有多么充分，我总是在一些“愚蠢的、不应该犯错的地方”犯错。为此我整理了很多错题笔记来提醒自己，以及几页纸，上面写着“题目给的条件一定要抄对”、“自己算出来的答案一定要抄到答题卡上！不要抄错！！不要抄串题号！！！”、“看横纵坐标看清楚单位以及是否有‘<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span>’的小字”、“填空题注意要填的答案要求的单位”等诸如此类的<s>废话</s>提醒（太痛了，每一句话背后至少是2分</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 从小到大每一次考试，尤其是高考前的时间，我都在和“低级错误”搏斗。这些小失误的概率分布是很稳定的，因此我的分数波动和题目难度无关，但排名和题目难度强相关。无论题目难易，我都有无法避免的小失误，所以分数总是相对稳定。当题目难一些，别的同学的分数就会变低，我的排名就能异军突起；当题目容易了，别的同学就能拿高分，我的排名就不好看。譬如在高考二模，难度达到顶峰，我是人大附中年级第一、海淀第一；到了高考，题目比二模简单多了，我的成绩虽然上清华没问题，但排名就不提也罢。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 在这段漫长的应试教育的时光中，我很苦恼于这些低级错误。每次考试，总共六科，少则十分、多则二十余分都因为这些低级错误白白失去。家长老师总把问题归咎于我“态度不端正、审题不仔细、心态飘了”之类。我觉得很无奈，我自认为我学习态度很端正，虽然应试教育有这样那样弊病，但它作为选拔机制存在，是上清华的必经之路，我很严肃认真地对待它；我审题也很仔细，挖的坑我都看得出来，但就是会以不为0的概率抄错数/漏写单位/etc.</p>
 <h2 id="大学">大学</h2>
 <h3 id="学业">学业</h3>
-<p>到了大学，一切都不一样了。尽管也有考试和绩点，但大学的考试更偏向于考察知识的理解与掌握程度，而非如高中考试一样，在有限的知识点中绞尽脑汁挖坑设陷阱，以提高所谓“区分度”。大学的课程，只要平时正常完成作业，理解知识点，考前再花一点时间复习并熟悉一下考试题目的风格，就能拿到4.0的满绩了。尽管我仍然会有不可避免的小失误，但大学的考试在这方面的容错率就比高考高得多：我还是很少能拿到卷面满分，但足以拿到满绩。</p>
-<p>到目前为止，凡是我参加了考试的课程，我都拿到了4.0的满绩。唯一一门拿了3.6的科目是OOP，因为我“主动”弃考了！在OOP课程开始前，我已提前自学相关内容，并在开课时的“小教员”选拔中取得满分，成为为课程小教员。期间我经常为同学讲解知识点、调试代码，并为课程组贡献了四道编程习题。然而，由于一时疏忽，我误解了考试公告，以为自己有期末考试豁免特权，直接弃考，最终仅凭平时成绩与小教员加分获得B+。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 到了大学，一切都不一样了。尽管也有考试和绩点，但大学的考试更偏向于考察知识的理解与掌握程度，而非如高中考试一样，在有限的知识点中绞尽脑汁挖坑设陷阱，以提高所谓“区分度”。大学的课程，只要平时正常完成作业，理解知识点，考前再花一点时间复习并熟悉一下考试题目的风格，就能拿到4.0的满绩了。尽管我仍然会有不可避免的小失误，但大学的考试在这方面的容错率就比高考高得多：我还是很少能拿到卷面满分，但足以拿到满绩。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 到目前为止，凡是我参加了考试的课程，我都拿到了4.0的满绩。唯一一门拿了3.6的科目是OOP，因为我“主动”弃考了！在OOP课程开始前，我已提前自学相关内容，并在开课时的“小教员”选拔中取得满分，成为为课程小教员。期间我经常为同学讲解知识点、调试代码，并为课程组贡献了四道编程习题。然而，由于一时疏忽，我误解了考试公告，以为自己有期末考试豁免特权，直接弃考，最终仅凭平时成绩与小教员加分获得B+。</p>
 <h3 id="工程与科研">工程与科研</h3>
-<p>我发现我很适合搞一些工程和科研相关的项目。因为项目的底层逻辑是明确需求、设计架构、实现方案、测试成果，这与应试解题答案必须分毫不差的逻辑是完全不同的。我很擅长现场学习，也擅长调试程序。只要大方向正确，在实现过程中可能存在的问题都可以在测试中被一步步排查、解决。到目前为止最让我印象深刻的项目是计算机组成原理的大作业，要写一个支持RISCV指令集的五级流水线CPU，而且还要实现诸多性能优化的技术，譬如BTB、TLB、cache等等。在排查错误的时候，我先在仿真中找到出错的信号，然后回溯而上，一点点排查问题出现的原因，进而迅速将其修复。这样在“长上下文”中，迅速熟悉情景，迅速定位问题的能力，或许是稀疏注意力模式带给我的优势之一。</p>
-<p>到了大学阶段，我从attention pattern的角度来反思，发现自己可能是天生不太适合要求“零失误”的应试考核任务。但是这种“稀疏注意力”机制让我在大学，无论是学习、科研还是工程都感觉很顺畅。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 我发现我很适合搞一些工程和科研相关的项目。因为项目的底层逻辑是明确需求、设计架构、实现方案、测试成果，这与应试解题答案必须分毫不差的逻辑是完全不同的。我很擅长现场学习，也擅长调试程序。只要大方向正确，在实现过程中可能存在的问题都可以在测试中被一步步排查、解决。<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 到目前为止最让我印象深刻的项目是计算机组成原理的大作业，要写一个支持RISCV指令集的五级流水线CPU，而且还要实现诸多性能优化的技术，譬如BTB、TLB、cache等等。在排查错误的时候，我先在仿真中找到出错的信号，然后回溯而上，一点点排查问题出现的原因，进而迅速将其修复。<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 这样在“长上下文”中，迅速熟悉情景，迅速定位问题的能力，或许是稀疏注意力模式带给我的优势之一。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 到了大学阶段，我从attention pattern的角度来反思，发现自己可能是天生不太适合要求“零失误”的应试考核任务。但是这种“稀疏注意力”机制让我在大学，无论是学习、科研还是工程都感觉很顺畅。</p>
 
       
     
@@ -302,6 +321,12 @@
   
     
   <nav class="article-page">
+    
+      <a href="/2026/02/02/course-CS231n-2026-02-02-CNN/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>CNN Architecture and Training CNNs
+        </span>
+      </a>
     
     
       <a href="/2026/01/28/projects-2026-01-28-CUADC2025summary/" id="art-right" class="art-right">
@@ -388,11 +413,11 @@
   <div class="tagcloud-taglist">
   
     <div class="tagcloud-tag">
-      <button>Daily Log</button>
+      <button>李宏毅ML</button>
     </div>
   
     <div class="tagcloud-tag">
-      <button>李宏毅ML</button>
+      <button>Daily Log</button>
     </div>
   
     <div class="tagcloud-tag">
@@ -414,54 +439,6 @@
   </div>
   
     <div class="tagcloud-postlist active">
-      <h2>Daily Log</h2>
-      
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/31/daily-2026-01-31-Sparse-Attention/">
-            <time class="tagcloud-posttime">2026 / 01 / 31</time>
-            <span>Sparse Attention</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/27/daily-2026-01-27-Handmade-CPU/">
-            <time class="tagcloud-posttime">2026 / 01 / 27</time>
-            <span>How to Make a CPU by Hand——From TD4 to Verilog</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/24/daily-2026-01-24-THUCS培养体系/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>THU-CS培养方案</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
-            <time class="tagcloud-posttime">2026 / 01 / 20</time>
-            <span>EETalk Project</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/19/daily-2026-01-19-CQ-CQ-CQ-This-is-BD1AEH-calling/">
-            <time class="tagcloud-posttime">2026 / 01 / 19</time>
-            <span>CQ CQ CQ This is BD1AEH calling</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/16/hello-world/">
-            <time class="tagcloud-posttime">2026 / 01 / 16</time>
-            <span>CQ CQ This is BD1AEH. Standing by.</span>
-          </a>
-        </div>
-      
-    </div>
-  
-    <div class="tagcloud-postlist ">
       <h2>李宏毅ML</h2>
       
       
@@ -517,8 +494,70 @@
     </div>
   
     <div class="tagcloud-postlist ">
+      <h2>Daily Log</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a href="/2026/02/05/daily-2026-02-05-Teacher-Zhu/">
+            <time class="tagcloud-posttime">2026 / 02 / 05</time>
+            <span>The Story of Teacher Zhu</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/31/daily-2026-01-31-Sparse-Attention/">
+            <time class="tagcloud-posttime">2026 / 01 / 31</time>
+            <span>Sparse Attention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/27/daily-2026-01-27-Handmade-CPU/">
+            <time class="tagcloud-posttime">2026 / 01 / 27</time>
+            <span>How to Make a CPU by Hand——From TD4 to Verilog</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/daily-2026-01-24-THUCS培养体系/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>THU-CS培养方案</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/19/daily-2026-01-19-CQ-CQ-CQ-This-is-BD1AEH-calling/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>CQ CQ CQ This is BD1AEH calling</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/16/hello-world/">
+            <time class="tagcloud-posttime">2026 / 01 / 16</time>
+            <span>CQ CQ This is BD1AEH. Standing by.</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
       <h2>CS231n</h2>
       
+      
+        <div class="tagcloud-post">
+          <a href="/2026/02/02/course-CS231n-2026-02-02-CNN/">
+            <time class="tagcloud-posttime">2026 / 02 / 02</time>
+            <span>CNN Architecture and Training CNNs</span>
+          </a>
+        </div>
       
         <div class="tagcloud-post">
           <a href="/2026/01/25/course-CS231n-2026-01-25-Backpropagation/">

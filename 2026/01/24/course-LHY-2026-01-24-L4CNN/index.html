@@ -255,10 +255,10 @@
 <span id="more"></span>
 <h2 id="Image-Classification">Image Classification</h2>
 <ul>
-<li>Model：输入为大小相同的图片(一个三维的tensor，RGBx长x宽，大小为0~255)，输出为一个向量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span>为one-hot vector)</li>
+<li>Model：输入为大小相同的图片(一个三维的tensor，RGBx长x宽，大小为0~255)，输出为一个向量<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span></eq>(<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span></eq>为one-hot vector)</li>
 <li>Loss：Cross entropy</li>
 </ul>
-<p>Fully connected network存在的问题：权重矩阵过大，若图像为100x100，一层的神经元数目为1000，则权重矩阵大小为(3x100x100)x(1000)=<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>e</mi><mn>7</mn></mrow><annotation encoding="application/x-tex">3e7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mord mathnormal">e</span><span class="mord">7</span></span></span></span>。弹性过强，容易overfitting，缺乏迁移能力</p>
+<p>Fully connected network存在的问题：权重矩阵过大，若图像为100x100，一层的神经元数目为1000，则权重矩阵大小为(3x100x100)x(1000)=<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>e</mi><mn>7</mn></mrow><annotation encoding="application/x-tex">3e7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mord mathnormal">e</span><span class="mord">7</span></span></span></span></eq>。弹性过强，容易overfitting，缺乏迁移能力</p>
 <h3 id="Story">Story</h3>
 <p><strong>Observe1</strong>: 图像的浅层特征占据浅图片中很小的部分，而深层特征是浅层特征的组合</p>
 <ul>
@@ -442,11 +442,11 @@ The Receptive fields cover the whole picture</li>
     </div>
   
     <div class="tagcloud-tag">
-      <button>Project</button>
+      <button>Tutorial</button>
     </div>
   
     <div class="tagcloud-tag">
-      <button>Tutorial</button>
+      <button>Project</button>
     </div>
   
   </div>
@@ -623,26 +623,6 @@ The Receptive fields cover the whole picture</li>
     </div>
   
     <div class="tagcloud-postlist ">
-      <h2>Project</h2>
-      
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/28/projects-2026-01-28-CUADC2025summary/">
-            <time class="tagcloud-posttime">2026 / 01 / 28</time>
-            <span>CUADC2025 Summary</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
-            <time class="tagcloud-posttime">2026 / 01 / 20</time>
-            <span>EETalk Project</span>
-          </a>
-        </div>
-      
-    </div>
-  
-    <div class="tagcloud-postlist ">
       <h2>Tutorial</h2>
       
       
@@ -676,6 +656,26 @@ The Receptive fields cover the whole picture</li>
       
     </div>
   
+    <div class="tagcloud-postlist ">
+      <h2>Project</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/28/projects-2026-01-28-CUADC2025summary/">
+            <time class="tagcloud-posttime">2026 / 01 / 28</time>
+            <span>CUADC2025 Summary</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+    </div>
+  
 </div>
 
   </div>
@@ -693,7 +693,10 @@ The Receptive fields cover the whole picture</li>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<script src="/script/lib/jquery/jquery.min.js"></script>
+
+
 
 
 
@@ -764,8 +767,6 @@ if (nlviconfig.theme.toc) {
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
   />
-
-
 
 
 </body>

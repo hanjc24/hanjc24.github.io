@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="browsermode" content="application">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Jicheng's Blog">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name= "format-detection" content="telephone=no" />
+
+  <link rel="apple-touch-icon"  sizes="72x72"  href="/favicon.png">
+  <link rel="apple-touch-icon-precomposed"  sizes="72x72"  href="/favicon.png">
+
+
+
+  <meta name="description" content="Here is BD1AEH">
+
+
+
+  <meta name="keywords" content="Literature Review, nlvi" />
+
+
+<link rel="apple-touch-startup-image" media="(device-width: 375px)" href="assets/apple-launch-1125x2436.png">
+<link rel="apple-touch-startup-image" media="(orientation: landscape)" href="assets/apple-touch-startup-image-2048x1496.png">
+
+<link rel="stylesheet" href="/style/style.css">
+
+<script>
+  var nlviconfig = {
+    title: "Jicheng's Blog",
+    author: "hanjc24",
+    baseUrl: "/",
+    theme: {
+      scheme: "banderole",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      pjax: false,
+      lazy: false,
+      toc: true
+    }
+  }
+</script>
+
+
+
+
+    
+<link rel="stylesheet" href="/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+
+    
+<link rel="stylesheet" href="/syuanpi/syuanpi.min.css">
+
+
+
+
+
+    <link rel="icon" href="/favicon.png">
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+@font-face {
+  font-family: "Allura";
+  src: url('/font/allura/allura.ttf');
+}
+</style>
+
+  <title> DeepSeekDSA tilelang实现 · Jicheng's Blog </title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body>
+  <div class="container">
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn" style="display:none;">
+    <h1><a href="/">Jicheng's Blog</a></h1>
+    
+  </div>
+</div>
+
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search-btn" aria-label="Search">
+        <i class="iconfont icon-search"></i>
+      </a>
+    </li>
+  
+  
+  
+    
+  
+    <li class="menu-item">
+      <a href="/" id="article">
+        <span class="base-name">
+          
+            ARTICLE
+          
+        </span>
+      </a>
+    </li>
+  
+  
+    
+  
+    <li class="menu-item">
+      <a href="/archives" id="archives">
+        <span class="base-name">
+          
+            ARCHIVES
+          
+        </span>
+      </a>
+    </li>
+  
+  
+    
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">
+          
+            TAGS
+          
+        </span>
+      </a>
+    </li>
+  
+  
+    
+  
+    <li class="menu-item">
+      <a href="/about" id="about">
+        <span class="base-name">
+          
+            ABOUT
+          
+        </span>
+      </a>
+    </li>
+  
+  
+  </ul>
+  
+</nav>
+
+  </div>
+</header>
+<div class="mobile-header" id="mobile-header">
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <div class="header-menu-line"></div>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">Jicheng's Blog</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+  <div class="mobile-header-body">
+    <ul class="mobile-header-list">
+      
+        <li class="mobile-nav-item syuanpi fadeInRightShort back-0">
+          <a href="/" >
+            
+              ARTICLE
+            
+          </a>
+        </li>
+      
+        <li class="mobile-nav-item syuanpi fadeInRightShort back-1">
+          <a href="/archives" >
+            
+              ARCHIVES
+            
+          </a>
+        </li>
+      
+        <li class="mobile-nav-item syuanpi fadeInRightShort back-2">
+          <a href="javascript:;" id="mobile-tags">
+            
+              TAGS
+            
+          </a>
+        </li>
+      
+        <li class="mobile-nav-item syuanpi fadeInRightShort back-3">
+          <a href="/about" >
+            
+              ABOUT
+            
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+    <div class="container-inner" style="display:none;">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInRightShort back-1">
+        <div class="post-time-wrapper">
+          
+          <time>2026-04-18</time>
+          
+            
+              <span class="post-category"><a href="/categories/Academic/">Academic</a></span>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInRightShort back-2">
+        
+          DeepSeekDSA tilelang实现
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInRightShort back-3">
+      
+        <p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2512.02556">deepseekv3.2 arxiv</a><br>
+<a target="_blank" rel="noopener" href="https://github.com/tile-ai/tilelang/tree/main/examples/dsa_sparse_finetune">tilelang实现DSA</a><br>
+<a href="https://hanjc24.github.io/2026/01/26/literature-2026-01-26-DeepSeek-v3-2/">个人literature review</a></p>
+<span id="more"></span>
+<h2 id="indexer">indexer</h2>
+<h3 id="indexer-forward">indexer forward</h3>
+<p><img src="image.png" alt="alt text"></p>
+<p>总之这就是公式。index的输入是<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>q</mi><mi>I</mi></msup><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><msup><mi>H</mi><mi>I</mi></msup><mo separator="true">,</mo><msup><mi>d</mi><mi>I</mi></msup><mo stretchy="false">]</mo><mtext>，</mtext><msup><mi>k</mi><mi>I</mi></msup><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><msup><mi>d</mi><mi>I</mi></msup><mo stretchy="false">]</mo><mtext>，</mtext><msup><mi>w</mi><mi>I</mi></msup><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><msup><mi>H</mi><mi>I</mi></msup><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">q^I[s,H^I,d^I]，k^I[s,d^I]，w^I[s,H^I]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0913em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span><span class="mclose">]</span><span class="mord cjk_fallback">，</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span><span class="mclose">]</span><span class="mord cjk_fallback">，</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span></eq></p>
+<ul>
+<li><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>q</mi><mi>I</mi></msup></mrow><annotation encoding="application/x-tex">q^I</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0358em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span></span></span></span></eq>是多头query head（derive from query）</li>
+<li><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>w</mi><mi>I</mi></msup></mrow><annotation encoding="application/x-tex">w^I</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span></span></span></span></eq>表示这些head分别attach到<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mi>I</mi></msup></mrow><annotation encoding="application/x-tex">k^I</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span></span></span></span></eq>后分数的权重（derive from query）</li>
+<li><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mi>I</mi></msup></mrow><annotation encoding="application/x-tex">k^I</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span></span></span></span></eq>是单头的key（derive from key）</li>
+</ul>
+<p>在得到<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>s</mi></mrow></msub></mrow><annotation encoding="application/x-tex">I_{t,s}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></eq>(表示t位置上的query与s位置上的key的分数)后，沿着<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>m</mi><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">dim=-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">im</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span></eq>(key位置维度)的方向进行topk选取得到topk_index和topk_logits</p>
+<ul>
+<li><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>e</mi><mi>x</mi><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">topk\_index[s,topk]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">in</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal">x</span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span></eq>：表示s位置上的query选取的topk的key的位置下标</li>
+<li><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><mi>t</mi><mi>s</mi><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">topk\_logits[s,topk]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span></eq>：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><mi>t</mi><mi>s</mi><mo stretchy="false">[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">topk\_logits[i,j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span></eq>表示i位置上的query与<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>e</mi><mi>x</mi><mo stretchy="false">[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">topk\_index[i,j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">in</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal">x</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span></eq>位置上的key之间的分数</li>
+<li><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">topk\_score[s,topk]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">score</span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span></eq>：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><mi>t</mi><mi>s</mi><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">topk\_logits[s,topk]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span></eq>经过softmax得到的结果，是一个概率分布</li>
+</ul>
+<h3 id="indexer-forward-kernel">indexer forward kernel</h3>
+<p>哲学：因为query是每个位置分别选取topk，所以无法像原始flashAttention一样将query分Q_BLOCK来进行计算。但是把query只用一个向量表示，与K_BLOCK进行向量乘矩阵在GPU上效率太低，所以这里用了多头<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>I</mi></msup></mrow><annotation encoding="application/x-tex">H^I</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span></span></span></span></eq>的query（这就是之前infllmv2进行sparse选取和attention计算一样的哲学）</p>
+<p>具体kernel实现的时候</p>
+<ul>
+<li>首先在query位置上并行（因为不同位置上的query topk选取是相互独立的），每个线程块执行一个位置上的多头query的topk选取(具体而言，是<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>q</mi><mi>t</mi><mi>I</mi></msubsup><mo stretchy="false">[</mo><msup><mi>H</mi><mi>I</mi></msup><mo separator="true">,</mo><msup><mi>d</mi><mi>I</mi></msup><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">q^I_t[H^I,d^I]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0913em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-2.453em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span></eq>)</li>
+<li>然后将<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mi>I</mi></msup></mrow><annotation encoding="application/x-tex">k^I</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span></span></span></span></eq>分块为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mtext>BLOCK_K</mtext><mo separator="true">,</mo><msup><mi>d</mi><mi>I</mi></msup><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[\text{BLOCK\_K},d^I]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1513em;vertical-align:-0.31em;"></span><span class="mopen">[</span><span class="mord text"><span class="mord">BLOCK_K</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span></eq>，流水线执行矩阵乘法，计算logit，用bitonic_sort在线执行排序以进行topk选取
+<ul>
+<li>具体而言，kernel在共享内存开辟了两个[2*topk]的数组，用于存放当前topk选取的index和logit。这里要求topk是BLOCK_K的整数倍</li>
+<li>BLOCK_K循环最开始的时候，先依次将计算出的logit和index数组(长度为[BLOCK_K])填入上述的两个寄存器数组</li>
+<li>当填满的时候，执行bitonic_sort将logit降序排序</li>
+<li>排序结束后，舍弃后topk的logit和index，之后每块计算出的logit和index再依次填入后topk的logit和index，填满后再跳到上一步</li>
+</ul>
+</li>
+</ul>
+<h4 id="bitonic-sort">bitonic_sort</h4>
+<p>一种适合并行执行、基于比较的排序算法</p>
+<h3 id="indexer-backward">indexer backward</h3>
+<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>s</mi><mi>s</mi><mo>=</mo><msub><mi mathvariant="double-struck">D</mi><mrow><mi>K</mi><mi>L</mi></mrow></msub><mo stretchy="false">(</mo><mi>A</mi><mi>t</mi><mi>t</mi><mi>n</mi><mi>S</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mo stretchy="false">]</mo><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mo stretchy="false">]</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">loss = \mathbb{D}_{KL}(AttnScore[s,topk]||topk\_score[s,topk])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">oss</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord"><span class="mord mathbb">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mord mathnormal">tt</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">core</span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mord">∣∣</span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">score</span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">])</span></span></span></span></eq> 二者都是概率分布<br>
+loss也可以表示为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mo>∑</mo><mi>A</mi><mi>t</mi><mi>t</mi><mi>n</mi><mi>S</mi><mi>c</mi><mi>o</mi><mi>r</mi><msub><mi>e</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><msub><mi>e</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">-\sum AttnScore_{t,k}log(topk\_score_{t,k})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">tt</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.02778em;">cor</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.02778em;">scor</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>，这是交叉熵<br>
+在反传时，这两者等价</p>
+<p>利用这个数值得到topk_score的梯度，进而在indexer进行反向传播</p>
+<h4 id="前传计算图：">前传计算图：</h4>
+<p>这里记<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></eq>为query位置，<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>e</mi><msub><mi>x</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">s=topk\_index_{t,k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0044em;vertical-align:-0.31em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">in</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></eq>是一个简写，h为query head下标，k为topk下标</p>
+<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><msub><mi>k</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi><mo separator="true">,</mo><mi>s</mi></mrow></msub><mo>=</mo><msubsup><mi>q</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi></mrow><mi>I</mi></msubsup><mo separator="true">⋅</mo><msub><mi>k</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">qk_{t,h,s} = q^I_{t,h} · k_{s}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2605em;vertical-align:-0.4192em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-2.4169em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4192em;"><span></span></span></span></span></span></span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq><br>
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><mi>t</mi><msub><mi>s</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi><mo separator="true">,</mo><mi>s</mi></mrow></msub><mo>=</mo><mi>R</mi><mi>e</mi><mi>L</mi><mi>U</mi><mo stretchy="false">(</mo><mi>q</mi><msub><mi>k</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi><mo separator="true">,</mo><mi>s</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">logits_{t,h,s}=ReLU(qk_{t,h,s})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10903em;">LU</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>（即t位置多头query attach到选中s位置的key的分数）<br>
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><msub><mi>t</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo>=</mo><msub><mo>∑</mo><mi>h</mi></msub><msub><mi>w</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi></mrow></msub><mo separator="true">⋅</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><mi>t</mi><msub><mi>s</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi><mo separator="true">,</mo><mi>s</mi></mrow></msub></mrow><annotation encoding="application/x-tex">topk\_logit_{t,k}=\sum_hw_{t,h}·logits_{t,h,s}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0044em;vertical-align:-0.31em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0497em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">h</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></eq><br>
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><msub><mi>e</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo>=</mo><mi>s</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><msub><mi>t</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">topk\_score_{t,k}=softmax(topk\_logit_{t,k})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0044em;vertical-align:-0.31em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.02778em;">scor</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">so</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq><br>
+（反传无需考虑掩码因为前传已经保证了<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s\leq t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></eq>）</p>
+<h4 id="反传公式：">反传公式：</h4>
+<ul>
+<li><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>L</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><msub><mi>t</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub></mrow></mfrac><mo>=</mo><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><msub><mi>e</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo>−</mo><mi>A</mi><mi>t</mi><mi>t</mi><mi>n</mi><mi>S</mi><mi>c</mi><mi>o</mi><mi>r</mi><msub><mi>e</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\frac{\partial L}{\partial topk\_logit_{t,k}}=topk\_score_{t,k}-AttnScore_{t,k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4421em;vertical-align:-0.562em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mord mtight" style="margin-right:0.02778em;">_</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">i</span><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2901em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.562em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0044em;vertical-align:-0.31em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.02778em;">scor</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">tt</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.02778em;">cor</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></eq><br>
+（这里topk_score为topk_logit经过softmax的结果）</li>
+<li>$dw=\frac{\partial L}{\partial w_{t,h}}\<br>
+=\sum_{k\in [0,topk)}\frac{\partial L}{\partial topk_logit_{t,k}}\frac{\partial topk_logit_{t,k}}{\partial w_{t,h}}\<br>
+=\sum_{k\in [0,topk)}(topk_score_{t,k}-AttnScore_{t,k})logits_{t,h,s}$</li>
+<li>$d\ logits=\frac{\partial L}{\partial logits_{t,h,s}}=\frac{\partial L}{\partial topk_logit_{t,k}}\frac{\partial topk_logit_{t,k}}{\partial logits_{t,h,s}}\<br>
+=(topk_score_{t,k}-AttnScore_{t,k})w_{t,h}$</li>
+<li><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mtext> </mtext><mi>q</mi><mi>k</mi><mo>=</mo><mi>d</mi><mtext> </mtext><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><mi>t</mi><mi>s</mi><mo separator="true">⋅</mo><mi>d</mi><mi>R</mi><mi>e</mi><mi>L</mi><mi>U</mi><mo>=</mo><mn>0</mn><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><mi>t</mi><mi>s</mi><mo>=</mo><mn>0</mn><mo stretchy="false">)</mo><mtext>或</mtext><mi>d</mi><mtext> </mtext><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><mi>t</mi><mi>s</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><mi>t</mi><mi>s</mi><mo>&gt;</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d\ qk=d\ logits·dReLU=0(logits=0)或d\ logits(logits&gt;0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">d</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">d</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10903em;">LU</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mclose">)</span><span class="mord cjk_fallback">或</span><span class="mord mathnormal">d</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span></eq></li>
+<li><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>q</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>L</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>q</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi><mo separator="true">,</mo><mi>d</mi></mrow></msub></mrow></mfrac><mo>=</mo><msub><mo>∑</mo><mi>s</mi></msub><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>L</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>q</mi><msub><mi>k</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi><mo separator="true">,</mo><mi>s</mi></mrow></msub></mrow></mfrac><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>q</mi><msub><mi>k</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi><mo separator="true">,</mo><mi>s</mi></mrow></msub></mrow><msub><mi>q</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi><mo separator="true">,</mo><mi>d</mi></mrow></msub></mfrac><mo>=</mo><msub><mo>∑</mo><mi>s</mi></msub><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>L</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>q</mi><msub><mi>k</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi><mo separator="true">,</mo><mi>s</mi></mrow></msub></mrow></mfrac><msub><mi>k</mi><mrow><mi>s</mi><mo separator="true">,</mo><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">dq=\frac{\partial L}{\partial q_{t,h,d}}=\sum_s\frac{\partial L}{\partial qk_{t,h,s}}\frac{\partial qk_{t,h,s}}{q_{t,h,d}}=\sum_s\frac{\partial L}{\partial qk_{t,h,s}}k_{s,d}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.4282em;vertical-align:-0.5481em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0359em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2901em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5481em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.5473em;vertical-align:-0.5481em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0017em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0315em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2901em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5481em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9992em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0359em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2901em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.5131em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0315em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2901em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5481em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.4282em;vertical-align:-0.5481em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0017em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0315em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2901em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5481em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></eq></li>
+<li><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>k</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>L</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>k</mi><mrow><mi>s</mi><mo separator="true">,</mo><mi>d</mi></mrow></msub></mrow></mfrac><mo>=</mo><msub><mo>∑</mo><mi>t</mi></msub><msub><mo>∑</mo><mi>h</mi></msub><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>L</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>q</mi><msub><mi>k</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi><mo separator="true">,</mo><mi>s</mi></mrow></msub></mrow></mfrac><msub><mi>q</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi><mo separator="true">,</mo><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">dk=\frac{\partial L}{\partial k_{s,d}}=\sum_t\sum_h\frac{\partial L}{\partial qk_{t,h,s}}q_{t,h,d}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.4282em;vertical-align:-0.5481em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0315em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2901em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5481em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.4282em;vertical-align:-0.5481em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1308em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">h</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0315em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2901em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5481em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></eq></li>
+</ul>
+<h3 id="indexer-backward-kernel">indexer backward kernel</h3>
+<p>前传会存储topk_score，mla_sparse_attention会计算出AttnScore作为反传的参数<br>
+和前传一样，反传kernel在query的位置维度上并行，然后pipeline对topk分块进行处理</p>
+<ul>
+<li>首先重新算出来logits与qk，dlogits通过topk_score与AttnScore算出</li>
+<li>dq和dw都是t位置上的，需要累加，所以在寄存器上开辟一段空间作为累加器</li>
+<li>dk是s位置上的，所以沿着topk循环的时候，需要对选中的dk进行原子加</li>
+</ul>
+<p>note: 感觉在跑小规模实验的时候不需要改tilelang算子，这里反传直接用那个ref torch版本就好了，该损失函数也很好改，一行代码的事</p>
+<h2 id="MLA-sparse-attention">MLA sparse attention</h2>
+<h3 id="MLA-forward-kernel">MLA forward kernel</h3>
+<p>MLA在topk选择了key位置之后的前传</p>
+<p>note: 不过有点奇怪的是，sparse_mla_fwd.py第211行左右，它算Attention的时候，直接把传入的kv同时当k和v来进行计算，而没有进行类似MLA的upper_proj之类的（可能是因为autograd Function要求是无参数的？）</p>
+<h3 id="MLA-topk-reducesum">MLA topk reducesum</h3>
+<p>用于在反传的时候计算indexer backward所需要的AttnScore<br>
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>t</mi><mi>t</mi><mi>n</mi><mi>S</mi><mi>c</mi><mi>o</mi><mi>r</mi><msub><mi>e</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>s</mi></mrow></msub></mrow><annotation encoding="application/x-tex">AttnScore_{t,s}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">tt</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.02778em;">cor</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></eq>：为计算<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></eq>位置的query和<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span></eq>位置的key的相关性，首先有<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo>=</mo><mi>s</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mi>q</mi><msup><mi>k</mi><mi>T</mi></msup><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>s</mi><mi>m</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">score=softmax(qk^T)/sm\_scale</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">score</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1513em;vertical-align:-0.31em;"></span><span class="mord mathnormal">so</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal">s</span><span class="mord mathnormal">m</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">sc</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span></span></span></span></eq>，形状为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>S</mi><mo separator="true">,</mo><mi>H</mi><mo separator="true">,</mo><mi>S</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[S,H,S]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mclose">]</span></span></span></span></eq>，然后先再H维度上加和，再按照topk indice来gather，得到<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>S</mi><mo separator="true">,</mo><mi>t</mi><mi>o</mi><mi>p</mi><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[S,topk]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span></eq>形状的p，再在topk维度上进行L1归一化，得到AttnScore</p>
+<h3 id="MLA-backward-kernel">MLA backward kernel</h3>
+<h2 id="DSA-function">DSA function</h2>
+<p>综合以上kernel，构建出autograd function</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DSAFunction</span>(torch.autograd.Function):</span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params"></span></span><br><span class="line"><span class="params">        ctx,</span></span><br><span class="line"><span class="params">        q: torch.Tensor,       <span class="comment"># [S, H, D + tail_D]</span></span></span><br><span class="line"><span class="params">        kv: torch.Tensor,      <span class="comment"># [S, D + tail_D] 貌似同时充当了kv</span></span></span><br><span class="line"><span class="params">        index_q: torch.Tensor, <span class="comment"># [S, H, index_D]</span></span></span><br><span class="line"><span class="params">        index_k: torch.Tensor, <span class="comment"># [S, index_D]</span></span></span><br><span class="line"><span class="params">        weights: torch.Tensor, <span class="comment"># [S, H]</span></span></span><br><span class="line"><span class="params">        offsets: torch.Tensor, <span class="comment"># [batch_size+1]</span></span></span><br><span class="line"><span class="params">        topk: <span class="built_in">int</span>,</span></span><br><span class="line"><span class="params">        dim_v: <span class="built_in">int</span>, <span class="comment"># 输出O的维数 [S, H, dim_v]</span></span></span><br><span class="line"><span class="params">        sm_scale: <span class="type">Optional</span>[<span class="built_in">float</span>] = <span class="literal">None</span>,</span></span><br><span class="line"><span class="params">    </span>):</span><br><span class="line">        <span class="comment"># topk_indices, index_score = ref_index_score(index_q, weights, index_k, topk)</span></span><br><span class="line">        topk_indices, index_score = indexer_topk_reducesum_interface(index_q, weights, index_k, topk, offsets)</span><br><span class="line">        o, lse = sparse_mla_fwd_interface(q, kv.unsqueeze(-<span class="number">2</span>), topk_indices.unsqueeze(-<span class="number">2</span>), offsets, sm_scale=sm_scale, d_v=dim_v)</span><br><span class="line">        ctx.save_for_backward(q, kv, index_q, index_k, weights, topk_indices, index_score, o, lse, offsets)</span><br><span class="line">        ctx.topk = topk</span><br><span class="line">        ctx.dim_v = dim_v</span><br><span class="line">        ctx.sm_scale = sm_scale</span><br><span class="line">        <span class="keyword">return</span> o, topk_indices</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backward</span>(<span class="params"></span></span><br><span class="line"><span class="params">        ctx,</span></span><br><span class="line"><span class="params">        do: torch.Tensor,</span></span><br><span class="line"><span class="params">        _1: torch.Tensor,</span></span><br><span class="line"><span class="params">    </span>):</span><br><span class="line">        q, kv, index_q, index_k, weights, topk_indices, index_score, o, lse, offsets = ctx.saved_tensors</span><br><span class="line">        attn_score = sparse_mla_topk_reducesum_interface(</span><br><span class="line">            q, kv.unsqueeze(-<span class="number">2</span>), topk_indices.unsqueeze(-<span class="number">2</span>), lse, offsets, dim_v=ctx.dim_v</span><br><span class="line">        ).squeeze(-<span class="number">2</span>)</span><br><span class="line">        dq, dkv = sparse_mla_bwd(q, kv.unsqueeze(-<span class="number">2</span>), o, do, topk_indices.unsqueeze(-<span class="number">2</span>), lse, offsets, sm_scale=ctx.sm_scale)</span><br><span class="line">        dindex_q, dweights, dindex_k = indexer_bwd_interface(index_q, weights, index_k, attn_score, index_score, topk_indices, offsets)</span><br><span class="line">        <span class="keyword">return</span> dq, dkv.squeeze(-<span class="number">2</span>), dindex_q, dindex_k, dweights, <span class="literal">None</span>, <span class="literal">None</span>, <span class="literal">None</span>, <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+      
+    
+    </div>
+    
+      <div class="post-tags syuanpi fadeInRightShort back-3">
+      
+        <a href="/tags/Literature-Review/">Literature Review</a>
+      
+      </div>
+    
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>Author :</span>
+      <span>hanjc24</span>
+    </div>
+    <div class="copy-url">
+      <span>Url :</span>
+      <a href="http://hanjc24.github.io/2026/04/18/tutorial-2026-04-18-tilelangDSA/">http://hanjc24.github.io/2026/04/18/tutorial-2026-04-18-tilelangDSA/</a>
+    </div>
+    <div class="copy-origin">
+      <span>Origin :</span>
+      <a href="http://hanjc24.github.io">http://hanjc24.github.io</a>
+    </div>
+    <div class="copy-license">
+      
+      All rights reserved. Please contact the author for authorization to reprint.
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+    
+      <a href="/2026/02/15/tutorial-2026-02-15-Pytorch-View/" id="art-right" class="art-right">
+        <span class="prev-title">
+          Pytorch View<i class="iconfont icon-right"></i>
+        </span>
+      </a>
+    
+  </nav>
+
+
+    
+  <i id="com-switch" class="iconfont icon-down jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+
+    
+    
+
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+    
+  
+  <aside class="post-toc">
+    <div class="title"><span>Index</span></div>
+    <div class="toc-inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#indexer"><span class="toc-text">indexer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#indexer-forward"><span class="toc-text">indexer forward</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#indexer-forward-kernel"><span class="toc-text">indexer forward kernel</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#bitonic-sort"><span class="toc-text">bitonic_sort</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#indexer-backward"><span class="toc-text">indexer backward</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E4%BC%A0%E8%AE%A1%E7%AE%97%E5%9B%BE%EF%BC%9A"><span class="toc-text">前传计算图：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E4%BC%A0%E5%85%AC%E5%BC%8F%EF%BC%9A"><span class="toc-text">反传公式：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#indexer-backward-kernel"><span class="toc-text">indexer backward kernel</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MLA-sparse-attention"><span class="toc-text">MLA sparse attention</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MLA-forward-kernel"><span class="toc-text">MLA forward kernel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MLA-topk-reducesum"><span class="toc-text">MLA topk reducesum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MLA-backward-kernel"><span class="toc-text">MLA backward kernel</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DSA-function"><span class="toc-text">DSA function</span></a></li></ol>
+    </div>
+  </aside>
+
+
+
+  
+
+
+        </div>
+      </main>
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+  
+  
+    <a target="_blank" rel="noopener" href="https://github.com/hanjc24" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2026 ~ 2026</span>
+        <span>❤</span>
+        <span>hanjc24</span>
+    </div>
+    <div class="theme">
+        <span>
+            Powered by
+            <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo </a>
+        </span>
+        <span>
+            Theme
+            <a target="_blank" rel="noopener" href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+    <div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-taglist">
+  
+    <div class="tagcloud-tag">
+      <button>Daily Log</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>CS231n</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>李宏毅ML</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Literature Review</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Project</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Tutorial</button>
+    </div>
+  
+  </div>
+  
+    <div class="tagcloud-postlist active">
+      <h2>Daily Log</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a href="/2026/02/05/daily-2026-02-05-Teacher-Zhu/">
+            <time class="tagcloud-posttime">2026 / 02 / 05</time>
+            <span>The Story of Teacher Zhu</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/31/daily-2026-01-31-Sparse-Attention/">
+            <time class="tagcloud-posttime">2026 / 01 / 31</time>
+            <span>Sparse Attention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/27/daily-2026-01-27-Handmade-CPU/">
+            <time class="tagcloud-posttime">2026 / 01 / 27</time>
+            <span>How to Make a CPU by Hand——From TD4 to Verilog</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/daily-2026-01-24-THUCS培养体系/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>THU-CS培养方案</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/19/daily-2026-01-19-CQ-CQ-CQ-This-is-BD1AEH-calling/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>CQ CQ CQ This is BD1AEH calling</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/16/hello-world/">
+            <time class="tagcloud-posttime">2026 / 01 / 16</time>
+            <span>CQ CQ This is BD1AEH. Standing by.</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>CS231n</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a href="/2026/02/02/course-CS231n-2026-02-02-CNN/">
+            <time class="tagcloud-posttime">2026 / 02 / 02</time>
+            <span>CNN Architecture and Training CNNs</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/25/course-CS231n-2026-01-25-Backpropagation/">
+            <time class="tagcloud-posttime">2026 / 01 / 25</time>
+            <span>Backpropagation</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>李宏毅ML</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a href="/2026/02/06/course-LHY-2026-02-06-L9meta-learning/">
+            <time class="tagcloud-posttime">2026 / 02 / 06</time>
+            <span>LHY-L9 Meta Learning</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L8self-supervised/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L8 Self-supervised Learning</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L6Transformer/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L6 Transformer</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L5SelfAttention/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L5 Self-Attention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L4CNN/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L4 CNN</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L3Classification/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L3 Classification</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L2TrainIssue/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L2 Train Issue</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/24/course-LHY-2026-01-24-L1Regression/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L1 Regression</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Literature Review</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a href="/2026/04/18/tutorial-2026-04-18-tilelangDSA/">
+            <time class="tagcloud-posttime">2026 / 04 / 18</time>
+            <span>DeepSeekDSA tilelang实现</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/26/literature-2026-01-26-DeepSeek-v3-2/">
+            <time class="tagcloud-posttime">2026 / 01 / 26</time>
+            <span>DeepSeek_v3.2</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/19/literature-2026-01-19-DeepSeekNSA/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>DeepSeekNSA</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/18/literature-2026-01-18-infllmv2-paper-review/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>Infllmv2 Review</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/17/literature-2026-01-17-FlashAttention/">
+            <time class="tagcloud-posttime">2026 / 01 / 17</time>
+            <span>FlashAttention</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Project</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/28/projects-2026-01-28-CUADC2025summary/">
+            <time class="tagcloud-posttime">2026 / 01 / 28</time>
+            <span>CUADC2025 Summary</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Tutorial</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a href="/2026/02/15/tutorial-2026-02-15-Pytorch-View/">
+            <time class="tagcloud-posttime">2026 / 02 / 15</time>
+            <span>Pytorch View</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/22/tutorial-2026-01-22-Learning-Triton/">
+            <time class="tagcloud-posttime">2026 / 01 / 22</time>
+            <span>Learning Triton</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/18/tutorial-2026-01-18-How-to-use-Mermaid-in-Hexo/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>How to use Mermaid in Hexo</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a href="/2026/01/17/tutorial-2026-01-17-HexoNlviBuild/">
+            <time class="tagcloud-posttime">2026 / 01 / 17</time>
+            <span>How to customize Hexo theme Nlvi</span>
+          </a>
+        </div>
+      
+    </div>
+  
+</div>
+
+  </div>
+  <div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+  <div class="search" id="search">
+    <div class="input">
+      <input type="text" id="search-input" placeholder="搜索一下？" autofocus>
+    </div>
+    <div id="search-result"></div>
+  </div>
+
+
+
+
+<script src="/script/lib/jquery/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  <script></script>
+  <script src="/script/lib/lightbox/js/lightbox.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/script/scheme/banderole.js"></script>
+
+
+
+
+<script src="/script/bootstarp.js"></script>
+
+
+
+<script>
+if (nlviconfig.theme.toc) {
+  setTimeout(function() {
+    if (nlviconfig.theme.scheme === 'balance') {
+      $("#header").addClass("show_toc");
+    } else if (nlviconfig.theme.scheme === 'banderole') {
+      $(".container-inner").addClass("has_toc");
+      $(".post-toc .title").addClass("show");
+      $(".toc-inner").addClass("show");
+    }
+  }, 1000);
+}
+</script>
+
+
+
+  
+<script src="/script/lib/mermaid/mermaid.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      var mermaid_config = {
+        startOnLoad: true,
+        theme: '',
+        flowchart: {
+          useMaxWidth: false,
+          htmlLabels: true
+        }
+      };
+      mermaid.initialize(mermaid_config);
+    });
+  </script>
+
+
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+  />
+
+
+</body>
+</html>

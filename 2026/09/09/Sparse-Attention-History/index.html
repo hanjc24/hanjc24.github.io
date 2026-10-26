@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="browsermode" content="application">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Jicheng's Blog">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name= "format-detection" content="telephone=no" />
+
+  <link rel="apple-touch-icon"  sizes="72x72"  href="/favicon.png">
+  <link rel="apple-touch-icon-precomposed"  sizes="72x72"  href="/favicon.png">
+
+
+
+  <meta name="description" content="Here is BD1AEH">
+
+
+
+  <meta name="keywords" content="Literature Review, Sparse Attention, nlvi" />
+
+
+<link rel="apple-touch-startup-image" media="(device-width: 375px)" href="assets/apple-launch-1125x2436.png">
+<link rel="apple-touch-startup-image" media="(orientation: landscape)" href="assets/apple-touch-startup-image-2048x1496.png">
+
+<link rel="stylesheet" href="/style/style.css">
+
+<script>
+  var nlviconfig = {
+    title: "Jicheng's Blog",
+    author: "hanjc24",
+    baseUrl: "/",
+    theme: {
+      scheme: "banderole",
+      lightbox: true,
+      animate: true,
+      search: true,
+      friends: false,
+      reward: false,
+      pjax: false,
+      lazy: false,
+      toc: true
+    }
+  }
+</script>
+
+
+
+
+    
+<link rel="stylesheet" href="/script/lib/lightbox/css/lightbox.min.css">
+
+
+
+
+
+    
+<link rel="stylesheet" href="/syuanpi/syuanpi.min.css">
+
+
+
+
+
+    <link rel="icon" href="/favicon.png">
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+@font-face {
+  font-family: "Allura";
+  src: url('/font/allura/allura.ttf');
+}
+</style>
+
+  <title> 工业界 Sparse Attention 演进 · Jicheng's Blog </title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body>
+  <div class="container">
+    <header class="header" id="header">
+  <div class="header-wrapper">
+    <div class="logo">
+  <div class="logo-inner syuanpi tvIn" style="display:none;">
+    <h1><a href="/">Jicheng's Blog</a></h1>
+    
+  </div>
+</div>
+
+    <nav class="main-nav">
+  
+  <ul class="main-nav-list syuanpi tvIn">
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="search-btn" aria-label="Search">
+        <i class="iconfont icon-search"></i>
+      </a>
+    </li>
+  
+  
+  
+    
+  
+    <li class="menu-item">
+      <a href="/" id="article">
+        <span class="base-name">
+          
+            ARTICLE
+          
+        </span>
+      </a>
+    </li>
+  
+  
+    
+  
+    <li class="menu-item">
+      <a href="/archives" id="archives">
+        <span class="base-name">
+          
+            ARCHIVES
+          
+        </span>
+      </a>
+    </li>
+  
+  
+    
+  
+    <li class="menu-item">
+      <a href="javascript:;" id="tags">
+        <span class="base-name">
+          
+            TAGS
+          
+        </span>
+      </a>
+    </li>
+  
+  
+    
+  
+    <li class="menu-item">
+      <a href="/about" id="about">
+        <span class="base-name">
+          
+            ABOUT
+          
+        </span>
+      </a>
+    </li>
+  
+  
+  </ul>
+  
+</nav>
+
+  </div>
+</header>
+<div class="mobile-header" id="mobile-header">
+  <div class="mobile-header-nav">
+    <div class="mobile-header-item" id="mobile-left">
+      <div class="header-menu-item">
+        <div class="header-menu-line"></div>
+      </div>
+    </div>
+    <h1 class="mobile-header-title">
+      <a href="/">Jicheng's Blog</a>
+    </h1>
+    <div class="mobile-header-item"></div>
+  </div>
+  <div class="mobile-header-body">
+    <ul class="mobile-header-list">
+      
+        <li class="mobile-nav-item syuanpi fadeInRightShort back-0">
+          <a href="/" >
+            
+              ARTICLE
+            
+          </a>
+        </li>
+      
+        <li class="mobile-nav-item syuanpi fadeInRightShort back-1">
+          <a href="/archives" >
+            
+              ARCHIVES
+            
+          </a>
+        </li>
+      
+        <li class="mobile-nav-item syuanpi fadeInRightShort back-2">
+          <a href="javascript:;" id="mobile-tags">
+            
+              TAGS
+            
+          </a>
+        </li>
+      
+        <li class="mobile-nav-item syuanpi fadeInRightShort back-3">
+          <a href="/about" >
+            
+              ABOUT
+            
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+    <div class="container-inner" style="display:none;">
+      <main class="main" id="main">
+        <div class="main-wrapper">
+          
+    
+  
+  <article class="
+  post
+   is_post 
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInRightShort back-1">
+        <div class="post-time-wrapper">
+          
+          <time>2026-09-09</time>
+          
+            
+              <span class="post-category"><a href="/categories/Academic/">Academic</a></span>
+            
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInRightShort back-2">
+        
+          工业界 Sparse Attention 演进
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInRightShort back-3">
+      
+        <p><em>0909 组会分享：Trainable Sparse Attention</em></p>
+<h2 id="0-简介">0. 简介</h2>
+<p>Long-context Sparse Attention 可以统一理解为：</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mi>Q</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mtext> Indexer </mtext></mpadded></mover><mi>S</mi><mo>=</mo><mi mathvariant="normal">TopK</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>Q</mi><mo separator="true">,</mo><msub><mi>K</mi><mi>I</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mtext> Backbone Attention </mtext></mpadded></mover><mi>O</mi><mo>=</mo><mi mathvariant="normal">Attn</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>Q</mi><mo separator="true">,</mo><msub><mi>K</mi><mi>S</mi></msub><mo separator="true">,</mo><msub><mi>V</mi><mi>S</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+Q &amp;\xrightarrow{\ \text{Indexer}\ } S=\operatorname{TopK}(Q,K_I) \\
+&amp;\xrightarrow{\ \text{Backbone Attention}\ } O=\operatorname{Attn}(Q,K_S,V_S)
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.5362em;vertical-align:-1.5181em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.0181em;"><span style="top:-4.0181em;"><span class="pstrut" style="height:3.1081em;"></span><span class="mord"><span class="mord mathnormal">Q</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.1081em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5181em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.0181em;"><span style="top:-4.0181em;"><span class="pstrut" style="height:3.1081em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mspace mtight"><span class="mtight"> </span></span><span class="mord text mtight"><span class="mord mtight">Indexer</span></span><span class="mspace mtight"><span class="mtight"> </span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop"><span class="mord mathrm">TopK</span></span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.1081em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mspace mtight"><span class="mtight"> </span></span><span class="mord text mtight"><span class="mord mtight">Backbone Attention</span></span><span class="mspace mtight"><span class="mtight"> </span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop"><span class="mord mathrm">Attn</span></span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5181em;"><span></span></span></span></span></span></span></span></span></span></span></span></eqn></section><blockquote>
+<p>代码里 S 一般以 <code>topk_indices[S, topk]</code> 形式呈现。</p>
+</blockquote>
+<p>其中 backbone 本身可以基本保持 <strong>MLA / GQA / 其他成熟 attention mechanism</strong>；Sparse Attention 的主要创新发生在 <strong>Trainable Indexer</strong>：决定当前 query 应该读取哪些 KV。</p>
+<p>因此，今天工业界的演进重点并不是“重新发明 attention”，而是在不断优化这个 <strong>learned retrieval system（在这里集中体现为 indexer）</strong>：兼顾训推效率、理论计算量的降低与实际性能提升、显存访存优化、保持甚至提高模型性能（相比 full attention）等。</p>
+<span id="more"></span>
+<h2 id="1-为什么需要-Sparse-Attention？">1. 为什么需要 Sparse Attention？</h2>
+<p>标准 causal attention：</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>O</mi><mo>=</mo><mi mathvariant="normal">Softmax</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>Q</mi><msup><mi>K</mi><mi mathvariant="normal">⊤</mi></msup><mi mathvariant="normal">/</mi><msqrt><mi>d</mi></msqrt><mo stretchy="false">)</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">
+O=\operatorname{Softmax}(QK^\top/\sqrt{d})V
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2311em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord mathrm">Softmax</span></span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">⊤</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9811em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal">d</span></span></span><span style="top:-2.9411em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.0589em;"><span></span></span></span></span></span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span></eqn></section><p>众所周知，随着 context length <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span></eq> 增长，历史 KV 越来越多，推理的时间复杂度为 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>。但其实对一个 query 来说，并不是所有历史 token 都同样重要。</p>
+<p>而 SWA 或者 Linear Attention 虽然是线性复杂度，但是难以精确捕捉长程信息/依赖。</p>
+<p>因此可以把 dense attention 拆为两步：</p>
+<ol>
+<li><strong>KV retrieval / selection</strong>：找到值得看的历史 KV；</li>
+<li><strong>Backbone attention</strong>：只在 selected KV 上运行原来的 attention。</li>
+</ol>
+<p>这样可以同时降低理论 FLOPS，同时保持对长程依赖的捕捉。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Hidden State x / Query Q</span><br><span class="line">                        │</span><br><span class="line">                        ▼</span><br><span class="line">                ┌───────────────┐</span><br><span class="line">                │    Indexer    │</span><br><span class="line">                │ score(Q, K_I) │</span><br><span class="line">                └───────┬───────┘</span><br><span class="line">                        │</span><br><span class="line">                      Top-K</span><br><span class="line">                        │</span><br><span class="line">                        ▼</span><br><span class="line">                 selected KV index</span><br><span class="line">                        │</span><br><span class="line">                        ▼</span><br><span class="line">              ┌────────────────────┐</span><br><span class="line">              │ Backbone Attention │</span><br><span class="line">              │    MLA / GQA       │</span><br><span class="line">              │     K_S, V_S       │</span><br><span class="line">              └─────────┬──────────┘</span><br><span class="line">                        │</span><br><span class="line">                        ▼</span><br><span class="line">                      output</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Backbone</strong>：MLA / GQA 等成熟 attention；</li>
+<li><strong>Indexer</strong>：负责 sparse retrieval，选出用于 backbone attention 计算的 KV
+<ul>
+<li>主要都是基于分数的 top-K 选取；</li>
+<li>尽管学界有 top-p 或者门控选取等工作，但是并没有实际工业落地。因为其引入了额外的计算复杂性。</li>
+</ul>
+</li>
+<li><strong>Sparse attention architecture 的核心差异主要体现在 Indexer 设计。</strong></li>
+</ul>
+<h2 id="2-工业界路线概览-Indexer-决策">2. 工业界路线概览 &amp; Indexer 决策</h2>
+<table>
+<thead>
+<tr>
+<th>标志模型</th>
+<th>Search representation</th>
+<th>Selection granularity</th>
+<th>Routing sharing</th>
+<th>核心思想</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InfLLM-V2</td>
+<td>Backbone K</td>
+<td>Block(64)</td>
+<td>整层共享</td>
+<td>最小化 backbone 改动</td>
+</tr>
+<tr>
+<td>DSA</td>
+<td>Indexer K</td>
+<td>Token</td>
+<td>整层共享</td>
+<td>learned indexer + Top-K</td>
+</tr>
+<tr>
+<td>KPool-DSA<br>(GLM5.3-flash)</td>
+<td>Compressed Indexer K</td>
+<td>Micro-block(4)</td>
+<td>整层共享</td>
+<td>先压缩 search space，再做 DSA retrieval</td>
+</tr>
+<tr>
+<td>QSA<br>(Qwen3.8)</td>
+<td>Compressed Indexer K</td>
+<td>Micro-block</td>
+<td>整层共享</td>
+<td>压缩 indexer search space + sparse retrieval</td>
+</tr>
+<tr>
+<td>MiniMax MSA</td>
+<td>Indexer K</td>
+<td>Block(64/128)</td>
+<td>GQA-group-wise</td>
+<td>blockwise retrieval + hardware co-design</td>
+</tr>
+<tr>
+<td>CSA / HCA<br>DeepSeek V4</td>
+<td>Compressed K</td>
+<td>compressed unit</td>
+<td>implementation dependent</td>
+<td>多尺度 memory / retrieval / attention hybrid</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>除此之外比较知名的 sparse attention 架构还有 NSA、Kimi MoBA 等，但并没有工业落地。</p>
+</blockquote>
+<h2 id="3-第一阶段：专职-Indexer-之前-——-InfLLM-V2">3. 第一阶段：专职 Indexer 之前 —— InfLLM-V2</h2>
+<p>同期还有另一篇 DeepSeek NSA（Native Sparse Attention）的工作，不过二者都是类似的。</p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2509.24663">InfLLM-V2: Dense-Sparse Switchable Attention for Seamless Short-to-Long Adaptation</a></p>
+<h3 id="3-1-基本想法">3.1 基本想法</h3>
+<p>直接利用 backbone 已有的 K 作为 retrieval representation：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mrow><mi>s</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>c</mi><mi>h</mi></mrow></msub><mo>=</mo><msub><mi>K</mi><mrow><mi>b</mi><mi>a</mi><mi>c</mi><mi>k</mi><mi>b</mi><mi>o</mi><mi>n</mi><mi>e</mi></mrow></msub></mrow><annotation encoding="application/x-tex">K_{search}=K_{backbone}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">se</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">rc</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ba</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">kb</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq></p>
+<p><img src="image.png" alt="InfLLM-V2 的 dense / sparse 可切换注意力"></p>
+<p>计算复杂度的减小：</p>
+<ul>
+<li>Indexer：首先对 K 进行 mean pooling 后再和 Q 运算得到用于 top-k 选取的分数，根据分数选出 top-k 块
+<ul>
+<li>当然此处用到了 mean pooling + max pooling 的做法，以及强制选择 head/local 块</li>
+</ul>
+</li>
+<li>Backbone：只对选中的块内的 token 进行 attention 计算，忽略其他 token</li>
+</ul>
+<h3 id="3-2-启发-局限性">3.2 启发 &amp; 局限性</h3>
+<h4 id="启发">启发</h4>
+<ul>
+<li>通过 top-k 选取后的稀疏注意力仍能保持一定的准确性与对长程依赖的捕捉；</li>
+<li><strong>注意力分数</strong>可以用来判断一个 token 或者 block 是否重要，进而可以<strong>利用注意力分数决定哪些 token 需要精确计算而哪些不需要</strong>；</li>
+<li>blockwise 的选取可以优化访存与计算效率，但 block 越大 retrieve 精度越差，block 越小 Indexer 与稀疏访存开销越大。这是一个寻找平衡的过程；</li>
+<li>Dense pretrain 与 sparse long decay 双阶段范式。</li>
+</ul>
+<h4 id="局限性">局限性</h4>
+<ul>
+<li>由于 Indexer 计算时使用的访存其实和原始 full attention 的量是近似的，减少的只有 QK 矩阵乘法的次数（而且这个计算减少的比值和 block size 呈线性关系，而 blocksize 增大会显著损害 retrieve 精度），因此 InfLLM-V2 并没有得到很好看的端到端加速比。<strong>能否进一步从架构上优化 Indexer 的速度并保持 fine-grained 的选择粒度？——那这样就不能使用 backbone 训出来的那一套参数了，indexer 要有自己的一套轻量参数。</strong></li>
+<li>进而很自然地有下一个问题：<strong>indexer 专职用于 topk 选取，而 topk 是不可导的</strong>。<strong>那么 indexer 的梯度从哪里来？</strong>
+<ul>
+<li>InfLLM-V2 和 NSA 的做法都是通过<strong>构建 indexer 权重到 LM loss 的路径</strong>来更新其梯度（InfLLM-V2 可视作 indexer 与 backbone 参数共享），同时利用其中间注意力分数进行 topk 选取（这条路径没有给 indexer 梯度）
+<ul>
+<li>但这样的设计让 indexer 在优化时是在<strong>学习优化语义 loss 而非优化选取</strong>本身——从 indexer 职能上考虑，这本质上也是一个 proxy：把语义作为优化 topk 选取的 proxy</li>
+<li>考虑到参数量和计算量，轻量化的 indexer 的语义学得往往不如 backbone（scaling law），在这种方法下 indexer 的上限其实就是 backbone 本身——这样 sparse attention 就退化成一个 training free 的 inference 加速技巧了。</li>
+</ul>
+</li>
+<li>除此之外对于 topk，还有一类做法是 <strong>STE 为代表的梯度估计（对 topk 不可导的经典做法）</strong>
+<ul>
+<li>问题：STE 把 backbone 分布得到的梯度强加给 indexer 分布得到的梯度，但是二者的初始分布不同（譬如 backbone 用预训练，indexer 用随机初始化），indexer 通过 STE 估计的梯度训练则几乎完全无法收敛，即使 topk == seqlen 训练（唯一的例外是 indexer == backbone）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>回顾 sparse attention 的 motivation：full attention 中很多位置的 attention score（softmax 后）都是极为接近 0 的，对最后的输出没有贡献，但 full attention 在这些位置浪费了大量算力。本质上 sparse attention 是要选取出那些对输出数值真正有影响的 token（即“backbone attention score 较高”），交给 backbone attention 进行计算。——<strong>多快好省地估计每个 token 在 backbone 的打分，而不进行 backbone full attention 运算</strong></li>
+<li>一个重要的不同：给注意力层添加<strong>专门的轻量化 Indexer</strong> 用于 topk 选取的打分；设计<strong>专门的 Indexer 优化目标</strong>，以解决 topk 不可导、indexer 职能重叠的问题。</li>
+</ul>
+<h2 id="4-第二阶段：DSA-——-Dedicated-Indexer">4. 第二阶段：DSA —— Dedicated Indexer</h2>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2512.02556">DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models</a></p>
+<h3 id="4-1-从-Backbone-K-到-Dedicated-Indexer-K">4.1 从 Backbone K 到 Dedicated Indexer K</h3>
+<p><img src="image-1.png" alt="DeepSeek-V3.2 中的 DSA 架构（MLA + Lightning Indexer）"></p>
+<ul>
+<li>Backbone：成熟的 MLA</li>
+<li>Indexer：一个类似 MHA 的架构，位置 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></eq> 上的 indexer 对位置 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span></eq> 的打分为 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mrow><mi>s</mi><mo separator="true">,</mo><mi>t</mi></mrow></msub><mo>=</mo><msub><mo>∑</mo><mi>h</mi></msub><mi mathvariant="normal">ReLU</mi><mo>⁡</mo><mo stretchy="false">(</mo><msubsup><mi>q</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi></mrow><mi>I</mi></msubsup><mo>⋅</mo><msubsup><mi>k</mi><mi>s</mi><mi>I</mi></msubsup><mo stretchy="false">)</mo><mo>⋅</mo><msubsup><mi>w</mi><mrow><mi>t</mi><mo separator="true">,</mo><mi>h</mi></mrow><mi>I</mi></msubsup></mrow><annotation encoding="application/x-tex">I_{s,t}=\sum_h \operatorname{ReLU}(q^I_{t,h}\cdot k_s^I)\cdot w^I_{t,h}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2605em;vertical-align:-0.4192em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">h</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mord mathrm">ReLU</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-2.4169em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4192em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0913em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-2.453em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2605em;vertical-align:-0.4192em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-2.4169em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">h</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4192em;"><span></span></span></span></span></span></span></span></span></span></eq>
+<ul>
+<li>Indexer 优化目标：<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>L</mi><mo stretchy="false">(</mo><mi>p</mi><mtext> </mtext><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mtext> </mtext><mi>s</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">KL(p\ ||\ softmax(I))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal">p</span><span class="mspace"> </span><span class="mord">∣∣</span><span class="mspace"> </span><span class="mord mathnormal">so</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mclose">))</span></span></span></span></eq>，其中 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span></eq> 为 backbone attention 分数 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mi>Q</mi><msup><mi>K</mi><mi>T</mi></msup><mi mathvariant="normal">/</mi><msqrt><msub><mi>d</mi><mi>k</mi></msub></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">softmax(QK^T/\sqrt{d_k})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1072em;vertical-align:-0.25em;"></span><span class="mord mathnormal">so</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8572em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.8172em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1828em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq> 在 head 维度上求和后 L1-norm 的结果。<strong>本质上是用 Indexer 去拟合 p 这个“main attention score”分布，将 backbone attention 的注意力分布蒸馏到 Indexer 里。</strong></li>
+<li>需要注意的是，尽管 indexer 的 q、k、w 是从 x 经过权重线性映射得到的，但是这里 x 是从 backbone detach 的。否则前层的 backbone 的梯度会被污染。</li>
+<li>三阶段训练：
+<ul>
+<li>Backbone pretrain</li>
+<li>Indexer warmup：冻结 backbone，只用 Indexer loss 训练 indexer，topk = seqlen</li>
+<li>CPT（Continued Pre-training）：backbone 与 indexer 同时训练，topk &lt;&lt; seqlen。只使用 topk 选中的位置进行分布计算与 KL loss 的计算和反传。</li>
+</ul>
+</li>
+<li><strong>note：这里 Indexer warmup 想解决这样一个自举问题：如果直接进行 CPT，indexer 随机初始化，且 topk &lt;&lt; seqlen，那么一开始如果 indexer 没有选某些 token，只选了另一些 token，那么 indexer 就可能永远也学不到那些它一开始没选中的 token 了。所以 Indexer warmup 很重要。</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="最重要的-architecture-jump">最重要的 architecture jump</h4>
+<p><strong>Indexer 与 Backbone 梯度解耦，给 Indexer 单独的优化目标（拟合 backbone attention 分布，而非利用 LM loss 的梯度进行训练）。</strong></p>
+<ul>
+<li>Indexer 的 topk 选取轻量化，更加降低训练与推理的开销，把稀疏带来的 FLOPS 的理论优势更多地转化为实际收益。解除了 InfLLM-V2 中选择粒度还是 index 效率的矛盾。<strong>但是长文本中 indexer 仍然是瓶颈。</strong></li>
+<li>tokenwise 的选取更细粒度，retrieve 准确性更好，<strong>但可能导致 GPU 访存效率降低。</strong></li>
+<li>相对于利用 LM loss 给出的梯度训练 indexer，设置单独的 indexer loss 可解释性更好，更加符合工业 pipeline。</li>
+</ul>
+<p>DSA 对 retrieval precision 很有吸引力，但 token-level sparse gather 可能带来新的 system bottleneck：</p>
+<ul>
+<li>indexer 计算 —— 复杂度仍然是 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>，尽管常数远小于 full attention</li>
+<li>Top-K 效率 —— streaming topk MFU 低，radix 显存占用大</li>
+<li>irregular memory access —— topk 带来的随机访存</li>
+<li>sparse kernel —— 写算子很痛苦，尤其是反传 dk 引入原子加</li>
+</ul>
+<p>于是后续工作开始反过来优化 <strong>Indexer 自身的 search cost 与执行粒度，一个趋势是选择粒度又重新回归 blockwise</strong>。（否定之否定.jpg）</p>
+<h2 id="5-第三阶段：Compressed-Pooled-Search-Representation">5. 第三阶段：Compressed / Pooled Search Representation</h2>
+<p><a target="_blank" rel="noopener" href="https://z.ai/blog/glm-5.3-flash">https://z.ai/blog/glm-5.3-flash</a></p>
+<h3 id="5-1-GLM-KPool-DSA">5.1 GLM KPool-DSA</h3>
+<p>用于 GLM5.3-flash。</p>
+<p>核心思路：不直接在长度为 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span></eq> 的 token-level representation 上做 retrieval，而是先做 pooling，再进行 sparse selection：</p>
+<p><img src="image-2.png" alt="KPool-DSA 的 compressed indexer 与 indexer cache"></p>
+<p>note：压缩的是 search representation / search space。</p>
+<p>可能存在的问题（在 DSA 基础上）：</p>
+<ul>
+<li>开源 RL 与推理框架适配性：这些框架给的 kv cache 都是 tokenwise 的，但是这里如果想要充分利用 compressed indexer key 带来的优势，必须存储的是 pool wise 的 compressed key。
+<ul>
+<li>把 indexer key 横过来存？作为 <code>[pool_size, d_i // pool_size]</code> 拼在 backbone kv 后面？——读 512+1/2/4/8 也硬件不友好。把 backbone head_dim 压缩到 510/508 之类的也在浪费算力。</li>
+<li>当前 transformers 库的参考实现存的是压缩前的 indexer key，导致每次 decode 的时候都要现算 pooling</li>
+</ul>
+</li>
+</ul>
+<p>好处：</p>
+<ul>
+<li>sparse kernel 读取 kv cache 和反传写 dk dv 的时候访存更连续了，读写 topk_indices 开销变为原来的 Pooled size 倍，可以更好地用计算掩盖显存读写时延。</li>
+</ul>
+<h3 id="5-2-QSA">5.2 QSA</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/QwenLM/Qwen3.8-Flash-Next/">https://github.com/QwenLM/Qwen3.8-Flash-Next/</a></p>
+<p><a target="_blank" rel="noopener" href="https://qwen.ai/blog?id=qwen3.8-flash-next">https://qwen.ai/blog?id=qwen3.8-flash-next</a></p>
+<p>QSA 与 KPool-DSA 有共同思想：</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>raw history</mtext><mo>→</mo><mtext>compressed / pooled representation</mtext><mo>→</mo><mtext>retrieval</mtext><mo>→</mo><mtext>exact attention</mtext></mrow><annotation encoding="application/x-tex">
+\text{raw history} \rightarrow \text{compressed / pooled representation} \rightarrow \text{retrieval} \rightarrow \text{exact attention}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">raw history</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">compressed / pooled representation</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">retrieval</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mord text"><span class="mord">exact attention</span></span></span></span></span></span></eqn></section><p>只是架构上有一些细微调整（减少计算量）：</p>
+<ul>
+<li>去掉了 weighted pooling 改成 mean pooling</li>
+<li>RoPE 使用 Partial RoPE（KPool-DSA 为 NoPE，DeepSeek V3.2 为 Partial RoPE）</li>
+<li>在 indexer MQA 多头分数聚合的时候相比 DSA 去掉了 weight，直接求和</li>
+</ul>
+<p><img src="image-3.png" alt="QSA 的 compressed lightweight indexer"></p>
+<p>压缩越强：</p>
+<ul>
+<li>Indexer 越便宜；</li>
+<li>search units 越少；</li>
+<li>但 representation 准确度和信息量可能下降；</li>
+<li>以及可能出现 block / micro-block over-fetch。</li>
+</ul>
+<blockquote>
+<p>参考：InfLLM-V2 与 MSA 的最终每个稀疏块包含的 token 数在 64 到 128 这个量级，而这里 QSA 和 GLM-DSA 分别都是 4。</p>
+</blockquote>
+<h3 id="5-3-Indexer-cache">5.3 Indexer cache</h3>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.12201">https://arxiv.org/abs/2603.12201</a></p>
+<p>其实也是 GLM 提出来的，说的是相邻几个 SA 层之间可以共享 indexer 选取，减少 indexer 开销。</p>
+<p>不过现在大家都在上 hybrid 了，所以 GLM5.3-flash 也就没有用这个了。</p>
+<p>Qwen 认为：相比跨层共享索引的方法，QSA 在每一层内部独立完成序列压缩，对跨层 Attention 相似性的依赖更小，也更适合 Linear/SWA 与 Attention 交替出现的 Hybrid 架构。</p>
+<h2 id="6-第三阶段-2：MiniMax-MSA">6. 第三阶段-2：MiniMax MSA</h2>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2606.13392">MiniMax Sparse Attention</a></p>
+<p><strong>更大的 block，更多样的 topk</strong></p>
+<ul>
+<li>DSA / QSA 都是整层共享 topk 选取结果，通过适当的 Pooling 平衡 indexer 选取能力与计算速度</li>
+<li>MSA 则让每层中 backbone GQA 的每个 query group 都拥有自己的 indexer 和 topk 选取，采用大块提高效率
+<ul>
+<li>具体而言：backbone GQA 的 query 头数为 H_Q，kv 头数 = query group = H_KV</li>
+<li>它让 indexer 为一个 query 头数为 H_KV 的 MQA，每个 indexer query 分别进行 topk 选取并提供给 GQA 的对应 query group</li>
+</ul>
+</li>
+</ul>
+<p><img src="image-4.png" alt="MiniMax MSA 的 index branch（每个 GQA group 一个 index query head）"></p>
+<p>我的一些分析：</p>
+<ul>
+<li>相对于 DSA 等，MSA 每层会进行多组 topk 选取，计算开销更大，但是开了 TP = H_KV 后其实是一样的。</li>
+<li>而且这样框架更好写一些。TP 和 CP 都可以做，TP 组之间不需要同步 topk 选取结果，因为 query group 之间其实是独立的。</li>
+<li>MSA 的 backbone 是 GQA，DSA 的 backbone 是 MLA，MSA 可以视作 DSA 在 GQA 上的合理扩展。</li>
+</ul>
+<h2 id="7-主要设计决策总结">7. 主要设计决策总结</h2>
+<p>总结一下，主要的设计决策可以归结为以下 4 个维度：</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><menclose notation="box"><mstyle scriptlevel="0" displaystyle="false"><mstyle scriptlevel="0" displaystyle="false"><mstyle scriptlevel="0" displaystyle="true"><mrow><mtext>Search Representation</mtext><mo>×</mo><mtext>Selection Granularity</mtext><mo>×</mo><mtext>Routing Sharing</mtext><mo>×</mo><mtext>Position Encoding</mtext></mrow></mstyle></mstyle></mstyle></menclose></mrow><annotation encoding="application/x-tex">
+\boxed{
+\text{Search Representation}
+\times
+\text{Selection Granularity}
+\times
+\text{Routing Sharing}
+\times
+\text{Position Encoding}
+}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.5689em;vertical-align:-0.5344em;"></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0344em;"><span style="top:-3.5689em;"><span class="pstrut" style="height:3.5689em;"></span><span class="boxpad"><span class="mord"><span class="mord"><span class="mord text"><span class="mord">Search Representation</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Selection Granularity</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Routing Sharing</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Position Encoding</span></span></span></span></span></span><span style="top:-3.0344em;"><span class="pstrut" style="height:3.5689em;"></span><span class="stretchy fbox" style="height:1.5689em;border-style:solid;border-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5344em;"><span></span></span></span></span></span></span></span></span></span></eqn></section><ul>
+<li>Search Representation：backbone key / <strong>indexer key</strong> / <strong>compressed indexer key</strong>
+<ul>
+<li>决定了 indexer k cache 显存开销以及 indexer 的信息量</li>
+<li>需要和 infra 进行配合</li>
+</ul>
+</li>
+<li>Selection Granularity：token / <strong>micro-block</strong> / <strong>block</strong>
+<ul>
+<li>决定了 indexer 前向开销、访存连续度、算子效率等</li>
+<li>总之，Block size 越小，retrieve 能力越接近 token-level precision；block 越大，GPU execution 越规整，但 over-fetch 可能越明显。</li>
+</ul>
+</li>
+<li>Routing Sharing：<strong>query group</strong> / <strong>attention layer</strong> / attention layers
+<ul>
+<li>同样决定了 indexer 前向开销，以及模型整体的 retrieve 能力</li>
+</ul>
+</li>
+<li>Position Encoding
+<ul>
+<li>这个主要还是依赖实验。</li>
+<li>目前现有落地模型一般采用 NoPE 或者 partial RoPE，同时 indexer 和 backbone 保持一致。
+<ul>
+<li>不过也不一定？可以验一下</li>
+</ul>
+</li>
+<li>DeepSeek V3.2 主要是 partial RoPE，因为它只有 DSA 层；GLM5.3-flash 是 NoPE；Qwen3.8 是 RoPE。
+<ul>
+<li>以及如果上 indexer rope 的话，上低频部分还是高频部分？hybrid 情况下又有什么不同？</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-Indexer-架构与训练方法">8. Indexer 架构与训练方法</h2>
+<p>上面四个是 architecture-level axes；除此之外还有不少实验要做。</p>
+<h3 id="8-1-Indexer-前向">8.1 Indexer 前向</h3>
+<ol>
+<li>Indexer head dim 等
+<ul>
+<li>需要评估 Indexer 的表示能力和 backbone 之间的平衡</li>
+<li>当然头数一般都是上 16 或者 32，因为适合 GPU 硬件</li>
+</ul>
+</li>
+<li>indexer 一般是一个 MQA 选出一个 topk，那么跨头打分如何做？
+<ul>
+<li>DSA：先 relu 后按照 weight 聚合</li>
+<li>QSA：先 relu 后 mean reduction</li>
+<li>MSA：不 relu（因为各头 query 选各的）</li>
+</ul>
+</li>
+</ol>
+<p>特别需要验证：<strong>ReLU 到底是否必要？可否换成别的或者去掉？</strong></p>
+<ol start="3">
+<li>Pooling / key compress 具体怎么做
+<ul>
+<li>Mean pooling? Weighted pooling?</li>
+<li>还是参考 InfLLM-V2 的双层 Pooling（mean + max）？</li>
+<li>块大小和选中粒度具体开多大？</li>
+</ul>
+</li>
+</ol>
+<h3 id="8-2-Indexer-反向">8.2 Indexer 反向</h3>
+<p>indexer 训练可以视作一个分布拟合 / 注意力 pattern 的知识蒸馏的过程。</p>
+<ul>
+<li>student：indexer</li>
+<li>teacher：backbone</li>
+</ul>
+<p>现在都普遍采用 KL 散度，因为它的梯度很好融到算子里（<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>t</mi><mi>u</mi><mi>d</mi><mi>e</mi><mi>n</mi><msub><mi>t</mi><mi>i</mi></msub><mo>−</mo><mi>t</mi><mi>e</mi><mi>a</mi><mi>c</mi><mi>h</mi><mi>e</mi><msub><mi>r</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">student_i-teacher_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">u</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>）</p>
+<p>不过还有一些的点可以验证：</p>
+<ul>
+<li>其他 loss：Fenchel–Young Loss、List MLE</li>
+<li>teacher 的聚合方式：从 backbone logits [S, H, S 或者 topk]，怎么聚合到 [S, topk] 的分布？</li>
+<li>Adaptive / trainable loss func</li>
+</ul>
+<h3 id="8-3-训练">8.3 训练</h3>
+<p>有一个很重要的问题：indexer 的自举问题。</p>
+<p>具体而言，indexer 在 CPT 阶段收到的梯度来自于它选中的 token。那么它没选择的 token，如果实际上是 ground truth 意义上很重要的 token，那么它是否几乎不可能学会？</p>
+<p>为解决这个问题，DeepSeek V3.2 提出的是 dense warmup + sparse CPT 的双阶段训练。token 的分配需要考虑。</p>
+<h3 id="8-4-其他需要处理的事项">8.4 其他需要处理的事项</h3>
+<ul>
+<li>hybrid 架构适配
+<ul>
+<li>一些结论在纯 SA 架构和 SALA 架构可能不同</li>
+</ul>
+</li>
+<li>训练框架适配
+<ul>
+<li>尤其是 DSA 这类整层一个 indexer，如果开 TP 则需要将 indexer 选取结果广播到每一个 TP 进程，在 indexer 反传的时候还需要从各个层的 backbone attention score 聚合出 main attention score，再算 indexer 梯度。</li>
+<li>MSA 如果 TP ≤ H_KV 的话则没有这个问题</li>
+</ul>
+</li>
+<li>后训练与推理框架适配
+<ul>
+<li>以及后训练 RL 的时候，indexer 的梯度是否需要更新还是冻结？</li>
+</ul>
+</li>
+<li>算子设计
+<ul>
+<li>Streaming topk 还是 Radix topk？如果显存可以接受（譬如开 CP），那上 Radix 可以带来极为显著的收益，尤其是 long decay + pool size 较小的情况</li>
+<li>Sparse backbone attention 的 fwd 和 bwd，访存优化</li>
+</ul>
+</li>
+<li>一些理论上的问题
+<ul>
+<li>Dense attention distillation 与最终 LM loss 的一致性是否足够？Indexer loss 真正应该优化什么？以及是否有其他更好的 proxy？</li>
+<li>足量的 CPT 能否真的解决 indexer 在 warmup 数据和模型上的 bias？是否考虑需要交替进行或者在 ckpt 监控？</li>
+<li>如果把 kv cache 视作 in-context learnt 的权重的话，indexer 是否也是一种 MoE 来 route 以决定启用哪些权重？与 memory offloading 能否结合？</li>
+</ul>
+</li>
+</ul>
+
+      
+    
+    </div>
+    
+      <div class="post-tags syuanpi fadeInRightShort back-3">
+      
+        <a href="/tags/Literature-Review/">Literature Review</a>
+      
+        <a href="/tags/Sparse-Attention/">Sparse Attention</a>
+      
+      </div>
+    
+    
+      
+
+      
+  <hr class="copy-line">
+  <div class="post-copyright">
+    <div class="copy-author">
+      <span>Author :</span>
+      <span>hanjc24</span>
+    </div>
+    <div class="copy-url">
+      <span>Url :</span>
+      <a href="http://hanjc24.github.io/2026/09/09/Sparse-Attention-History/">http://hanjc24.github.io/2026/09/09/Sparse-Attention-History/</a>
+    </div>
+    <div class="copy-origin">
+      <span>Origin :</span>
+      <a href="http://hanjc24.github.io">http://hanjc24.github.io</a>
+    </div>
+    <div class="copy-license">
+      
+      All rights reserved. Please contact the author for authorization to reprint.
+    </div>
+  </div>
+
+    
+  </article>
+  
+    
+  <nav class="article-page">
+    
+      <a href="/2026/10/26/FPGA-WPA2-cracker/" id="art-left" class="art-left">
+        <span class="next-title">
+          <i class="iconfont icon-left"></i>在 FPGA 上暴力破解 WPA2
+        </span>
+      </a>
+    
+    
+      <a href="/2026/02/15/Pytorch-View/" id="art-right" class="art-right">
+        <span class="prev-title">
+          Pytorch View<i class="iconfont icon-right"></i>
+        </span>
+      </a>
+    
+  </nav>
+
+
+    
+  <i id="com-switch" class="iconfont icon-down jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+  <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+    
+
+    
+    
+
+    
+
+    
+
+  </div>
+
+
+
+  
+  
+    
+  
+  <aside class="post-toc">
+    <div class="title"><span>Index</span></div>
+    <div class="toc-inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E7%AE%80%E4%BB%8B"><span class="toc-text">0. 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-Sparse-Attention%EF%BC%9F"><span class="toc-text">1. 为什么需要 Sparse Attention？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%B7%A5%E4%B8%9A%E7%95%8C%E8%B7%AF%E7%BA%BF%E6%A6%82%E8%A7%88-Indexer-%E5%86%B3%E7%AD%96"><span class="toc-text">2. 工业界路线概览 &amp; Indexer 决策</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E4%B8%93%E8%81%8C-Indexer-%E4%B9%8B%E5%89%8D-%E2%80%94%E2%80%94-InfLLM-V2"><span class="toc-text">3. 第一阶段：专职 Indexer 之前 —— InfLLM-V2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%9F%BA%E6%9C%AC%E6%83%B3%E6%B3%95"><span class="toc-text">3.1 基本想法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%90%AF%E5%8F%91-%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-text">3.2 启发 &amp; 局限性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8F%91"><span class="toc-text">启发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-text">局限性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9ADSA-%E2%80%94%E2%80%94-Dedicated-Indexer"><span class="toc-text">4. 第二阶段：DSA —— Dedicated Indexer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E4%BB%8E-Backbone-K-%E5%88%B0-Dedicated-Indexer-K"><span class="toc-text">4.1 从 Backbone K 到 Dedicated Indexer K</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84-architecture-jump"><span class="toc-text">最重要的 architecture jump</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9ACompressed-Pooled-Search-Representation"><span class="toc-text">5. 第三阶段：Compressed &#x2F; Pooled Search Representation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-GLM-KPool-DSA"><span class="toc-text">5.1 GLM KPool-DSA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-QSA"><span class="toc-text">5.2 QSA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-Indexer-cache"><span class="toc-text">5.3 Indexer cache</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5-2%EF%BC%9AMiniMax-MSA"><span class="toc-text">6. 第三阶段-2：MiniMax MSA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E4%B8%BB%E8%A6%81%E8%AE%BE%E8%AE%A1%E5%86%B3%E7%AD%96%E6%80%BB%E7%BB%93"><span class="toc-text">7. 主要设计决策总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Indexer-%E6%9E%B6%E6%9E%84%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%96%B9%E6%B3%95"><span class="toc-text">8. Indexer 架构与训练方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-Indexer-%E5%89%8D%E5%90%91"><span class="toc-text">8.1 Indexer 前向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-Indexer-%E5%8F%8D%E5%90%91"><span class="toc-text">8.2 Indexer 反向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-%E8%AE%AD%E7%BB%83"><span class="toc-text">8.3 训练</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-%E5%85%B6%E4%BB%96%E9%9C%80%E8%A6%81%E5%A4%84%E7%90%86%E7%9A%84%E4%BA%8B%E9%A1%B9"><span class="toc-text">8.4 其他需要处理的事项</span></a></li></ol></li></ol>
+    </div>
+  </aside>
+
+
+
+  
+
+
+        </div>
+      </main>
+      <footer class="footer syuanpi fadeIn" id="footer">
+  <hr>
+  <div class="footer-wrapper">
+    <div class="left">
+      <div class="contact-icon">
+  
+  
+    <a target="_blank" rel="noopener" href="https://github.com/hanjc24" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+    </div>
+    <div class="right">
+      <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>2026 ~ 2026</span>
+        <span>❤</span>
+        <span>hanjc24</span>
+    </div>
+    <div class="theme">
+        <span>
+            Powered by
+            <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo </a>
+        </span>
+        <span>
+            Theme
+            <a target="_blank" rel="noopener" href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div>
+    
+</div>
+
+    </div>
+  </div>
+</footer>
+    </div>
+    <div class="tagcloud" id="tagcloud">
+  <div class="tagcloud-taglist">
+  
+    <div class="tagcloud-tag">
+      <button>Literature Review</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>CS231n</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>李宏毅ML</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Tutorial</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Daily Log</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Project</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>FPGA</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Sparse Attention</button>
+    </div>
+  
+  </div>
+  
+    <div class="tagcloud-postlist active">
+      <h2>Literature Review</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/09/09/Sparse-Attention-History/">
+            <time class="tagcloud-posttime">2026 / 09 / 09</time>
+            <span>工业界 Sparse Attention 演进</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/26/DeepSeek-v3-2/">
+            <time class="tagcloud-posttime">2026 / 01 / 26</time>
+            <span>DeepSeek_v3.2</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/19/DeepSeekNSA/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>DeepSeekNSA</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/18/infllmv2-paper-review/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>Infllmv2 Review</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/17/FlashAttention/">
+            <time class="tagcloud-posttime">2026 / 01 / 17</time>
+            <span>FlashAttention</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>CS231n</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/02/02/CNN/">
+            <time class="tagcloud-posttime">2026 / 02 / 02</time>
+            <span>CNN Architecture and Training CNNs</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/25/Backpropagation/">
+            <time class="tagcloud-posttime">2026 / 01 / 25</time>
+            <span>Backpropagation</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>李宏毅ML</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/02/06/L9meta-learning/">
+            <time class="tagcloud-posttime">2026 / 02 / 06</time>
+            <span>LHY-L9 Meta Learning</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L8self-supervised/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L8 Self-supervised Learning</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L6Transformer/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L6 Transformer</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L5SelfAttention/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L5 Self-Attention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L4CNN/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L4 CNN</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L3Classification/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L3 Classification</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L2TrainIssue/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L2 Train Issue</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L1Regression/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>LHY-L1 Regression</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Tutorial</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/02/15/Pytorch-View/">
+            <time class="tagcloud-posttime">2026 / 02 / 15</time>
+            <span>Pytorch View</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/27/Handmade-CPU/">
+            <time class="tagcloud-posttime">2026 / 01 / 27</time>
+            <span>How to Make a CPU by Hand——From TD4 to Verilog</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/22/Learning-Triton/">
+            <time class="tagcloud-posttime">2026 / 01 / 22</time>
+            <span>Learning Triton</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/18/How-to-use-Mermaid-in-Hexo/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>How to use Mermaid in Hexo</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/17/HexoNlviBuild/">
+            <time class="tagcloud-posttime">2026 / 01 / 17</time>
+            <span>How to customize Hexo theme Nlvi</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Daily Log</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/02/05/Teacher-Zhu/">
+            <time class="tagcloud-posttime">2026 / 02 / 05</time>
+            <span>The Story of Teacher Zhu</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/31/Sparse-Attention/">
+            <time class="tagcloud-posttime">2026 / 01 / 31</time>
+            <span>Sparse Attention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/24/THUCS培养体系/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>THU-CS培养方案</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/20/EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/19/CQ-CQ-CQ-This-is-BD1AEH-calling/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>CQ CQ CQ This is BD1AEH calling</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/16/hello-world/">
+            <time class="tagcloud-posttime">2026 / 01 / 16</time>
+            <span>CQ CQ This is BD1AEH. Standing by.</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Project</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/10/26/FPGA-WPA2-cracker/">
+            <time class="tagcloud-posttime">2026 / 10 / 26</time>
+            <span>在 FPGA 上暴力破解 WPA2</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/28/CUADC2025summary/">
+            <time class="tagcloud-posttime">2026 / 01 / 28</time>
+            <span>CUADC2025 Summary</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/27/Handmade-CPU/">
+            <time class="tagcloud-posttime">2026 / 01 / 27</time>
+            <span>How to Make a CPU by Hand——From TD4 to Verilog</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/20/EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>FPGA</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/10/26/FPGA-WPA2-cracker/">
+            <time class="tagcloud-posttime">2026 / 10 / 26</time>
+            <span>在 FPGA 上暴力破解 WPA2</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Sparse Attention</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/09/09/Sparse-Attention-History/">
+            <time class="tagcloud-posttime">2026 / 09 / 09</time>
+            <span>工业界 Sparse Attention 演进</span>
+          </a>
+        </div>
+      
+    </div>
+  
+</div>
+
+  </div>
+  <div class="backtop syuanpi melt toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+
+  <div class="search" id="search">
+    <div class="input">
+      <input type="text" id="search-input" placeholder="搜索一下？" autofocus>
+    </div>
+    <div id="search-result"></div>
+  </div>
+
+
+
+
+<script src="/script/lib/jquery/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  <script></script>
+  <script src="/script/lib/lightbox/js/lightbox.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/script/scheme/banderole.js"></script>
+
+
+
+
+<script src="/script/bootstarp.js"></script>
+
+
+
+<script>
+if (nlviconfig.theme.toc) {
+  setTimeout(function() {
+    if (nlviconfig.theme.scheme === 'balance') {
+      $("#header").addClass("show_toc");
+    } else if (nlviconfig.theme.scheme === 'banderole') {
+      $(".container-inner").addClass("has_toc");
+      $(".post-toc .title").addClass("show");
+      $(".toc-inner").addClass("show");
+    }
+  }, 1000);
+}
+</script>
+
+
+
+  
+<script src="/script/lib/mermaid/mermaid.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      var mermaid_config = {
+        startOnLoad: true,
+        theme: '',
+        flowchart: {
+          useMaxWidth: false,
+          htmlLabels: true
+        }
+      };
+      mermaid.initialize(mermaid_config);
+    });
+  </script>
+
+
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css"
+  />
+
+
+</body>
+</html>

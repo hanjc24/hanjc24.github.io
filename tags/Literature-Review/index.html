@@ -238,17 +238,39 @@
         <div class="archive-post">
           <div class="archive-post-content">
             
-              <p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2512.02556">deepseekv3.2 arxiv</a><br>
-<a target="_blank" rel="noopener" href="https://github.com/tile-ai/tilelang/tree/main/examples/dsa_sparse_finetune">tilelang实现DSA</a><br>
-<a href="https://hanjc24.github.io/2026/01/26/literature-2026-01-26-DeepSeek-v3-2/">个人literature review</a></p>
+              <p><em>0909 组会分享：Trainable Sparse Attention</em></p>
+<h2 id="0-简介">0. 简介</h2>
+<p>Long-context Sparse Attention 可以统一理解为：</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mi>Q</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mtext> Indexer </mtext></mpadded></mover><mi>S</mi><mo>=</mo><mi mathvariant="normal">TopK</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>Q</mi><mo separator="true">,</mo><msub><mi>K</mi><mi>I</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mtext> Backbone Attention </mtext></mpadded></mover><mi>O</mi><mo>=</mo><mi mathvariant="normal">Attn</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>Q</mi><mo separator="true">,</mo><msub><mi>K</mi><mi>S</mi></msub><mo separator="true">,</mo><msub><mi>V</mi><mi>S</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+Q &amp;\xrightarrow{\ \text{Indexer}\ } S=\operatorname{TopK}(Q,K_I) \\
+&amp;\xrightarrow{\ \text{Backbone Attention}\ } O=\operatorname{Attn}(Q,K_S,V_S)
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.5362em;vertical-align:-1.5181em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.0181em;"><span style="top:-4.0181em;"><span class="pstrut" style="height:3.1081em;"></span><span class="mord"><span class="mord mathnormal">Q</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.1081em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5181em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.0181em;"><span style="top:-4.0181em;"><span class="pstrut" style="height:3.1081em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mspace mtight"><span class="mtight"> </span></span><span class="mord text mtight"><span class="mord mtight">Indexer</span></span><span class="mspace mtight"><span class="mtight"> </span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop"><span class="mord mathrm">TopK</span></span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.1081em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mspace mtight"><span class="mtight"> </span></span><span class="mord text mtight"><span class="mord mtight">Backbone Attention</span></span><span class="mspace mtight"><span class="mtight"> </span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop"><span class="mord mathrm">Attn</span></span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5181em;"><span></span></span></span></span></span></span></span></span></span></span></span></eqn></section><blockquote>
+<p>代码里 S 一般以 <code>topk_indices[S, topk]</code> 形式呈现。</p>
+</blockquote>
+<p>其中 backbone 本身可以基本保持 <strong>MLA / GQA / 其他成熟 attention mechanism</strong>；Sparse Attention 的主要创新发生在 <strong>Trainable Indexer</strong>：决定当前 query 应该读取哪些 KV。</p>
+<p>因此，今天工业界的演进重点并不是“重新发明 attention”，而是在不断优化这个 <strong>learned retrieval system（在这里集中体现为 indexer）</strong>：兼顾训推效率、理论计算量的降低与实际性能提升、显存访存优化、保持甚至提高模型性能（相比 full attention）等。</p>
             
           </div>
           <div class="archive-post-info">
             <time class="archive-post-time">
-              2026-04-18
+              2026-09-09
             </time>
-            <a  class="archive-post-link" href="/2026/04/18/tutorial-2026-04-18-tilelangDSA/">
-              DeepSeekDSA tilelang实现
+            <a  class="archive-post-link" href="/2026/09/09/Sparse-Attention-History/">
+              工业界 Sparse Attention 演进
             </a>
           </div>
         </div>
@@ -272,7 +294,7 @@
             <time class="archive-post-time">
               2026-01-26
             </time>
-            <a  class="archive-post-link" href="/2026/01/26/literature-2026-01-26-DeepSeek-v3-2/">
+            <a  class="archive-post-link" href="/2026/01/26/DeepSeek-v3-2/">
               DeepSeek_v3.2
             </a>
           </div>
@@ -295,7 +317,7 @@
             <time class="archive-post-time">
               2026-01-19
             </time>
-            <a  class="archive-post-link" href="/2026/01/19/literature-2026-01-19-DeepSeekNSA/">
+            <a  class="archive-post-link" href="/2026/01/19/DeepSeekNSA/">
               DeepSeekNSA
             </a>
           </div>
@@ -327,7 +349,7 @@
             <time class="archive-post-time">
               2026-01-18
             </time>
-            <a  class="archive-post-link" href="/2026/01/18/literature-2026-01-18-infllmv2-paper-review/">
+            <a  class="archive-post-link" href="/2026/01/18/infllmv2-paper-review/">
               Infllmv2 Review
             </a>
           </div>
@@ -348,7 +370,7 @@
             <time class="archive-post-time">
               2026-01-17
             </time>
-            <a  class="archive-post-link" href="/2026/01/17/literature-2026-01-17-FlashAttention/">
+            <a  class="archive-post-link" href="/2026/01/17/FlashAttention/">
               FlashAttention
             </a>
           </div>
@@ -409,7 +431,7 @@
   <div class="tagcloud-taglist">
   
     <div class="tagcloud-tag">
-      <button>Daily Log</button>
+      <button>Literature Review</button>
     </div>
   
     <div class="tagcloud-tag">
@@ -421,7 +443,11 @@
     </div>
   
     <div class="tagcloud-tag">
-      <button>Literature Review</button>
+      <button>Tutorial</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Daily Log</button>
     </div>
   
     <div class="tagcloud-tag">
@@ -429,61 +455,51 @@
     </div>
   
     <div class="tagcloud-tag">
-      <button>Tutorial</button>
+      <button>FPGA</button>
+    </div>
+  
+    <div class="tagcloud-tag">
+      <button>Sparse Attention</button>
     </div>
   
   </div>
   
     <div class="tagcloud-postlist active">
-      <h2>Daily Log</h2>
+      <h2>Literature Review</h2>
       
       
         <div class="tagcloud-post">
-          <a href="/2026/02/05/daily-2026-02-05-Teacher-Zhu/">
-            <time class="tagcloud-posttime">2026 / 02 / 05</time>
-            <span>The Story of Teacher Zhu</span>
+          <a target="_blank" rel="noopener" href="//2026/09/09/Sparse-Attention-History/">
+            <time class="tagcloud-posttime">2026 / 09 / 09</time>
+            <span>工业界 Sparse Attention 演进</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/31/daily-2026-01-31-Sparse-Attention/">
-            <time class="tagcloud-posttime">2026 / 01 / 31</time>
-            <span>Sparse Attention</span>
+          <a target="_blank" rel="noopener" href="//2026/01/26/DeepSeek-v3-2/">
+            <time class="tagcloud-posttime">2026 / 01 / 26</time>
+            <span>DeepSeek_v3.2</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/27/daily-2026-01-27-Handmade-CPU/">
-            <time class="tagcloud-posttime">2026 / 01 / 27</time>
-            <span>How to Make a CPU by Hand——From TD4 to Verilog</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/24/daily-2026-01-24-THUCS培养体系/">
-            <time class="tagcloud-posttime">2026 / 01 / 24</time>
-            <span>THU-CS培养方案</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
-            <time class="tagcloud-posttime">2026 / 01 / 20</time>
-            <span>EETalk Project</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/19/daily-2026-01-19-CQ-CQ-CQ-This-is-BD1AEH-calling/">
+          <a target="_blank" rel="noopener" href="//2026/01/19/DeepSeekNSA/">
             <time class="tagcloud-posttime">2026 / 01 / 19</time>
-            <span>CQ CQ CQ This is BD1AEH calling</span>
+            <span>DeepSeekNSA</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/16/hello-world/">
-            <time class="tagcloud-posttime">2026 / 01 / 16</time>
-            <span>CQ CQ This is BD1AEH. Standing by.</span>
+          <a target="_blank" rel="noopener" href="//2026/01/18/infllmv2-paper-review/">
+            <time class="tagcloud-posttime">2026 / 01 / 18</time>
+            <span>Infllmv2 Review</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/17/FlashAttention/">
+            <time class="tagcloud-posttime">2026 / 01 / 17</time>
+            <span>FlashAttention</span>
           </a>
         </div>
       
@@ -494,14 +510,14 @@
       
       
         <div class="tagcloud-post">
-          <a href="/2026/02/02/course-CS231n-2026-02-02-CNN/">
+          <a target="_blank" rel="noopener" href="//2026/02/02/CNN/">
             <time class="tagcloud-posttime">2026 / 02 / 02</time>
             <span>CNN Architecture and Training CNNs</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/25/course-CS231n-2026-01-25-Backpropagation/">
+          <a target="_blank" rel="noopener" href="//2026/01/25/Backpropagation/">
             <time class="tagcloud-posttime">2026 / 01 / 25</time>
             <span>Backpropagation</span>
           </a>
@@ -514,119 +530,58 @@
       
       
         <div class="tagcloud-post">
-          <a href="/2026/02/06/course-LHY-2026-02-06-L9meta-learning/">
+          <a target="_blank" rel="noopener" href="//2026/02/06/L9meta-learning/">
             <time class="tagcloud-posttime">2026 / 02 / 06</time>
             <span>LHY-L9 Meta Learning</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L8self-supervised/">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L8self-supervised/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L8 Self-supervised Learning</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L6Transformer/">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L6Transformer/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L6 Transformer</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L5SelfAttention/">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L5SelfAttention/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L5 Self-Attention</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L4CNN/">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L4CNN/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L4 CNN</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L3Classification/">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L3Classification/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L3 Classification</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L2TrainIssue/">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L2TrainIssue/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L2 Train Issue</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/24/course-LHY-2026-01-24-L1Regression/">
+          <a target="_blank" rel="noopener" href="//2026/01/24/L1Regression/">
             <time class="tagcloud-posttime">2026 / 01 / 24</time>
             <span>LHY-L1 Regression</span>
-          </a>
-        </div>
-      
-    </div>
-  
-    <div class="tagcloud-postlist ">
-      <h2>Literature Review</h2>
-      
-      
-        <div class="tagcloud-post">
-          <a href="/2026/04/18/tutorial-2026-04-18-tilelangDSA/">
-            <time class="tagcloud-posttime">2026 / 04 / 18</time>
-            <span>DeepSeekDSA tilelang实现</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/26/literature-2026-01-26-DeepSeek-v3-2/">
-            <time class="tagcloud-posttime">2026 / 01 / 26</time>
-            <span>DeepSeek_v3.2</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/19/literature-2026-01-19-DeepSeekNSA/">
-            <time class="tagcloud-posttime">2026 / 01 / 19</time>
-            <span>DeepSeekNSA</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/18/literature-2026-01-18-infllmv2-paper-review/">
-            <time class="tagcloud-posttime">2026 / 01 / 18</time>
-            <span>Infllmv2 Review</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/17/literature-2026-01-17-FlashAttention/">
-            <time class="tagcloud-posttime">2026 / 01 / 17</time>
-            <span>FlashAttention</span>
-          </a>
-        </div>
-      
-    </div>
-  
-    <div class="tagcloud-postlist ">
-      <h2>Project</h2>
-      
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/28/projects-2026-01-28-CUADC2025summary/">
-            <time class="tagcloud-posttime">2026 / 01 / 28</time>
-            <span>CUADC2025 Summary</span>
-          </a>
-        </div>
-      
-        <div class="tagcloud-post">
-          <a href="/2026/01/20/projects-2026-01-20-EETalk-Project/">
-            <time class="tagcloud-posttime">2026 / 01 / 20</time>
-            <span>EETalk Project</span>
           </a>
         </div>
       
@@ -637,30 +592,145 @@
       
       
         <div class="tagcloud-post">
-          <a href="/2026/02/15/tutorial-2026-02-15-Pytorch-View/">
+          <a target="_blank" rel="noopener" href="//2026/02/15/Pytorch-View/">
             <time class="tagcloud-posttime">2026 / 02 / 15</time>
             <span>Pytorch View</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/22/tutorial-2026-01-22-Learning-Triton/">
+          <a target="_blank" rel="noopener" href="//2026/01/27/Handmade-CPU/">
+            <time class="tagcloud-posttime">2026 / 01 / 27</time>
+            <span>How to Make a CPU by Hand——From TD4 to Verilog</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/22/Learning-Triton/">
             <time class="tagcloud-posttime">2026 / 01 / 22</time>
             <span>Learning Triton</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/18/tutorial-2026-01-18-How-to-use-Mermaid-in-Hexo/">
+          <a target="_blank" rel="noopener" href="//2026/01/18/How-to-use-Mermaid-in-Hexo/">
             <time class="tagcloud-posttime">2026 / 01 / 18</time>
             <span>How to use Mermaid in Hexo</span>
           </a>
         </div>
       
         <div class="tagcloud-post">
-          <a href="/2026/01/17/tutorial-2026-01-17-HexoNlviBuild/">
+          <a target="_blank" rel="noopener" href="//2026/01/17/HexoNlviBuild/">
             <time class="tagcloud-posttime">2026 / 01 / 17</time>
             <span>How to customize Hexo theme Nlvi</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Daily Log</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/02/05/Teacher-Zhu/">
+            <time class="tagcloud-posttime">2026 / 02 / 05</time>
+            <span>The Story of Teacher Zhu</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/31/Sparse-Attention/">
+            <time class="tagcloud-posttime">2026 / 01 / 31</time>
+            <span>Sparse Attention</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/24/THUCS培养体系/">
+            <time class="tagcloud-posttime">2026 / 01 / 24</time>
+            <span>THU-CS培养方案</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/20/EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/19/CQ-CQ-CQ-This-is-BD1AEH-calling/">
+            <time class="tagcloud-posttime">2026 / 01 / 19</time>
+            <span>CQ CQ CQ This is BD1AEH calling</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/16/hello-world/">
+            <time class="tagcloud-posttime">2026 / 01 / 16</time>
+            <span>CQ CQ This is BD1AEH. Standing by.</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Project</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/10/26/FPGA-WPA2-cracker/">
+            <time class="tagcloud-posttime">2026 / 10 / 26</time>
+            <span>在 FPGA 上暴力破解 WPA2</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/28/CUADC2025summary/">
+            <time class="tagcloud-posttime">2026 / 01 / 28</time>
+            <span>CUADC2025 Summary</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/27/Handmade-CPU/">
+            <time class="tagcloud-posttime">2026 / 01 / 27</time>
+            <span>How to Make a CPU by Hand——From TD4 to Verilog</span>
+          </a>
+        </div>
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/01/20/EETalk-Project/">
+            <time class="tagcloud-posttime">2026 / 01 / 20</time>
+            <span>EETalk Project</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>FPGA</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/10/26/FPGA-WPA2-cracker/">
+            <time class="tagcloud-posttime">2026 / 10 / 26</time>
+            <span>在 FPGA 上暴力破解 WPA2</span>
+          </a>
+        </div>
+      
+    </div>
+  
+    <div class="tagcloud-postlist ">
+      <h2>Sparse Attention</h2>
+      
+      
+        <div class="tagcloud-post">
+          <a target="_blank" rel="noopener" href="//2026/09/09/Sparse-Attention-History/">
+            <time class="tagcloud-posttime">2026 / 09 / 09</time>
+            <span>工业界 Sparse Attention 演进</span>
           </a>
         </div>
       
@@ -741,7 +811,7 @@
 
   <link
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css"
   />
 
 

@@ -22,7 +22,7 @@
             
             <tag> Project </tag>
             
-            <tag> FPGA </tag>
+            <tag> Hardware </tag>
             
         </tags>
       
@@ -210,6 +210,8 @@
             
             <tag> Project </tag>
             
+            <tag> Hardware </tag>
+            
         </tags>
       
     </entry>
@@ -234,6 +236,8 @@
         <tags>
             
             <tag> Literature Review </tag>
+            
+            <tag> Sparse Attention </tag>
             
         </tags>
       
@@ -550,6 +554,8 @@
             
             <tag> Literature Review </tag>
             
+            <tag> Sparse Attention </tag>
+            
         </tags>
       
     </entry>
@@ -574,6 +580,8 @@
         <tags>
             
             <tag> Literature Review </tag>
+            
+            <tag> Sparse Attention </tag>
             
         </tags>
       
